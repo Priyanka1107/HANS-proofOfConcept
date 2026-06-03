@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+*api_key*
+*apikey*
+*secret*
+*token*
+credentials.json
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+
+# Generated evaluation outputs
+evaluation/*.csv
+evaluation/*.json
+evaluation/*.jsonl
+evaluation/*.xlsx
+evaluation_401/
+.qodo/
+
+# Keep evaluation test cases
+!evaluation/*test_cases*.json
+!evaluation/README.md
+
+# Raw scraped/generated data
+data/objects/
+data/snapshots_raw/
+output/
+results/
+
+# Runtime results
+results/*.jsonl
+results/*.csv
+results/*.json
+results/*.log
+
+# Thread memory can contain test conversations
+evaluation/email_thread_memory.json
+data/email_thread_memory.json
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Large local model files
+models/
+*.bin
+*.gguf
+*.safetensors
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Old notes / unrelated setup notes
+affordable_process_flow.md
+affordable_stack_analysis.md
+COMPLETE_SETUP_GUIDE.md
+
+# Temporary debug script
+scripts/debug_one_thread.py

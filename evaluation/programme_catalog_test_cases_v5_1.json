@@ -1,0 +1,129 @@
+[
+  {
+    "case_id": "pc_001",
+    "title": "MPMD full name: deadline, language and study format",
+    "student_email": "arjun.mpmd@example.com",
+    "thread_id": "pc_thread_001",
+    "subject": "Project Management and Data Science application",
+    "email_text": "Dear Admissions Team,\n\nI have completed my Bachelor's degree in Electronics Engineering from India and I am currently working as a software engineer. I would like to apply for the Master's programme in Project Management and Data Science. Could you please tell me the application deadline, whether the programme is taught entirely in English, and whether it is an on-campus course?\n\nKind regards,\nArjun",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction",
+      "study_format"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_002",
+    "title": "MPMD full name: work experience, documents and English proof",
+    "student_email": "neha.mpmd@example.com",
+    "thread_id": "pc_thread_002",
+    "subject": "MPMD admission requirements",
+    "email_text": "Dear Admissions Team,\n\nI am interested in the Project Management and Data Science Master's programme at HTW Berlin. I have a Bachelor's degree in Computer Science and around 10 months of work experience. Could you please tell me whether work experience is required, which documents I should prepare, and whether I need English language proof?\n\nKind regards,\nNeha",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "work_experience",
+      "required_documents",
+      "english_language_requirements"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_review_required": "Yes"
+  },
+  {
+    "case_id": "pc_003",
+    "title": "MPMD abbreviation only",
+    "student_email": "samir.mpmd@example.com",
+    "thread_id": "pc_thread_003",
+    "subject": "MPMD application before graduation",
+    "email_text": "Dear Admissions Team,\n\nI am in the final semester of my Bachelor's degree and would like to apply for MPMD. I will receive my final certificate after the application deadline. Can I still apply, and do I need to submit the final certificate later?\n\nKind regards,\nSamir",
+    "expected_topic_count": 2,
+    "expected_topics": [
+      "application_before_graduation",
+      "final_certificate_submission"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_004",
+    "title": "PROITD full name: route, fee and language proof",
+    "student_email": "lina.proitd@example.com",
+    "thread_id": "pc_thread_004",
+    "subject": "Professional IT and Digitalization application",
+    "email_text": "Dear Admissions Team,\n\nI am interested in the Professional IT and Digitalization Master's programme. I completed my Bachelor's degree outside Germany. Could you please tell me whether I need to apply through uni-assist, whether there are application fees, and what language proof is required?\n\nKind regards,\nLina",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "application_fee",
+      "language_requirements"
+    ],
+    "expected_programme": "Professional IT Business and Digitalization",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_005",
+    "title": "PROITD abbreviation only",
+    "student_email": "sara.proitd@example.com",
+    "thread_id": "pc_thread_005",
+    "subject": "PROITD admission",
+    "email_text": "Dear Admissions Team,\n\nI would like to apply for PROITD at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether English proof is needed?\n\nKind regards,\nSara",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "expected_programme": "Professional IT Business and Digitalization",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_006",
+    "title": "Cyber Security and Business Bachelor",
+    "student_email": "lucas.csb@example.com",
+    "thread_id": "pc_thread_006",
+    "subject": "Cybersecurity and Business Bachelor application",
+    "email_text": "Dear Admissions Team,\n\nI am an EU citizen living in Portugal and I am finishing high school with an International Baccalaureate diploma. I want to apply for the Cybersecurity and Business Bachelor's programme. Do I apply through uni-assist, does my IB diploma meet the admission requirements, and is a motivation letter required?\n\nKind regards,\nLucas",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "qualification_recognition",
+      "motivation_letter"
+    ],
+    "expected_programme": "Cyber Security and Business",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_007",
+    "title": "Construction and Real Estate Management",
+    "student_email": "maria.conrem@example.com",
+    "thread_id": "pc_thread_007",
+    "subject": "Construction and Real Estate Management",
+    "email_text": "Dear Admissions Team,\n\nI am interested in Construction and Real Estate Management at HTW Berlin. Could you please tell me whether English language proof is required, which application documents I should prepare, and whether I need to pay a semester contribution?\n\nKind regards,\nMaria",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "english_language_requirements",
+      "required_documents",
+      "semester_contribution"
+    ],
+    "expected_programme": "Construction and Real Estate Management",
+    "expected_review_required": "No"
+  },
+  {
+    "case_id": "pc_008",
+    "title": "Unknown programme should be reviewed",
+    "student_email": "unknown.programme@example.com",
+    "thread_id": "pc_thread_008",
+    "subject": "Unknown programme application",
+    "email_text": "Dear Admissions Team,\n\nI would like to apply for the Master's programme in Space Robotics and Ocean Finance at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether English proof is required?\n\nKind regards,\nTest Applicant",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "expected_programme": null,
+    "expected_review_required": "Yes"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "case_id": "pc_001",
+    "title": "MPMD deadline language format",
+    "student_email": "arjun.catalog@example.com",
+    "subject": "MPMD application questions",
+    "thread_id": "pc_thread_001",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction",
+      "study_format"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI have completed my Bachelor's degree in Electronics Engineering from India and I am currently working as a software engineer. I would like to apply for the Master's programme in Project Management and Data Science. Could you please tell me the application deadline, whether the programme is taught entirely in English, and whether it is an on-campus course?\n\nKind regards,\nArjun"
+    ]
+  },
+  {
+    "case_id": "pc_002",
+    "title": "MPMD work experience documents English",
+    "student_email": "neha.catalog@example.com",
+    "subject": "MPMD admission requirements",
+    "thread_id": "pc_thread_002",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "work_experience",
+      "required_documents",
+      "english_language_requirements"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in the Project Management and Data Science Master's programme at HTW Berlin. I have a Bachelor's degree in Computer Science and around 10 months of work experience. Could you please tell me whether work experience is required, which documents I should prepare, and whether I need English language proof?\n\nKind regards,\nNeha"
+    ]
+  },
+  {
+    "case_id": "pc_003",
+    "title": "MPMD abbreviation only",
+    "student_email": "samir.catalog@example.com",
+    "subject": "MPMD final certificate",
+    "thread_id": "pc_thread_003",
+    "expected_topic_count": 2,
+    "expected_topics": [
+      "application_before_graduation",
+      "final_certificate_submission"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am in the final semester of my Bachelor's degree and would like to apply for MPMD. I will receive my final certificate after the application deadline. Can I still apply, and do I need to submit the final certificate later?\n\nKind regards,\nSamir"
+    ]
+  },
+  {
+    "case_id": "pc_004",
+    "title": "PROITD route fee language",
+    "student_email": "lina.catalog@example.com",
+    "subject": "PROITD application",
+    "thread_id": "pc_thread_004",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "application_fee",
+      "language_requirements"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in the Professional IT and Digitalization Master's programme. I completed my Bachelor's degree outside Germany. Could you please tell me whether I need to apply through uni-assist, whether there are application fees, and what language proof is required?\n\nKind regards,\nLina"
+    ]
+  },
+  {
+    "case_id": "pc_005",
+    "title": "PROITD abbreviation admission deadline English",
+    "student_email": "sara.catalog@example.com",
+    "subject": "PROITD admission",
+    "thread_id": "pc_thread_005",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI would like to apply for PROITD at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether English proof is needed?\n\nKind regards,\nSara"
+    ]
+  },
+  {
+    "case_id": "pc_006",
+    "title": "Random programme catalogue match Quantitative Finance",
+    "student_email": "maria.catalog@example.com",
+    "subject": "Quantitative Finance and Data Science",
+    "thread_id": "pc_thread_006",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "tuition_fees"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in the Master's programme in Quantitative Finance and Data Science at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether tuition fees apply?\n\nKind regards,\nMaria"
+    ]
+  },
+  {
+    "case_id": "pc_007",
+    "title": "Construction programme catalogue match",
+    "student_email": "tom.catalog@example.com",
+    "subject": "Construction and Real Estate Management",
+    "thread_id": "pc_thread_007",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "english_language_requirements",
+      "required_documents",
+      "semester_contribution"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in Construction and Real Estate Management at HTW Berlin. Could you please tell me whether English language proof is required, which application documents I should prepare, and whether I need to pay a semester contribution?\n\nKind regards,\nTom"
+    ]
+  },
+  {
+    "case_id": "pc_008",
+    "title": "Unknown programme should review",
+    "student_email": "unknown.catalog@example.com",
+    "subject": "Unknown programme check",
+    "thread_id": "pc_thread_008",
+    "expected_topic_count": 2,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction"
+    ],
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in a programme called Digital Space Robotics at HTW Berlin. Could you please tell me the application deadline and whether it is taught in English?\n\nKind regards,\nTest Applicant"
+    ]
+  }
+]

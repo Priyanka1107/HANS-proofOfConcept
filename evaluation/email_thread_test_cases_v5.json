@@ -1,0 +1,59 @@
+[
+  {
+    "case_id": "thread_001",
+    "title": "International Business follow-up asks a new topic",
+    "student_email": "ananya.thread001@example.com",
+    "subject": "Application for International Business Master",
+    "thread_id": "thread_001_ananya_ib_master",
+    "turns": [
+      {
+        "turn_index": 1,
+        "expected_followup_type": "new_enquiry",
+        "email_text": "Dear Admissions Team,\n\nMy name is Ananya and I am completing my Bachelor's degree in Business Administration in India. I would like to apply for the Master's in International Business for the winter semester. Since I will receive my final transcript only in July, can I still apply before graduation? Do I need English language proof and are there application fees?\n\nKind regards,\nAnanya"
+      },
+      {
+        "turn_index": 2,
+        "expected_followup_type": "followup_new_topic",
+        "email_text": "Thank you for your reply. Is a motivation letter also required?"
+      }
+    ]
+  },
+  {
+    "case_id": "thread_002",
+    "title": "Cybersecurity follow-up asks clarification and should be human review",
+    "student_email": "leo.thread002@example.com",
+    "subject": "Cybersecurity and Business Bachelor application",
+    "thread_id": "thread_002_leo_csb_bachelor",
+    "turns": [
+      {
+        "turn_index": 1,
+        "expected_followup_type": "new_enquiry",
+        "email_text": "Hello,\n\nI am an EU citizen living in Portugal and I am finishing high school with an International Baccalaureate diploma. I want to apply for the Cybersecurity and Business Bachelor's programme. Do I apply through uni-assist, does my IB diploma meet the admission requirements, and is a motivation letter required?\n\nKind regards,\nLeo"
+      },
+      {
+        "turn_index": 2,
+        "expected_followup_type": "clarification_or_complaint",
+        "email_text": "Thank you for your reply, but I still do not understand the application route. Your answer was not clear to me."
+      }
+    ]
+  },
+  {
+    "case_id": "thread_003",
+    "title": "Construction Management short follow-up uses previous programme context",
+    "student_email": "maria.thread003@example.com",
+    "subject": "Construction and Real Estate Management application",
+    "thread_id": "thread_003_maria_conrem",
+    "turns": [
+      {
+        "turn_index": 1,
+        "expected_followup_type": "new_enquiry",
+        "email_text": "Dear Admissions Team,\n\nI am interested in Construction and Real Estate Management at HTW Berlin. Could you please tell me whether English language proof is required, which application documents I should prepare, and whether I need to pay a semester contribution?\n\nKind regards,\nMaria"
+      },
+      {
+        "turn_index": 2,
+        "expected_followup_type": "followup_new_topic",
+        "email_text": "And what about the application deadline?"
+      }
+    ]
+  }
+]

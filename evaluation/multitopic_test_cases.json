@@ -1,0 +1,368 @@
+[
+  {
+    "case_id": "pd_000a",
+    "title": "Dual citizen French and Moroccan Business Bachelor application route and diploma recognition",
+    "student_email": "student.pd000a@example.com",
+    "subject": "Business Bachelor application route and French Baccalaureate recognition",
+    "thread_id": "thread_pd_000a",
+    "expected_topic_count": 2,
+    "expected_topics": [
+      "application_route",
+      "qualification_recognition"
+    ],
+    "turns": [
+      "Dear Admissions Team, I am a dual citizen (French and Moroccan), currently residing in Morocco and holding a French Baccalauréat diploma. I want to apply for the English-taught Bachelor’s in Business but am unsure whether I should apply as an EU applicant or international. Also, would my French diploma fulfill the general university entrance requirements, or would I need to obtain a VPD from Uni-Assist?"
+    ]
+  },
+  {
+    "case_id": "pd_000b",
+    "title": "Cybersecurity and Business Bachelor EU applicant with IB diploma and motivation letter question",
+    "student_email": "student.pd000b@example.com",
+    "subject": "Cybersecurity and Business Bachelor application route and IB diploma",
+    "thread_id": "thread_pd_000b",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "qualification_recognition",
+      "motivation_letter"
+    ],
+    "turns": [
+      "Hello, I am in the process of applying to the Cybersecurity and Business Bachelor’s degree and would like to confirm a few details. I am an EU citizen but currently living in Portugal and finishing high school with an International Baccalaureate diploma. Do I still need to apply via Uni-Assist, or is there a different process for IB graduates? Furthermore, is there a separate motivation letter required for this specific program?"
+    ]
+  },
+  {
+    "case_id": "pd_001",
+    "title": "International Business Master pending graduation, English proof and application fee",
+    "student_email": "ananya.pd001@example.com",
+    "subject": "Application for International Business Master",
+    "thread_id": "thread_pd_001",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_before_graduation",
+      "english_language_requirements",
+      "application_fee"
+    ],
+    "turns": [
+      "Dear Student Services, my name is Ananya and I am completing my Bachelor's degree in Business Administration in India. I would like to apply for the Master's in International Business for the winter semester. Can I apply before I receive my final transcript, do I need English language proof, and are there any application fees?"
+    ]
+  },
+  {
+    "case_id": "pd_002",
+    "title": "Cybersecurity and Business Bachelor IB diploma, uni-assist and motivation letter",
+    "student_email": "student.pd002@example.com",
+    "subject": "Application for Cybersecurity and Business Bachelor",
+    "thread_id": "thread_pd_002",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "admission_requirements",
+      "motivation_letter"
+    ],
+    "turns": [
+      "Hello, I am an EU citizen living in Portugal and I am finishing high school with an International Baccalaureate diploma. I want to apply for the Cybersecurity and Business Bachelor's programme. Do I apply through uni-assist, does my IB diploma meet the admission requirements, and is a motivation letter required?"
+    ]
+  },
+  {
+    "case_id": "pd_003",
+    "title": "Construction and Real Estate Management English proof, documents and fees",
+    "student_email": "student.pd003@example.com",
+    "subject": "Construction and Real Estate Management application enquiry",
+    "thread_id": "thread_pd_003",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "english_language_requirements",
+      "required_documents",
+      "semester_contribution"
+    ],
+    "turns": [
+      "Dear Admissions Team, I am interested in Construction and Real Estate Management at HTW Berlin. Could you please tell me whether English language proof is required, which application documents I should prepare, and whether I need to pay a semester contribution?"
+    ]
+  },
+  {
+    "case_id": "pd_004",
+    "title": "Computer Science Bachelor German proof, application deadline and documents",
+    "student_email": "student.pd004@example.com",
+    "subject": "Computer Science Bachelor application enquiry",
+    "thread_id": "thread_pd_004",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "german_language_requirements",
+      "application_deadline",
+      "required_documents"
+    ],
+    "turns": [
+      "Hello, I would like to apply for a Bachelor's programme in Computer Science. Could you please tell me whether German language proof is needed, what the application deadline is, and which documents are required?"
+    ]
+  },
+  {
+    "case_id": "pd_005",
+    "title": "Professional IT and Digitalization Master work experience, fees and application route",
+    "student_email": "student.pd005@example.com",
+    "subject": "Professional IT and Digitalization Master application enquiry",
+    "thread_id": "thread_pd_005",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "work_experience",
+      "tuition_fees",
+      "application_route"
+    ],
+    "turns": [
+      "Dear Team, I am interested in the Professional IT and Digitalization Master's programme. I would like to know whether professional work experience is required, whether tuition fees apply, and whether I should apply through HTW Berlin or uni-assist."
+    ]
+  },
+  {
+    "case_id": "pd_006",
+    "title": "Energy and Environment Bachelor language, start semester and admission",
+    "student_email": "student.pd006@example.com",
+    "subject": "Energy and Environment Bachelor application enquiry",
+    "thread_id": "thread_pd_006",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "language_requirements",
+      "start_semester",
+      "admission_requirements"
+    ],
+    "turns": [
+      "Hello, I am looking at Bachelor's programmes in Energy and Environment. Could you please tell me what language requirements apply, whether the programme can start in the summer or winter semester, and what the general admission requirements are?"
+    ]
+  },
+  {
+    "case_id": "pd_007",
+    "title": "Design programme portfolio, language proof and application deadline",
+    "student_email": "student.pd007@example.com",
+    "subject": "Design and Culture Bachelor application enquiry",
+    "thread_id": "thread_pd_007",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "language_requirements",
+      "application_deadline"
+    ],
+    "turns": [
+      "Dear Student Services, I am interested in a Design and Culture Bachelor's programme. Could you please tell me whether a portfolio or aptitude test is required, whether I need language proof, and what the application deadline is?"
+    ]
+  },
+  {
+    "case_id": "pd_008",
+    "title": "Health programme admission, documents and semester contribution",
+    "student_email": "student.pd008@example.com",
+    "subject": "Health-related Bachelor application enquiry",
+    "thread_id": "thread_pd_008",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "required_documents",
+      "semester_contribution"
+    ],
+    "turns": [
+      "Hello, I would like to apply for a Health-related Bachelor's programme at HTW Berlin. Could you please explain the admission requirements, the documents I need to upload, and the semester contribution?"
+    ]
+  },
+  {
+    "case_id": "pd_009",
+    "title": "Quantitative Finance and Data Science Master admission, English proof and work experience",
+    "student_email": "student.pd009@example.com",
+    "subject": "Quantitative Finance and Data Science Master application enquiry",
+    "thread_id": "thread_pd_009",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "english_language_requirements",
+      "work_experience"
+    ],
+    "turns": [
+      "Dear Admissions Office, I am interested in the Quantitative Finance and Data Science Master's programme. Could you please tell me the admission requirements, whether English proof is required, and whether professional work experience is needed?"
+    ]
+  },
+  {
+    "case_id": "pd_010",
+    "title": "Business Administration and Engineering application route, English proof and fees",
+    "student_email": "student.pd010@example.com",
+    "subject": "Business Administration and Engineering application enquiry",
+    "thread_id": "thread_pd_010",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "english_language_requirements",
+      "application_fee"
+    ],
+    "turns": [
+      "Hello, I want to apply for Business Administration and Engineering. I completed my previous education outside Germany. Do I need to apply through uni-assist, do I need English language proof, and are there application fees?"
+    ]
+  },
+  {
+    "case_id": "pd_011",
+    "title": "MBA and Engineering admission, tuition fees and English language",
+    "student_email": "student.pd011@example.com",
+    "subject": "MBA and Engineering application enquiry",
+    "thread_id": "thread_pd_011",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "tuition_fees",
+      "english_language_requirements"
+    ],
+    "turns": [
+      "Dear Team, I am considering the MBA and Engineering programme at HTW Berlin. Could you please tell me about the admission requirements, tuition fees, and English language requirements?"
+    ]
+  },
+  {
+    "case_id": "pd_012",
+    "title": "Transfer to Computer Science Bachelor credit recognition, deadline and language",
+    "student_email": "student.pd012@example.com",
+    "subject": "Computer Science Bachelor transfer enquiry",
+    "thread_id": "thread_pd_012",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "credit_recognition",
+      "application_deadline",
+      "language_requirements"
+    ],
+    "turns": [
+      "Hello, I studied Computer Science for two semesters at another university and would like to transfer to HTW Berlin. Can previous credits be recognised, what application deadline applies, and which language requirements do I need to meet?"
+    ]
+  },
+  {
+    "case_id": "pd_013",
+    "title": "Engineering Master final semester, documents and final certificate deadline",
+    "student_email": "student.pd013@example.com",
+    "subject": "Engineering Master application before graduation",
+    "thread_id": "thread_pd_013",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_before_graduation",
+      "required_documents",
+      "final_certificate_submission"
+    ],
+    "turns": [
+      "Dear Admissions Team, I am in the final semester of my Bachelor's degree and want to apply for an Engineering Master's programme. Can I apply before graduation, which documents should I upload now, and when must I submit the final certificate?"
+    ]
+  },
+  {
+    "case_id": "pd_014",
+    "title": "English-taught Master German proof, English proof and application route",
+    "student_email": "student.pd014@example.com",
+    "subject": "English-taught Master application enquiry",
+    "thread_id": "thread_pd_014",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "german_language_requirements",
+      "english_language_requirements",
+      "application_route"
+    ],
+    "turns": [
+      "Hello, I am looking for an English-taught Master's programme at HTW Berlin. Do I need German language proof, what English proof is accepted, and should international applicants apply through uni-assist?"
+    ]
+  },
+  {
+    "case_id": "pd_015",
+    "title": "Continuing education Master work experience, tuition and application documents",
+    "student_email": "student.pd015@example.com",
+    "subject": "Continuing education Master application enquiry",
+    "thread_id": "thread_pd_015",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "work_experience",
+      "tuition_fees",
+      "required_documents"
+    ],
+    "turns": [
+      "Dear Student Services, I am interested in a continuing education Master's programme. Could you please tell me whether work experience is required, whether tuition fees apply, and which application documents are needed?"
+    ]
+  },
+  {
+    "case_id": "pd_016",
+    "title": "Business Bachelor tuition fees, semester contribution and admission",
+    "student_email": "student.pd016@example.com",
+    "subject": "Business and Management Bachelor application enquiry",
+    "thread_id": "thread_pd_016",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "tuition_fees",
+      "semester_contribution",
+      "admission_requirements"
+    ],
+    "turns": [
+      "Hello, I am interested in a Business and Management Bachelor's programme. Could you please tell me whether there are tuition fees, what the semester contribution is, and what admission requirements apply?"
+    ]
+  },
+  {
+    "case_id": "pd_017",
+    "title": "Design Culture Bachelor uni-assist, translations and language proof",
+    "student_email": "student.pd017@example.com",
+    "subject": "Design and Culture Bachelor international application enquiry",
+    "thread_id": "thread_pd_017",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_route",
+      "certified_translations",
+      "language_requirements"
+    ],
+    "turns": [
+      "Dear Admissions Office, I completed secondary school outside Germany and want to apply for a Design and Culture Bachelor's programme. Do I need to apply through uni-assist, do my documents need certified translations, and what language proof is needed?"
+    ]
+  },
+  {
+    "case_id": "pd_018",
+    "title": "Health Master admission restriction, grade conversion and documents",
+    "student_email": "student.pd018@example.com",
+    "subject": "Health-related Master application enquiry",
+    "thread_id": "thread_pd_018",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "grade_conversion",
+      "required_documents"
+    ],
+    "turns": [
+      "Hello, I am interested in a Health-related Master's programme at HTW Berlin. Could you please tell me whether there are admission restrictions, how my foreign grade is considered, and which documents I should prepare?"
+    ]
+  },
+  {
+    "case_id": "pd_019",
+    "title": "Computer Science Master application period, English proof and accommodation",
+    "student_email": "student.pd019@example.com",
+    "subject": "Computer Science Master application and accommodation enquiry",
+    "thread_id": "thread_pd_019",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "application_deadline",
+      "english_language_requirements",
+      "accommodation"
+    ],
+    "turns": [
+      "Dear Team, I would like to apply for a Computer Science Master's programme. Could you please tell me the application period, whether English language proof is required, and whether HTW Berlin provides accommodation support?"
+    ]
+  },
+  {
+    "case_id": "pd_020",
+    "title": "General programme choice admission, fees and language requirements",
+    "student_email": "student.pd020@example.com",
+    "subject": "General programme choice enquiry",
+    "thread_id": "thread_pd_020",
+    "expected_topic_count": 3,
+    "expected_topics": [
+      "admission_requirements",
+      "fees",
+      "language_requirements"
+    ],
+    "turns": [
+      "Hello, I am still deciding between programmes in Business, Computer Science, and Engineering. Could you please explain where I can check the admission requirements, whether fees apply, and how I can find the language requirements for each programme?"
+    ]
+  },
+  {
+    "case_id": "pd_021",
+    "title": "International Business Bachelor transfer from South Korea credit recognition and documents",
+    "student_email": "student.pd021@example.com",
+    "subject": "International Business Bachelor transfer and credit recognition",
+    "thread_id": "thread_pd_021",
+    "expected_topic_count": 2,
+    "expected_topics": [
+      "credit_recognition",
+      "required_documents"
+    ],
+    "turns": [
+      "Hello, I am interested in transferring into your Bachelor’s program in International Business from an institution in South Korea, where I’ve completed three semesters of Business Administration. I would like to understand whether any of my previously earned ECTS-equivalent credits could be transferred, and what documentation is needed to have these credits officially evaluated by your admissions office."
+    ]
+  }
+]

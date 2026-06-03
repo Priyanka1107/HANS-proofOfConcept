@@ -1,0 +1,447 @@
+[
+  {
+    "program_name": "AECO",
+    "aliases": [
+      "AECO",
+      "Aeco"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-aeco-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Applied Computer Science",
+    "aliases": [
+      "ACS",
+      "AI",
+      "AI-MASTER",
+      "Applied Computer Science"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "https://ai.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\ed6b12ded7a871f0.html",
+      "data\\snapshots_raw\\f4585791ac8a0ef4.html"
+    ]
+  },
+  {
+    "program_name": "Business Administration and Engineering",
+    "aliases": [
+      "BAE",
+      "Business Administration and Engineering",
+      "MBAE"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "http://mbae.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\04c4b502c11bb71d.html"
+    ]
+  },
+  {
+    "program_name": "Construction and Real Estate Management",
+    "aliases": [
+      "CONREM",
+      "Construction and Real Estate Management",
+      "CREM"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "http://conrem.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\04c4b502c11bb71d.html"
+    ]
+  },
+  {
+    "program_name": "Cyber Security and Business",
+    "aliases": [
+      "CSB",
+      "Cyber Security and Business",
+      "CYBER-SECURITY-BUSINESS",
+      "Cybersecurity and Business"
+    ],
+    "degree": "Unknown",
+    "language": null,
+    "study_format": null,
+    "url": "https://cyber-security-business.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\27097d7e780825d5.html"
+    ]
+  },
+  {
+    "program_name": "Design (Bachelor)",
+    "aliases": [
+      "Design (Bachelor)"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-design-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Electrical Engineering",
+    "aliases": [
+      "Electrical Engineering"
+    ],
+    "degree": "Unknown",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-electrical-engineering-master.json"
+    ]
+  },
+  {
+    "program_name": "Electrical Engineering (Master)",
+    "aliases": [
+      "EEM",
+      "Electrical Engineering (Master)"
+    ],
+    "degree": "Unknown",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-electrical-engineering-master.json"
+    ]
+  },
+  {
+    "program_name": "Electrical Engineering for Sustainable and Renewable Energy",
+    "aliases": [
+      "EESRE",
+      "Electrical Engineering for Sustainable and Renewable Energy"
+    ],
+    "degree": "Unknown",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-electrical-engineering-sustainable-renewable-energy-master.json"
+    ]
+  },
+  {
+    "program_name": "Electrical Engineering for Sustainable and Renewable Energy (Master)",
+    "aliases": [
+      "EESREM",
+      "Electrical Engineering for Sustainable and Renewable Energy (Master)"
+    ],
+    "degree": "Unknown",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-electrical-engineering-sustainable-renewable-energy-master.json"
+    ]
+  },
+  {
+    "program_name": "Electrical Engineering Sustainable Renewable Energy",
+    "aliases": [
+      "EESRE",
+      "Electrical Engineering Sustainable Renewable Energy"
+    ],
+    "degree": "Unknown",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-electrical-engineering-sustainable-renewable-energy-master.json"
+    ]
+  },
+  {
+    "program_name": "Environmental Engineering and Sustainability",
+    "aliases": [
+      "EES",
+      "Environmental Engineering and Sustainability"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-environmental-engineering-sustainability-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Environmental Engineering and Sustainability (Bachelor)",
+    "aliases": [
+      "EESB",
+      "Environmental Engineering and Sustainability (Bachelor)"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-environmental-engineering-sustainability-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Environmental Engineering Sustainability",
+    "aliases": [
+      "EES",
+      "Environmental Engineering Sustainability"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-environmental-engineering-sustainability-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "General Management",
+    "aliases": [
+      "General Management",
+      "GENERAL-MANAGEMENT"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "http://general-management.htw-berlin.de/en",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\a38508ef80d9f595.html"
+    ]
+  },
+  {
+    "program_name": "Information Technology",
+    "aliases": [
+      "Information Technology"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-information-technology-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Information Technology (Bachelor)",
+    "aliases": [
+      "Information Technology (Bachelor)",
+      "ITB"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-information-technology-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "International Business",
+    "aliases": [
+      "International Business",
+      "INTERNATIONAL-BUSINESS",
+      "MIB"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": "http://mib.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-international-business-bachelor.json",
+      "data\\snapshots_raw\\04c4b502c11bb71d.html",
+      "data\\snapshots_raw\\4a490f267ce4454d.html"
+    ]
+  },
+  {
+    "program_name": "International Business (Bachelor)",
+    "aliases": [
+      "IBB",
+      "International Business (Bachelor)"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-international-business-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Professional IT Business and Digitalization",
+    "aliases": [
+      "PIBD",
+      "Professional IT and Digitalization",
+      "Professional IT Business and Digitalization",
+      "PROITD"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "http://proitd.htw-berlin.de/en",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\04c4b502c11bb71d.html"
+    ]
+  },
+  {
+    "program_name": "Project Management and Data Science",
+    "aliases": [
+      "MPMD",
+      "PMDS",
+      "Project Management and Data Science"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "http://mpmd.htw-berlin.de/en/?no_cache=1",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\0135c67e7fc95c64.html"
+    ]
+  },
+  {
+    "program_name": "Public Design",
+    "aliases": [
+      "Public Design",
+      "PUBLIC-DESIGN"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "https://public-design.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\ed6b12ded7a871f0.html"
+    ]
+  },
+  {
+    "program_name": "Sustainable Clothing/Apparel Technology",
+    "aliases": [
+      "SCAT",
+      "Sustainable Clothing Apparel Technology",
+      "Sustainable Clothing/Apparel Technology"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-sustainable-clothing-apparel-technology-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Sustainable Clothing/Apparel Technology (Bachelor)",
+    "aliases": [
+      "SCATB",
+      "Sustainable Clothing/Apparel Technology (Bachelor)"
+    ],
+    "degree": "Bachelor",
+    "language": "English",
+    "study_format": null,
+    "url": null,
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\objects\\degree_program-sustainable-clothing-apparel-technology-bachelor.json"
+    ]
+  },
+  {
+    "program_name": "Sustainable Smart Cities",
+    "aliases": [
+      "SSC",
+      "Sustainable Smart Cities"
+    ],
+    "degree": "Unknown",
+    "language": null,
+    "study_format": "On-campus",
+    "url": "https://stat.rz.htw-berlin.de",
+    "application_url": "http://campus-stories.htw-berlin.de/en/jahr/2024/die-bewerbung-war-als-testballon-gedacht",
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\0135c67e7fc95c64.html"
+    ]
+  },
+  {
+    "program_name": "Workplace Facility Engineering",
+    "aliases": [
+      "WFE",
+      "Workplace Facility Engineering",
+      "WORKPLACE-FACILITY-ENGINEERING"
+    ],
+    "degree": "Unknown",
+    "language": null,
+    "study_format": null,
+    "url": "https://workplace-facility-engineering.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\f4585791ac8a0ef4.html"
+    ]
+  },
+  {
+    "program_name": "Workspace Real Estate Engineering",
+    "aliases": [
+      "Workspace Real Estate Engineering",
+      "WORKSPACE-REAL-ESTATE-ENGINEERING",
+      "WREE"
+    ],
+    "degree": "Master",
+    "language": null,
+    "study_format": null,
+    "url": "https://workspace-real-estate-engineering.htw-berlin.de",
+    "application_url": null,
+    "source": "scraped_programme_catalogue",
+    "source_files": [
+      "data\\snapshots_raw\\ed6b12ded7a871f0.html"
+    ]
+  }
+]
