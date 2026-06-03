@@ -40,11 +40,15 @@ temp/
 
 # Generated evaluation outputs
 evaluation/*.csv
-evaluation/*.json
 evaluation/*.jsonl
 evaluation/*.xlsx
 evaluation_401/
 .qodo/
+
+# Generated evaluation JSON outputs
+evaluation/*results.json
+evaluation/*results_*.json
+evaluation/email_thread_memory.json
 
 # Keep evaluation test cases
 !evaluation/*test_cases*.json
@@ -63,7 +67,6 @@ results/*.json
 results/*.log
 
 # Thread memory can contain test conversations
-evaluation/email_thread_memory.json
 data/email_thread_memory.json
 
 # Local databases
@@ -84,6 +87,7 @@ models/
 affordable_process_flow.md
 affordable_stack_analysis.md
 COMPLETE_SETUP_GUIDE.md
+app/multitopic_v4good.py
 
 # Temporary debug script
 scripts/debug_one_thread.py
