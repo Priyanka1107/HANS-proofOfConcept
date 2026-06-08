@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "page_id": "fdd2e3a12b6c5ecb",
+    "object_id": "fees_funding_rule-semester-ticket",
+    "object_type": "fees_funding_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/semester-fee/semester-ticket/",
+    "title": "Semester ticket",
+    "classification_confidence": "medium",
+    "classification_notes": "fees-related, confirm content",
+    "source_html_path": "snapshots_raw/fdd2e3a12b6c5ecb.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.962422"
+  },
+  "financial_info": {
+    "type": "fee",
+    "description": "fees-related, confirm content",
+    "amounts_mentioned": []
+  },
+  "eligibility": null,
+  "application_process": null,
+  "deadlines": null,
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "fees_funding_rule-semester-fee"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Semester fee Semester ticket Semester ticket The Deutschlandsemesterticket Deutschlandsemesterticket (semester ticket for Germany) is provided by the S-Bahn Berlin (Berlin suburban railway). This is how you use it: Registration in the S-Bahn portal Register in the S-Bahn Berlin portal. Download the Deutschlandticket to your smartphone Follow the instructions [PDF] to download the ticket to your smartphone. Please remember: The Deutschlandsemesterticket can only be used if the semester fee has been paid in full. FAQ, including reimbursement and exemption HTW Berlin Students’ Union (AStA) (in German)"
+  }
+}

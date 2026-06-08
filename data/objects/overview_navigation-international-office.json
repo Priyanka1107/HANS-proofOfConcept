@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "7d9054c86f5db5b5",
+    "object_id": "overview_navigation-international-office",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/organisational-units/central-offices/international-office/",
+    "title": "International Office",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor overview for the International Office, providing context and links to international student services and processes.",
+    "source_html_path": "snapshots_raw/7d9054c86f5db5b5.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.523499"
+  },
+  "navigation_info": {
+    "purpose": "Anchor overview for the International Office, providing context and links to international student services and processes.",
+    "scope": "International Office",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-pathways-abroad",
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "special_category-intercultural-exchange"
+  ],
+  "related_pages": [
+    "overview_navigation-pathways-abroad",
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "special_category-intercultural-exchange"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Organisational units Central Offices International Office International Office The International Office coordinates the international programmes of HTW Berlin and offers a wide range of services in the area of internationalisation, including basic issues relating to partnership and cooperation agreements, representing the interests of HTW Berlin in Germany and abroad, and implementing mobility programmes. Partner universities Cooperation with (non-)European universities Team Guidance & service Pathways Abroad Study and internship abroad, Staff Mobility Pathways to HTW Berlin International students at HTW Berlin Intercultural Exchange Short term mobility & internationalisation @ home"
+  }
+}

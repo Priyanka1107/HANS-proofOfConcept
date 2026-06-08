@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "b7da1eaafe962e7b",
+    "object_id": "application_process-enrolment",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/applications/enrolment/",
+    "title": "Enrolment",
+    "classification_confidence": "medium",
+    "classification_notes": "application page, confirm",
+    "source_html_path": "snapshots_raw/b7da1eaafe962e7b.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.982505"
+  },
+  "process_info": {
+    "name": "Enrolment",
+    "applies_to": [],
+    "description": "application page, confirm"
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "overview_navigation-applications",
+    "fees_funding_rule-semester-fee",
+    "application_route_rule-health-insurance",
+    "overview_navigation-student-service-centre"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Enrolment Enrolment Table of contents After receiving your notice of admission After online enrolment After applying for enrolment Check the progress of your enrolment Login Data for the LSF After receiving your notice of admission Receiving your notice of admission is another important step towards your enrolment at HTW Berlin. Your cooperation is once again required to complete the process: Go through the online enrolment process in the application portal in the section \"My functions\" / \"Online application\". Transfer the semester fee to the bank account of HTW Berlin. You will find all necessary information in your application for enrolment. After online enrolment After you have completed your online enrolment, you will be provided with the \"application for enrolment\" in the application portal . It contains a list of the documents which must be submitted for enrolment, for example proof of valid health insurance . The application for enrolment must be submitted together with the required documents to HTW Berlin by the stated deadline. Please provide missing documents at the latest by 31.03. (for summer semester) or 30.09. (for winter semester). Help us to evaluate your application much faster! Please upload the required documents within the application deadline as follows .. files preferably in PDF format. (Image file formats as JPG are accepted exceptionally) multi-page documents arranged in right page order (e.g. transcripts) please upload required documents in various files separately (e.g. A-level and copy of your ID makes two files) select an appropriate file name (e.g. transcript_HTW Berlin) and mind good readability as well as quality of your files. In case of questions, please send an email to the Student Service Centre . After applying for enrolment As soon as your application for enrolment has been received by HTW Berlin, you will find a list of documents which must be submitted to HTW Berlin before your enrolment in the application portal . You can always find a current overview of missing documents on the right-hand side of the screen. As soon as further documents are received, they are removed from the list. After successful enrolment, we will send you via email your login data for your HTW account and information on how to obtain your fully functional HTW StudentCard. If you have any questions about the HTW StudentCard, please visit our Student Service Center . Check the progress of your enrolment It is in your own interest to regularly check the progress of your enrolment, as this is the only way to ensure smooth processing of your application. If you have not yet received your login data for your HTW account, you may still have missing documents listed in the application portal which are delaying your enrolment. Login Data for the LSF Your login data for the LSF campus management system (HTW account) you will get via e-mail before your first semester at HTW Berlin starts and if your documents for matrikulation are completed."
+  }
+}

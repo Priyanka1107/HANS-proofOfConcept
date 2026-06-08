@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "page_id": "323d5749beeafbb3",
+    "object_id": "application_process-change-notification",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/change-notification/",
+    "title": "Change notification",
+    "classification_confidence": "low",
+    "classification_notes": "Process for notifying changes to personal or study-related data during enrollment.",
+    "source_html_path": "snapshots_raw/323d5749beeafbb3.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.935175"
+  },
+  "process_info": {
+    "name": "Change notification",
+    "applies_to": [],
+    "description": "Process for notifying changes to personal or study-related data during enrollment."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": {
+    "email": "asta@students-htw.de"
+  },
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-re-registration",
+    "overview_navigation-student-service-centre"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Change notification Change notification Change of name and/or marital status Inform the Student Service Centre of such changes in writing, stating your degree programme, your matriculation number and enclosing proof (e.g. marriage certificate). Change of home address Update your address in the LSF campus management portal under the “Change personal data” section. Change gender entry Gender entry and first names can be changed at the Student Service Centre before official confirmation is received. Send an email or an informal letter with the following information: Chosen name and chosen pronouns Proof (e.g. DGTI (German society for transfusion medicine and immune haematology) supplementary certificate, registry office confirmation). If required, you can apply to the Students’ Union to have the costs of the DGTI supplementary certificate covered (send an email to asta@students-htw.de ). You can informally request the reissue of your certificates or final documents. The original certificate will be withdrawn as a result. Changes include: First name Gender entry Salutation and grammatical forms (male/female/gender-neutral) The date of issue and the rest of the text in the certificate remain unchanged. No reference is made to a reissue."
+  }
+}

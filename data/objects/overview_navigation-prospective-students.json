@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "page_id": "0d51de9b03970ce5",
+    "object_id": "overview_navigation-prospective-students",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/prospective-students/",
+    "title": "Prospective students",
+    "classification_confidence": "low",
+    "classification_notes": "Landing page for prospective students.",
+    "source_html_path": "snapshots_raw/0d51de9b03970ce5.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.581618"
+  },
+  "navigation_info": {
+    "purpose": "Landing page for prospective students.",
+    "scope": "Prospective students",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-degree-programmes",
+    "degree_program-advanced-masters",
+    "overview_navigation-htw-foundation",
+    "overview_navigation-applications"
+  ],
+  "related_pages": [
+    "overview_navigation-degree-programmes",
+    "degree_program-advanced-masters",
+    "overview_navigation-htw-foundation",
+    "overview_navigation-applications"
+  ],
+  "content": {
+    "full_text": "Our study programmes Degree programmes Bachelor & Master Advanced Master's programmes Study programmes for international professionals HTW Foundation Study preparation for international applicants Why study at HTW Berlin? Small groups : There are no large lectures at HTW Berlin. Learning takes place in groups with a maximum of 40 students. Practical relevance : Modern laboratories, an internship semester in every bachelor's programme and lecturers with professional experience ensure practical relevance. Lots of support : From maths bridge courses before your studies to career advice after graduation: at HTW Berlin you will receive all-round support. Good infrastructure : WLAN, computer pools and a well-equipped library offer the best study conditions. International campus : Language courses in eight foreign languages, semesters abroad at 150 partner universities and English-language degree programmes open up international perspectives. Application Find out all about admission requirements and application deadlines. We look forward to receiving your application !"
+  }
+}

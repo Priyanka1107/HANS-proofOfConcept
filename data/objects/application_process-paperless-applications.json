@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "f948da43df928f1f",
+    "object_id": "application_process-paperless-applications",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/applications/application-via-the-application-portal-of-htw-berlin/bachelors-study-programmes/paperless-applications/",
+    "title": "Paperless applications",
+    "classification_confidence": "low",
+    "classification_notes": "Explains paperless application handling for bachelor programmes.",
+    "source_html_path": "snapshots_raw/f948da43df928f1f.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.320836"
+  },
+  "process_info": {
+    "name": "Paperless applications",
+    "applies_to": [],
+    "description": "Explains paperless application handling for bachelor programmes."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-htw-application-portal",
+    "application_process-htw-portal-bachelors",
+    "special_category-no-higher-education-entry"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Application via the application portal of HTW Berlin Bachelor’s study programmes Paperless applications Paperless applications Table of contents Documents only to be uploaded after admission Special cases Documents only to be uploaded after admission First you only need to follow the online application within the HTW appplication portal. When you receive your notice of admission, you will then be asked to upload the required documents. These documents must be provided at the latest by the beginning of the semester, otherwise you will not become enrolled. If the uploaded documents show that the information you provided in your online application was incorrect, your admission can be revoked. Special cases If you are applying for a study programme and have a vocational qualification and in individual cases you have a leaving certificate of the profession without an average grade, have previously been or are currently enrolled at a university in Germany , are applying for your second degree programme , are uploading a special application , have a foreign higher education entry qualification , application documents have to be uploaded in full by the application deadline."
+  }
+}

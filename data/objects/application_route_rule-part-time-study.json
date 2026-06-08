@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "9b21e30523347b70",
+    "object_id": "application_route_rule-part-time-study",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/part-time-study/",
+    "title": "Part-time study",
+    "classification_confidence": "low",
+    "classification_notes": "Rules and conditions for part-time study.",
+    "source_html_path": "snapshots_raw/9b21e30523347b70.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.905205"
+  },
+  "rule_info": {
+    "rule_type": "part-time-study",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules and conditions for part-time study."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-re-registration"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Part-time study Part-time study Table of contents What is a part-time study programme? Difference to extra occupational study Effects on financial benefits Submit an application What is a part-time study programme? Part-time study programmes allow you to attend fewer courses per semester and thus prolong your studies. It is particularly suitable for improving the compatibility of study and work, family, care, or in the case of disabilities/chronic illnesses. Important points: The study timetable must be adapted independently – if necessary, coordinate with the programme counselling service. Part-time semesters count as full university semesters and half semesters. Standard period of study continues Semester fee must be paid in full No exemption from the semester ticket Difference to extra occupational study Part-time study programmes: Fewer courses, times remain the same (mostly on weekdays). Extra occupational study programmes: Lectures take place in the evenings or at weekends, adapted to working people. Effects on financial benefits Clarify the possible effects of part-time study programmes in advance. We recommend counselling at the social counselling service of the Studierendenwerk Berlin . No entitlement to educational support allowance (BAföG) Housing benefit: possible if BAföG is cancelled Citizen’s allowance: possible in special circumstances Child benefit, taxes, health insurance, scholarships, student loans: clarify individually Students with a residence permit: contact the State Immigration Office in advance. Submit an application Download application form from the LSF campus management portal Send the form by email (from your HTW Berlin account) to the Student Service Centre within the deadlines No indication of reasons necessary Cancellation also by email with form from the LSF campus management system"
+  }
+}

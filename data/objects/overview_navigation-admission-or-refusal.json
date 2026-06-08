@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "page_id": "a298f8931cb948f0",
+    "object_id": "overview_navigation-admission-or-refusal",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-or-refusal/",
+    "title": "Admission or refusal",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor page for admission outcomes and next steps.",
+    "source_html_path": "snapshots_raw/a298f8931cb948f0.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.042826"
+  },
+  "navigation_info": {
+    "purpose": "Anchor page for admission outcomes and next steps.",
+    "scope": "Admission or refusal",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-applications",
+    "application_process-accepting-study-place",
+    "application_process-clearing",
+    "application_process-withdrawing-from-your-study-place"
+  ],
+  "related_pages": [
+    "overview_navigation-applications",
+    "application_process-accepting-study-place",
+    "application_process-clearing",
+    "application_process-withdrawing-from-your-study-place"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission or refusal Admission or refusal Table of contents Status of your application Notice of admission or refusal Admission received Refusal received Withdrawing from your study place Status of your application The application deadline has now passed! To see whether your application has been processed yet, please check online. If you have applied with German certificates , please use the application portal . If you applied with foreign certificates, please use uni-assist first. Notice of admission or refusal Approximately four weeks after the application deadline, the notices of admission and refusal from the main allocation process can be viewed online in the application portal . HTW Berlin does not publish any information about ranking. Admission received Congratulations! Please read the information on how to accept your study place . Refusal received Even if you have been sent a notice of refusal, there is still a chance of receiving a study place at HTW Berlin through the clearing process or the coordinated clearing process at hochschulstart.de. Withdrawing from your study place Even after you have formally accepted your study place, you can withdraw from your study place ."
+  }
+}

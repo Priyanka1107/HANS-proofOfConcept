@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "page_id": "540edd94a03ad070",
+    "object_id": "application_process-language-course-registration",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/foreign-languages-centre/registration/",
+    "title": "Registration",
+    "classification_confidence": "low",
+    "classification_notes": "Describes the registration process for language courses and examinations offered by the Foreign Languages Centre.",
+    "source_html_path": "snapshots_raw/540edd94a03ad070.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.600818"
+  },
+  "process_info": {
+    "name": "Registration",
+    "applies_to": [],
+    "description": "Describes the registration process for language courses and examinations offered by the Foreign Languages Centre."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "university_profile-foreign-languages-centre",
+    "application_process-module-registration",
+    "special_category-guest-students"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Foreign Languages Centre Registration Registration Table of contents Module registration Information & guidance Special groups Module registration If you are studying at HTW Berlin, you should register for foreign language modules online via the LSF . Instead of signing up for modules via the LSF, you can go to the first lesson and enter your name on the registration lists if you are studying as a Diplom student according to the study regulations of an old Bachelor’s degree programme. you are studying at HTW Berlin and are taking additional courses because you have already completed the necessary language modules as specified by your programme. you have been granted admission as a guest listener or guest student or are studying as a student (on an exchange programme) from a cooperating institute at HTW Berlin. Guest listeners and guest students must contact the lecturer directly before the first lesson. Please observe the general deadlines for module registration . Information & guidance You can find information about required language modules in the study regulations for your study programme, language modules stipulated in the programme schedule for your study programme, all language modules offered during the semester for your information listed under languages and courses, all language modules offered during the semester are available for registration in the LSF portal. If you require individual guidance on registering for language modules, the language team coordinators offer additional guidance before the start of the semester in addition to the normal consultation hours. On these days registrations for guest listeners and guest students will also be noted in advance. Guidance is also available for first semester students wishing to select language modules that are not listed on the standard timetable for their study programme. Special groups First semester students are automatically registered for a foreign language module in their standard registration plan. If you wish to take a different language or an additional second language, you need to register for this yourself within the applicable deadlines (subject to availability of free places) and cancel your registration for the module that you do not wish to take. If you are repeating a foreign language module and have not automatically received a place after Phase 2 of the allocation process, please contact the language team head during consultation hours or the administration team of the Foreign Languages Centre with an LSF printout listing the modules for which you are currently registered. If you are entitled to register for your preferred modules and you are having registration problems, please contact the administration team of your faculty with the relevant proof and an LSF printout listing the modules for which you are currently registered. For admission as a guest student , submit a guest student application together with your student ID card. For admission as a guest listener , submit a guest listener application, which also contains information about the requirements and fees."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "39bf6d89e904a47d",
+    "object_id": "application_route_rule-accreditation-modules-abroad",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/international/pathways-abroad/studying-abroad/accreditation-of-modules-and-examinations-completed-abroad/",
+    "title": "Accreditation of modules and examinations completed abroad",
+    "classification_confidence": "low",
+    "classification_notes": "Explains rules for recognition and accreditation of coursework completed abroad.",
+    "source_html_path": "snapshots_raw/39bf6d89e904a47d.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.278604"
+  },
+  "rule_info": {
+    "rule_type": "accreditation-modules-abroad",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Explains rules for recognition and accreditation of coursework completed abroad."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-pathways-abroad",
+    "overview_navigation-studying-abroad"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways Abroad Studying abroad Accreditation of modules and examinations completed abroad Accreditation of modules and examinations completed abroad Table of contents Procedure Conversion of grades (in particular modified Bavarian formula) Relative grade distribution Procedure · Before you begin your studies abroad, you are advised to agree the modules that are to be accredited as listed in the Study Programme [PDF] . More information on this can be obtained from your department [see Infobox]. Should any changes to the study Programme be required, please conclude a new one covering all the modules to be recognized. · Upon your return, apply to your department [see Infobox] for the grades you received abroad to be converted. Submit the following documents o Application request (no template required) o Study Programme o Original certificate from the university abroad confirming your modules and examinations (in case only online certificates are issued, they will be sent upon request by the university abroad directly to the faculty by the International Office) Conversion of grades (in particular modified Bavarian formula) Grades awarded abroad are converted into the points system used by HTW Berlin (Section 14 Para. 1 of the Study and Examination Framework Regulations [PDF] ). Undifferentiated grades (passed/failed) will be converted into “sufficient” (4.0) unless you explicitly waive the accreditation. If you are unable to submit a description of the foreign grading system, the conversion will be based on the overview of foreign university grade scales in the anabin database. For orientation please refer to the Conversion Table [PDF] . To convert foreign grades, they are scaled to the HTW score system (maximum points: 100 points, minimum points to pass the exam: 50 points) based on the modified Bavarian formula as follows: x = 100 - 50×((N max -N d )/(N max -N min )) x: HTW points to be calculated N max : best possible grade in the foreign system N min : lowest possible grade required to pass in the foreign system N d : grade awarded abroad The corresponding HTW grade is determined on the basis of the calculated HTW points in accordance with Section 14 (1) sentence 2 RStPO (from 1 October 2025: Section 17 (1) sentence 2 RStPO). Relative grade distribution The Standing Conference of the Ministers of Education and Cultural Affairs recommends that the relative distribution of grades should also be taken into account. Example: In the UK scores above 80 points and in Irland above 90 are hardly ever awarded. At HTW Berlin students are more frequently awarded the best grade of 1.0. When converting grades, 80 (UK) or 90 (Ireland) should therefore be taken as the maximum grade (N max ). On the other hand, in the USA the top grade A corresponds to the HTW grade range between 1.0 and 2.5. Therefore it is advised to convert the top grade A into the HTW grade 1.7."
+  }
+}

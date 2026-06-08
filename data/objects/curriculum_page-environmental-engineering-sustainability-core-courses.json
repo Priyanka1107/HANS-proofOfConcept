@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "page_id": "42dbe26d61fd606c",
+    "object_id": "curriculum_page-environmental-engineering-sustainability-core-courses",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/english-language-study-programmes/environmental-engineering-and-sustainability-bachelor/core-courses-acceptance-guaranteed/",
+    "title": "Core courses  (Acceptance guaranteed)",
+    "classification_confidence": "high",
+    "classification_notes": "Details the core courses for the Electrical Engineering Masters program with guaranteed acceptance.",
+    "source_html_path": "snapshots_raw/42dbe26d61fd606c.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.192768"
+  },
+  "curriculum_info": {
+    "program_reference": [
+      "degree_program-environmental-engineering-sustainability-bachelor"
+    ],
+    "module_type": "core"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "International",
+      "credits": null
+    },
+    {
+      "description": "Pathways to HTW Berlin",
+      "credits": null
+    },
+    {
+      "description": "English-Language Study Programmes",
+      "credits": null
+    },
+    {
+      "description": "Environmental Engineering and Sustainability (Bachelor)",
+      "credits": null
+    },
+    {
+      "description": "Electronics",
+      "credits": null
+    },
+    {
+      "description": "Project Laboratory in Sciences and Technology",
+      "credits": null
+    },
+    {
+      "description": "Research and Development Laboratory",
+      "credits": null
+    },
+    {
+      "description": "Scientific Writing with LaTeX",
+      "credits": null
+    },
+    {
+      "description": "Hydrogen Technology for Sector Coupling",
+      "credits": null
+    },
+    {
+      "description": "Building Automation / Building Energy Service Project",
+      "credits": null
+    },
+    {
+      "description": "Passive building elements: (discrete and integrated building elements), ohmic resistance, coil and capacity",
+      "credits": null
+    },
+    {
+      "description": "Semiconductor technologies: terms and principles of IC design and production, pn junction, semiconductor technologies",
+      "credits": null
+    },
+    {
+      "description": "Active building elements: bipolar transistor, CMOS transistor",
+      "credits": null
+    },
+    {
+      "description": "Principles of analogue technology: basic circuits, biasing, static and dynamic behaviour, 2-port network theory, simulation techniques",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "degree_program-environmental-engineering-sustainability-bachelor"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin English-Language Study Programmes Environmental Engineering and Sustainability (Bachelor) Core courses (Acceptance guaranteed) Core courses (Acceptance guaranteed) Table of contents Electronics Project Laboratory in Sciences and Technology Research and Development Laboratory Scientific Writing with LaTeX Hydrogen Technology for Sector Coupling Building Automation / Building Energy Service Project Electronics ECTS 5: Passive building elements: (discrete and integrated building elements), ohmic resistance, coil and capacity Semiconductor technologies: terms and principles of IC design and production, pn junction, semiconductor technologies Active building elements: bipolar transistor, CMOS transistor Principles of analogue technology: basic circuits, biasing, static and dynamic behaviour, 2-port network theory, simulation techniques Project Laboratory in Sciences and Technology ECTS 2: Learning outcomes and competences: Under the supervision of the lecturer and potentially under the instruction of a tutor, students work in small groups on a scientific or engineering project chosen from the areas of physics, electrical engineering or software engineering that can be implemented with the available resources (time frame, facilities and equipment). Content: As the final outcome, the students develop a functioning circuit, build a device or conduct an experiment. Students are responsible for theoretical preparation, practical implementation and documentation of circuits/protocols and evaluations of experiments. Students will acquire any missing knowledge by studying relevant literature during the semester or from the lecturer if necessary. The results of the project must be presented. Different presentation forms can be chosen following discussion with the lecturer. Research and Development Laboratory ECTS 2: The students carry out subsequent research and development work. On the basis of the previously developed device or experiment, students apply scientific methods to systematically look for new findings or practically implement the first concrete application. The available resources (time frame, facilities and equipment) must be taken into account. First, the project groups have to devise a theoretical or applied research question. On this basis, a concept must be developed and documented in a requirements specification. The requirements specification is then submitted to the supervisor and discussed. On the basis of the devised concept, the students conduct experiments or further develop the implementations, analysing their findings with a theoretical or applied research approach. The results must be presented as a research poster or research paper or as a documented system or acceptance test to provide functional verification. In addition, the students must give a final presentation. Scientific Writing with LaTeX ECTS 2: Learning outcomes and competences: This module provides students with a basic knowledge of LaTeX. A key focus is the application of LaTeX to create texts with mathematical formulas and implement algorithmic methods of numeric mathematics. They also use the Scientific Notebook tool. Students learn how to independently create texts with LaTeX. Hydrogen Technology for Sector Coupling ECTS 5: The aim of the course is to provide students with an in-depth understanding of hydrogen-based technologies and their contribution in providing flexibility and sector-coupling to energy systems as well as chemical industries. The course will be based on both theoretical and practical works including technology demonstrations. The theoretical part will cover the electrochemical production, conversion, storage and transmission of green hydrogen as well as its energetic and non-energetic applications. The practical part is intended to give insight in the characterization of different water electrolysis and fuel cell technologies and in the determination of efficiencies of power-to-gas process chains. Building Automation / Building Energy Service Project ECTS: 10 Building Auomation: Students plan the automation of a building according to the VDI 3814 and IOS/EN/DIN 16484 norm, program the automation stations and realize the design. This includes the precise control of eneryg-efficient technical building equipment, interfacing the information technology systems of safety engineering and other information systems (such as facility management systems, ERP systems, booking systems, ticket tools), connect and visualize these functionalities, for example, using the BACnet protocol and making it compliant and accessible to users. Students implement the energetic aspects by linking the individual systems of the technical building equipment to one another and design ergonomic visualization interfaces. The overall functionalitiy is created both in the form of functional descriptions and specifications as well as documentation according to VDI 3814 (such as GA function lists, plant and control schemes, sensor and actuator lists). Students develop a function address key (AKZ, KKS, etc.) for the designation of the data points taking into account facility management requirements according to GEFMA 100 as well as VDMA 24196 and VDI 3814. Building Energy Service Project: Students apply basic knowledge of the essential physical concepts from thermodynamics and fluid mechanics as part of the project. They determine the loads and dimension the systems necessary for removal also considering requirements from the point of view of comfort and control aspects of the energy-effcient operation of diverse technical building equipment."
+  }
+}

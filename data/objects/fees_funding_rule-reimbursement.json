@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "page_id": "aff9ca93cadf9628",
+    "object_id": "fees_funding_rule-reimbursement",
+    "object_type": "fees_funding_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/semester-fee/reimbursement/",
+    "title": "Reimbursement",
+    "classification_confidence": "medium",
+    "classification_notes": "fees-related, confirm content",
+    "source_html_path": "snapshots_raw/aff9ca93cadf9628.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.971824"
+  },
+  "financial_info": {
+    "type": "fee",
+    "description": "fees-related, confirm content",
+    "amounts_mentioned": []
+  },
+  "eligibility": null,
+  "application_process": null,
+  "deadlines": null,
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "fees_funding_rule-semester-fee"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Semester fee Reimbursement Reimbursement Table of contents Application Refund after exmatriculation or withdrawal Part-time further education Master’s degree programmes Return of the HTW Berlin StudentCard Application You can find the application for reimbursement in the LSF campus management portal . Please send the completed and signed application form electronically from your HTW Berlin email account to Student Services. If you have made more than one transfer, please enclose all the relevant payment receipts. Only complete, conclusive evidence will be accepted (no screenshots from bank portals). Refund after exmatriculation or withdrawal A refund of the semester fee is possible if, before the start of the semester you are exmatriculated, withdraw from re-registration after graduation or withdraw from the degree programme. Students who are exmatriculated during the current semester can apply for a pro rata refund (e.g. for the semester ticket). The administrative fee and any late payment surcharge paid will not be refunded. Part-time further education Master’s degree programmes The following applies to these degree programmes: Half of the fee will be withheld if the student does not commence or withdraws from their degree programme within four weeks of the start of the semester. In the event of later withdrawal, no entitlement to a refund exists. Return of the HTW Berlin StudentCard If you would like a (pro-rata) refund of the semester fee after exmatriculation, the HTW Berlin StudentCard must either be returned in the original or The card must be rendered unusable (e.g. by cutting it up) and proof of this (e.g. a photo of the destroyed card) must be submitted to the university."
+  }
+}

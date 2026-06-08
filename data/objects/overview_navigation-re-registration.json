@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "page_id": "f807088ead9df5b2",
+    "object_id": "overview_navigation-re-registration",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/",
+    "title": "Re-registration",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor overview for re-registration topics, linking to exmatriculation, leave of absence, and related processes.",
+    "source_html_path": "snapshots_raw/f807088ead9df5b2.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.944785"
+  },
+  "navigation_info": {
+    "purpose": "Anchor overview for re-registration topics, linking to exmatriculation, leave of absence, and related processes.",
+    "scope": "Re-registration",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-study-organisation",
+    "fees_funding_rule-semester-fee",
+    "special_category-htw-studentcard",
+    "fees_funding_rule-semester-ticket",
+    "application_route_rule-final-thesis",
+    "application_route_rule-leave-of-absence"
+  ],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "fees_funding_rule-semester-fee",
+    "special_category-htw-studentcard",
+    "fees_funding_rule-semester-ticket",
+    "application_route_rule-final-thesis",
+    "application_route_rule-leave-of-absence"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Re-registration Table of contents Checklist Certificates Special cases No re-registration Impediments Checklist Note the re-registration deadline (no automatic reminder!) Transfer the semester fee in full and on time (health insurance required) Check re-registration status in the LSF campus management portal and download certificate of enrolment Validate StudentCard at the campus machine after successful re-registration Update semester ticket In case of late re-registration: Pay late fee (max. 4 weeks grace period) Certificates The “Certificates” section of the LSF campus management system contains your enrolment and performance certificates in German and English for downloading purposes. These documents contain a verification mark for authenticity checks. Special cases Have you submitted your thesis no more than four weeks after the start of the semester and the only thing which is due to take place in the new semester is the final oral examination? Re-registration is not necessary (exception: Public and Nonprofit Management) Are you studying in parallel and not exercising your membership rights at HTW Berlin? Send proof of re-registration from the other university to the HTW Berlin Student Service Centre Sabbatical semester ? Re-register anyway within the deadline No re-registration In the event that you fail to pay the semester fee in full, do not pay it at all or pay it only after the deadline has expired, you will be exmatriculated with effect from the end of the previous semester and will receive a notice of exmatriculation. Impediments Reasons preventing correct re-registration may include, but are not limited to No proof of health insurance Unfulfilled admission requirements Failure to attend examination counselling A missing language test Parts of the pre-study internship are lacking In the event that such an impediment exists, it will be displayed in the LSF campus management portal and the missing documentation or evidence must be submitted within the re-registration deadline."
+  }
+}

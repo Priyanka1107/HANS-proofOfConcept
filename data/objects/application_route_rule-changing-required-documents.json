@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "page_id": "1ab914fb7fad65da",
+    "object_id": "application_route_rule-changing-required-documents",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/special-cases/changing-study-programme-or-university/required-documents/",
+    "title": "Required documents",
+    "classification_confidence": "low",
+    "classification_notes": "Required documents for changing programme or university.",
+    "source_html_path": "snapshots_raw/1ab914fb7fad65da.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.199052"
+  },
+  "rule_info": {
+    "rule_type": "changing-required-documents",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Required documents for changing programme or university."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-special-cases",
+    "overview_navigation-changing-study-programme",
+    "overview_navigation-student-service-centre"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Special cases Changing study programme or university Required documents Required documents Submit all of the following listed documents in digital form. Links, e.g. to module handbooks, will not be taken into account. Table of contents Overview of all grades (grade transcript) Proof of current/last completed subject semester Brief descriptions of the module content in case of enrolment Proof of weekly study hours or credit points Proof of all study periods to date Note regarding proof of non-German modules Overview of all grades (grade transcript) With current date of issue Confirmed by the examinations office of your university(s) with an official stamp and signature With all completed modules and examinations, listing all passes and fails With all registered future examinations Additionally Vordiplomzeugnis (pre-Diplom assessment) if not identifiable as passed from the grade transcript Important information: Individual module grade sheets instead of a full grade transcript are not sufficient. Examination results that have not yet been issued and the results of examinations for which you are registered must be provided as soon as they are available. If no modules have been completed, written confirmation of this fact with a stamp and signature must be provided by the examinations office. If you have not registered for any examinations, written confirmation of this fact must be provided with a stamp and signature by the examinations office. Proof of current/last completed subject semester This is required for each individual study programme in which you have been enrolled at a German university. This information is usually contained in the grade transcript. If this is not the case, proof can be provided in the form of a current enrolment or de-registration document stating the current subject semester. Please note: In Germany there are two categories for counting your study time: subject semesters and university semesters. Subject semesters are all the semesters that are completed in a given study programme. External leave semesters are not included. The number of subject semesters can be the same as the number of university semesters; however, this is not always the case. University semesters are all semesters during which you were or currently are enrolled at Germany universities regardless of all study programme, including external leave semesters. Brief descriptions of the module content in case of enrolment For each of the subjects listed on the grade transcript – regardless whether you passed, failed or are currently registered for an examination (!). Can be obtained from the Internet pages of your university, from programme schedules, teaching handouts or module handbooks. Self-described module contents will only be accepted in justified individual cases. Please attach a declaration from your university explaining why a print out or copy of the official module content description was/is not possible. Electronically sent documents and links to Internet pages or entire module handbooks will not be taken into account. Please do only submit module descriptions of exams you have registered for, passed, not passed or definitively failed. Proof of weekly study hours or credit points This information is usually contained in the module description, study programme curriculum or grade transcript. If this is not the case, in addition to the above listed documents a separate tabular overview of this information must be provided. Proof of all study periods to date This information is usually stated on your de-registration certificate. Proof can also be provided in the form of a separate confirmation of study periods from your university. Note regarding proof of non-German modules The above-listed documents will only be accepted in German or English. Documents in other languages must be submitted with an officially attested German or English translation. If you are interested in accrediation of your modules and exams taken abroad please send an email to the student service center ."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "page_id": "5abc6526b358455c",
+    "object_id": "deadline_rule-academic-calendar",
+    "object_type": "deadline_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/academic-calendar/",
+    "title": "Academic calendar: winter semester 2025/26",
+    "classification_confidence": "low",
+    "classification_notes": "Academic calendar with semester timelines and key dates.",
+    "source_html_path": "snapshots_raw/5abc6526b358455c.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.485065"
+  },
+  "deadline_info": {
+    "type": "academic_calendar",
+    "applies_to": [],
+    "description": "Academic calendar with semester timelines and key dates."
+  },
+  "dates": {
+    "dates_mentioned": [
+      "05.02.2026",
+      "06.02.",
+      "01.03.2026",
+      "01.10.2025",
+      "06.10.2025",
+      "02.10.2025",
+      "07.10.2025",
+      "22.12.",
+      "31.12.2025",
+      "14.02.2026",
+      "03.10.2025",
+      "01.01.2026",
+      "03.01.2026",
+      "15.10.2025",
+      "15.10.2025",
+      "15.10.2025",
+      "01.01.",
+      "05.02.2026",
+      "16.02.",
+      "01.03.2026",
+      "15.12.",
+      "22.12.2025",
+      "05.01.",
+      "09.01.2026",
+      "09.03.",
+      "17.03.2026",
+      "26.01.",
+      "14.02.2026",
+      "26.03.",
+      "11.04.2026",
+      "10.09.2025",
+      "15.10.2025"
+    ]
+  },
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "application_process-enrolment",
+    "special_category-guest-students",
+    "application_route_rule-accreditation-modules-abroad",
+    "overview_navigation-re-registration",
+    "application_process-module-registration",
+    "application_route_rule-examinations",
+    "application_route_rule-final-thesis",
+    "application_route_rule-part-time-study",
+    "application_route_rule-leave-of-absence"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Academic calendar Academic calendar: winter semester 2025/26 Re-registration for the next semester Re-registration for the summer semester 2026 only runs until 05.02.2026 . From 06.02. to 01.03.2026 a late fee is due. Table of contents Re-registration for the next semester Events for first-year students Semester dates Enrolment & re-registration Modules, examinations & final thesis Part-time studies & leave of absence Events for first-year students University Day with welcome event for first-year students 01.10.2025 Orientations days for first-year students 01./02./06.10.2025 Semester dates Start of teaching period from the 2nd semester onwards 02.10.2025 Start of teaching period for first-year students 07.10.2025 Non-teaching period 22.12. - 31.12.2025 End of the teaching period 14.02.2026 Public holidays 03.10.2025, 01.01.2026 Closing days 02./03.01.2026 Enrolment & re-registration Enrolment of study applicants (for NC study programmes see notice of admission) by 15.10.2025 Registration of guest listeners and guest students by 15.10.2025 Accreditation of modules and examinations completed abroad at enrolment by 15.10.2025 Re-registration for the next semester 01.01. - 05.02.2026 Re-registration with late fee 16.02. - 01.03.2026 Modules, examinations & final thesis Module registration Deadlines Online registration for the 1. and 2. examination period 15.12. – 22.12.2025, 05.01. - 09.01.2026 (official deadline) Online registration for the 2. examination period (and repeat examinations) 09.03. – 17.03.2026 (official deadline) 1. examination period 26.01. – 14.02.2026 2. examination period 26.03. – 11.04.2026 Application for admission to write a Bachelor's or Master's thesis Deadlines for application for admission to write final thesis [PDF] Part-time studies & leave of absence Registration/Cancellation for part-time studies by 10.09.2025 Application for leave of absence by 15.10.2025"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "page_id": "df7901b9b6f5c7af",
+    "object_id": "overview_navigation-assessment-academic-achievements",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/assessment-of-academic-achievements/",
+    "title": "Assessment of Academic Achievements",
+    "classification_confidence": "low",
+    "classification_notes": "Overview of assessment of academic achievements, linking to exams, internships, and final thesis rules.",
+    "source_html_path": "snapshots_raw/df7901b9b6f5c7af.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.817317"
+  },
+  "navigation_info": {
+    "purpose": "Overview of assessment of academic achievements, linking to exams, internships, and final thesis rules.",
+    "scope": "Assessment of Academic Achievements",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-study-organisation",
+    "application_route_rule-examinations",
+    "application_route_rule-internship-assessment",
+    "application_route_rule-final-thesis"
+  ],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "application_route_rule-examinations",
+    "application_route_rule-internship-assessment",
+    "application_route_rule-final-thesis"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Assessment of Academic Achievements Assessment of Academic Achievements Examinations Registration, non-attendance, repetition Internship Application, admission, submission Final Thesis Application & accreditation"
+  }
+}

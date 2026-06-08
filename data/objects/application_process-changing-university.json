@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "page_id": "6bff9a0a3d5f3164",
+    "object_id": "application_process-changing-university",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/applications/special-cases/changing-study-programme-or-university/changing-university/",
+    "title": "Changing university",
+    "classification_confidence": "low",
+    "classification_notes": "Process for transferring from another university.",
+    "source_html_path": "snapshots_raw/6bff9a0a3d5f3164.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.188470"
+  },
+  "process_info": {
+    "name": "Changing university",
+    "applies_to": [],
+    "description": "Process for transferring from another university."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-special-cases",
+    "overview_navigation-changing-study-programme",
+    "overview_navigation-htw-application-portal",
+    "overview_navigation-application-uni-assist",
+    "application_route_rule-changing-required-documents"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Special cases Changing study programme or university Changing university Changing university Table of contents Transferring from another university to HTW Berlin Application documents Who can advise me? Information for foreign students Transferring from another university to HTW Berlin This applies to you if you were enrolled or are currently enrolled at another university. Applications for transferring to HTW Berlin are to be submitted online only. If you obtained your higher education entry qualification or first academic degree in Germany, apply directly to HTW Berlin . If you obtained your higher education entry qualification or first academic degree abroad, apply via uni-assist . Please fill out the information about your previous study periods truthfully. Application documents In addition to the standard application documents (e.g. copy of your school leaving certificate) full proof of your study periods in Germany to date must be submitted by the application deadline — this also applies if you studied a completely different subject and/or have not accumulated any credits . A list of the application documents which must be submitted can be found here . If you are submitting documents in a language other than German or English, you must provide an officially attested German or English translation . Who can advise me? Contact the study programme advisor of your chosen study programme well before the application deadline to find out which module descriptions from your previous study programme you need to submit which of your modules can be accredited in which subject semester you will be placed. Information for foreign students If you intend to change study programmes, you should inform the Berlin Foreigners Registration Office (Ausländerbehörde) and apply for a residence permit for the new study programme. Changing study programmes is not problematic as long as the study programme in question can be properly completed in a reasonable period of time. If you have any special questions, please contact Gernot Welschhoff in the International Office."
+  }
+}

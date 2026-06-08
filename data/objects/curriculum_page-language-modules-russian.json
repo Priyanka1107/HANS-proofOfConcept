@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "page_id": "ce9c6e47d4fc5f91",
+    "object_id": "curriculum_page-language-modules-russian",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/studies/foreign-languages-centre/language-modules/russian/",
+    "title": "Russian",
+    "classification_confidence": "medium",
+    "classification_notes": "Overview of Russian language modules offered by the Foreign Languages Centre.",
+    "source_html_path": "snapshots_raw/ce9c6e47d4fc5f91.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.630254"
+  },
+  "curriculum_info": {
+    "program_reference": [],
+    "module_type": "core"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "Studies",
+      "credits": null
+    },
+    {
+      "description": "Foreign Languages Centre",
+      "credits": null
+    },
+    {
+      "description": "Language modules",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "university_profile-foreign-languages-centre",
+    "overview_navigation-language-modules"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Foreign Languages Centre Language modules Russian Russian Head of Language Team - Other Languages Stephen Mortimer +49 30 5019-2652 Stephen.Mortimer@HTW-Berlin.de English as a foreign language Teacher Pavel Avvakumov avvakum@htw-berlin.de"
+  }
+}

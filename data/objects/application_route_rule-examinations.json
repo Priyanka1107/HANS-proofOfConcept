@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "2a112844b7accd80",
+    "object_id": "application_route_rule-examinations",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/assessment-of-academic-achievements/examinations/",
+    "title": "Examinations",
+    "classification_confidence": "low",
+    "classification_notes": "Regulations and procedures governing examinations as part of academic assessment.",
+    "source_html_path": "snapshots_raw/2a112844b7accd80.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.808375"
+  },
+  "rule_info": {
+    "rule_type": "examinations",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Regulations and procedures governing examinations as part of academic assessment."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-assessment-academic-achievements",
+    "special_category-student-management"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Assessment of Academic Achievements Examinations Examinations Table of contents Examination registration Inability to sit examinations Repeating examinations Examination registration Before each examination in the on-campus programme, online registration via the LSF portal is required within the registration periods . Students may choose between two examination periods per semester. Exception: In the case of module-related examinations encompassing several sections, all sections must be registered together in the same period. These examinations are also only offered once each semester. If it is no longer possible to register online due to delayed studies , submit the Examination Registration Form [PDF] in writing to your responsible student management team . Late registrations are excluded. An informal application including the following information may only be submitted if the deadline is missed through no fault of the applicant: description and proof of the reasons for missing the deadline, course or examination number, name of the examination (module name), lecturer, examination date, signature. Special regulations : For ConREM and study programmes within the Division of Continuing Education (ZbwS) , examination registration is automatic. For Landscape Archaeology you only register for supplementary module examinations in the LSF. You will be automatically registered for all other modules. Inability to sit examinations No medical certificate must be submitted for examinations that are not taken despite registration. The examination can be repeated in the next examination period or semester. You will need to register again. In the case of unit-based module examinations, proof must be provided immediately in the event of inability to sit the examination. Three attempts may be made per examination . An attempt that is not taken, not passed or cancelled counts as an attempt. Exception: In the case of written examinations, non-attendance of a scheduled date does not count as an attempt. Students with BAföG should obtain and keep a medical certificate in the event that they are unable to attend examinations so that they can present it to the BAföG office as proof. Repeating examinations Module examinations usually consist of several units, the grades of which are included proportionally in the overall grade. A module examination is deemed to have been failed if either no grade of at least “sufficient” (4.0) or “successfully passed” was achieved or the weighted average of all units is below the grade of 4.0. An examination which was not passed in the first examination period may be repeated in the 2nd examination period of the same semester. You can register for this yourself. Exception: Modules with module-related examinations are only offered once per semester. The procedure you must follow in the case of an examination which was not passed in the second examination period is governed by the respective study and examination regulations of your degree programme. A fourth examination attempt is only possible if you have previously attended a counselling session with the programme counselling service. After the session, the form \"Participation in a programme counselling session\" [PDF] must be submitted to Student Services within one month. Registration for the fourth attempt can only be undertaken in the first examination period (EP) of the following semester (or later). Exception: If you have attended a programme counselling session after the first EP, it is also possible to register in the second EP of the respective semester. In distance learning programmes, partial achievements such as homework or assignments cannot be “carried over” to the next semester, but must be completed in full when the course is taken again."
+  }
+}

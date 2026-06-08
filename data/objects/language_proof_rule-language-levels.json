@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "page_id": "7586bc8a699219b6",
+    "object_id": "language_proof_rule-language-levels",
+    "object_type": "language_proof_rule",
+    "url": "https://www.htw-berlin.de/en/studies/foreign-languages-centre/sprachniveaus/",
+    "title": "Language Levels",
+    "classification_confidence": "low",
+    "classification_notes": "Explains language proficiency levels used by the Foreign Languages Centre and how they relate to course placement and certification.",
+    "source_html_path": "snapshots_raw/7586bc8a699219b6.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.609124"
+  },
+  "language_info": {
+    "language": null,
+    "test_name": "Language Levels",
+    "required_for": [],
+    "description": "Explains language proficiency levels used by the Foreign Languages Centre and how they relate to course placement and certification."
+  },
+  "requirement_details": {},
+  "test_details": null,
+  "related_pages": [
+    "university_profile-foreign-languages-centre"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Foreign Languages Centre Language Levels Language Levels We recommend that students use the self-assessment grid of the Common European Framework of Reference for Languages (CEFR) as a tool to determine their proficiency level in a foreign language. Please follow this link to the official descriptor table: CEFR Self-Assessment Grid . By reflecting on the skills listed under Listening, Reading, Spoken Interaction, Spoken Production and Writing, you can identify the level (A1 – C2) that best corresponds to your current ability and better target the appropriate course for your development."
+  }
+}

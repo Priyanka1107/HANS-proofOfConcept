@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "7544578be7c97923",
+    "object_id": "application_route_rule-testas",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/application-via-uni-assist/testas/",
+    "title": "TestAS",
+    "classification_confidence": "low",
+    "classification_notes": "TESTAS requirements for uni-assist applicants.",
+    "source_html_path": "snapshots_raw/7544578be7c97923.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.208330"
+  },
+  "rule_info": {
+    "rule_type": "testas",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "TESTAS requirements for uni-assist applicants."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-application-uni-assist"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Application via uni-assist TestAS TestAS Table of contents Voluntary academic assessment test Contents Advantages for you Voluntary academic assessment test The TestAS is a voluntary standardised test for academic studies. It is particularly aimed at foreigners wishing to apply for an undergraduate programme of studies at a German university. The TestAS assesses a range of cognitive and intellectual abilities that are especially important for studying. Contents The TestAS consists of a short language test (German or English) a general core test study area-specific test modules (business or engineering). The TestAS language test does not replace the recognised language test required for admission to study. Advantages for you The test results help you to more realistically assess your chances of successfully completing a study programme. You will also get to know the typical requirements for the study programme in which you are interested in taking in Germany. If you are from a non-EU country or if you are stateless, you can improve your prospects of securing a study place on a Bachelor’s study programme with good test results."
+  }
+}

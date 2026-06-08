@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "c6541afc550ab17e",
+    "object_id": "overview_navigation-pathways-abroad",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/international/wege-ins-ausland/",
+    "title": "Pathways Abroad",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor overview for going abroad, with explanatory context and links.",
+    "source_html_path": "snapshots_raw/c6541afc550ab17e.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.343548"
+  },
+  "navigation_info": {
+    "purpose": "Anchor overview for going abroad, with explanatory context and links.",
+    "scope": "Pathways Abroad",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-studying-abroad",
+    "overview_navigation-internships-abroad"
+  ],
+  "related_pages": [
+    "overview_navigation-studying-abroad",
+    "overview_navigation-internships-abroad"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways Abroad Pathways Abroad Studying abroad Study exchange at a partner university abroad Internships abroad How to finance an internship in Europe or overseas?"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "352264323c672774",
+    "object_id": "application_route_rule-leave-of-absence",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/leave-of-absence/",
+    "title": "Leave of absence",
+    "classification_confidence": "low",
+    "classification_notes": "Rules and procedures for taking a leave of absence.",
+    "source_html_path": "snapshots_raw/352264323c672774.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.915690"
+  },
+  "rule_info": {
+    "rule_type": "leave-of-absence",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules and procedures for taking a leave of absence."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-re-registration"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Leave of absence Leave of absence Table of contents Possible reasons for a leave of absence Time and duration Important information Application Possible reasons for a leave of absence Illness Voluntary service Pregnancy, maternity leave or parental leave Caring for close relatives Time and duration Possible from the second semester at the earliest ; for degree programmes in which students only enrol once a year, from the third semester onwards Leave of absence is always valid for a whole semester . A maximum of two consecutive sabbatical semesters exists (more in exceptional cases); exception: parental leave of up to six semesters possible Once you have registered for an examination , you may no longer take a leave of absence . As the semester fee is generally reduced in the case of a leave of absence, it is advisable to submit the application before paying the semester fee . Important information During a sabbatical semester, no courses may be attended, no examinations may be registered for and no coursework may be completed. Compulsory internships or internships abroad are not recognised! A sabbatical semester on leave counts as a university semester, not as a subject-related semester . Please note: Educational support allowance (BAföG), child benefit and part-time jobs may be affected — make sure you find out in advance! Application Download the application form from the LSF campus management portal. Send the application form and proof (e.g. medical certificate, certificates, written justification) by email from your HTW Berlin account to the Student Service Centre by the specified deadline. Don't forget your re-registration! The leave of absence only becomes valid upon timely re-registration ."
+  }
+}

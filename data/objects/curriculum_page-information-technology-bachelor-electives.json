@@ -1,0 +1,469 @@
+{
+  "metadata": {
+    "page_id": "5f7d7d0ca7e4facb",
+    "object_id": "curriculum_page-information-technology-bachelor-electives",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/english-language-study-programmes/information-technology-bachelor/elective-courses/",
+    "title": "Elective Courses",
+    "classification_confidence": "high",
+    "classification_notes": "Lists elective course options within the Information Technology Bachelors program.",
+    "source_html_path": "snapshots_raw/5f7d7d0ca7e4facb.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.092522"
+  },
+  "curriculum_info": {
+    "program_reference": [
+      "degree_program-information-technology-bachelor"
+    ],
+    "module_type": "elective"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "International",
+      "credits": null
+    },
+    {
+      "description": "Pathways to HTW Berlin",
+      "credits": null
+    },
+    {
+      "description": "English-Language Study Programmes",
+      "credits": null
+    },
+    {
+      "description": "Information Technology (Bachelor)",
+      "credits": null
+    },
+    {
+      "description": "Mobile Devices",
+      "credits": null
+    },
+    {
+      "description": "Natural User Interfaces",
+      "credits": null
+    },
+    {
+      "description": "Mathematical Software",
+      "credits": null
+    },
+    {
+      "description": "Analyse medizinischer Daten",
+      "credits": null
+    },
+    {
+      "description": "Statistics",
+      "credits": null
+    },
+    {
+      "description": "Informatics 3",
+      "credits": null
+    },
+    {
+      "description": "Network and System Security",
+      "credits": null
+    },
+    {
+      "description": "Web Applications / Software Architecture",
+      "credits": null
+    },
+    {
+      "description": "Introduction to Business Administration",
+      "credits": null
+    },
+    {
+      "description": "Basics of DevOps and Cloud",
+      "credits": null
+    },
+    {
+      "description": "IT-Security-Management Project",
+      "credits": null
+    },
+    {
+      "description": "Emergency Preparedness and Management",
+      "credits": null
+    },
+    {
+      "description": "Cloud-IT",
+      "credits": null
+    },
+    {
+      "description": "IT Security",
+      "credits": null
+    },
+    {
+      "description": "English for Cyber Security",
+      "credits": null
+    },
+    {
+      "description": "German as a Foreign Language",
+      "credits": null
+    },
+    {
+      "description": "Interdisciplinary Additional Courses (\"AWE\")",
+      "credits": null
+    },
+    {
+      "description": "are familiar with the features of mobile devices, networks and protocols;",
+      "credits": null
+    },
+    {
+      "description": "are able to develop and test mobile systems according to given or self-created specifications;",
+      "credits": null
+    },
+    {
+      "description": "are familiar with current architectures, APIs and deployment options for mobile applications (e.g. Android, IOS) and can provide mobile systems for the end user;",
+      "credits": null
+    },
+    {
+      "description": "can apply their knowledge of cloud IT and derive knowledge of the relevant cloud architectures and the corresponding software solutions for cloud deployment scenarios;",
+      "credits": null
+    },
+    {
+      "description": "are able to understand deployment scenarios for cloud applications and develop these accordingly;",
+      "credits": null
+    },
+    {
+      "description": "are familiar with the special requirements for mobile applications and systems as well as the special requirements for cloud services from both the customer and provider perspective;",
+      "credits": null
+    },
+    {
+      "description": "acquire a sound knowledge of methods and expertise in computer science and software development in order to develop and modify operational application systems and integrate these within an existing application environment;",
+      "credits": null
+    },
+    {
+      "description": "are able to recognise and compare the complexity, feasibility, safety and degree of innovation of targeted problem solutions;",
+      "credits": null
+    },
+    {
+      "description": "are able to recognise trends in the development of modern information technologies in relation to a specific application requirement and derive the necessary conclusions from the same.",
+      "credits": null
+    },
+    {
+      "description": "Design patterns and architectures for NUI",
+      "credits": null
+    },
+    {
+      "description": "Development methods for NUI",
+      "credits": null
+    },
+    {
+      "description": "Multimodal interaction techniques and interfaces",
+      "credits": null
+    },
+    {
+      "description": "Reference implementations and software libraries for the realisation of NUI",
+      "credits": null
+    },
+    {
+      "description": "Sensor fusion",
+      "credits": null
+    },
+    {
+      "description": "Current developments in the field of user interfaces",
+      "credits": null
+    },
+    {
+      "description": "a fundamental understanding of the procedure of descriptive statistics/contrast with inferential statistics;",
+      "credits": null
+    },
+    {
+      "description": "an overview of data collection methods and important data sources in economic and social statistics;",
+      "credits": null
+    },
+    {
+      "description": "knowledge of methods of descriptive univariate distribution analysis, correlation and regression as well as time series analysis;",
+      "credits": null
+    },
+    {
+      "description": "knowledge of ratios/index numbers as a basis for the construction of value, price and quantity indices;",
+      "credits": null
+    },
+    {
+      "description": "knowledge of the use of statistical software for data collection, data preparation and data analysis using the example of selected standard statistical software;",
+      "credits": null
+    },
+    {
+      "description": "the ability to prepare and carry out computer-aided descriptive data analyses for selected problems using statistical software.",
+      "credits": null
+    },
+    {
+      "description": "acquire a general understanding of how network systems work and are familiar with the current network protocols;",
+      "credits": null
+    },
+    {
+      "description": "are able to assess the situation in the network in order to ensure the desired IT security level of a company / organisation;",
+      "credits": null
+    },
+    {
+      "description": "can apply and utilise their basic knowledge of cryptology (cf. module B14);",
+      "credits": null
+    },
+    {
+      "description": "know how security solutions work and develop an understanding of their use in operation and interaction",
+      "credits": null
+    },
+    {
+      "description": "are able to implement and use some of these solutions themselves.",
+      "credits": null
+    },
+    {
+      "description": "build and analyse networks;",
+      "credits": null
+    },
+    {
+      "description": "configure routers and switches;",
+      "credits": null
+    },
+    {
+      "description": "analyse network traffic;",
+      "credits": null
+    },
+    {
+      "description": "assess the limitations of network technologies;",
+      "credits": null
+    },
+    {
+      "description": "develop network applications.",
+      "credits": null
+    },
+    {
+      "description": "the typical features of web applications;",
+      "credits": null
+    },
+    {
+      "description": "the fundamental elements of HTML, XHTML;",
+      "credits": null
+    },
+    {
+      "description": "the fundamental elements of CSS;",
+      "credits": null
+    },
+    {
+      "description": "the fundamental elements of JavaScript and JQuery;",
+      "credits": null
+    },
+    {
+      "description": "a sound knowledge of methods and expertise in computer science and software development in order to develop new application and software systems, which they are able to modify and integrate within an existing application environment;",
+      "credits": null
+    },
+    {
+      "description": "an understanding of and the ability to implement a customer’s requirements with regard to the structure of a simple website.",
+      "credits": null
+    },
+    {
+      "description": "fundamental economic models;",
+      "credits": null
+    },
+    {
+      "description": "economics with network theory;",
+      "credits": null
+    },
+    {
+      "description": "systems theory and crypto-economics;",
+      "credits": null
+    },
+    {
+      "description": "fundamental business management concepts;",
+      "credits": null
+    },
+    {
+      "description": "strategy and organisation;",
+      "credits": null
+    },
+    {
+      "description": "internal and external accounting;",
+      "credits": null
+    },
+    {
+      "description": "controlling functions;",
+      "credits": null
+    },
+    {
+      "description": "financing and investment;",
+      "credits": null
+    },
+    {
+      "description": "marketing;",
+      "credits": null
+    },
+    {
+      "description": "production.",
+      "credits": null
+    },
+    {
+      "description": "establish the connections between business and economic decisions and",
+      "credits": null
+    },
+    {
+      "description": "apply the theoretical principles to practical examples.",
+      "credits": null
+    },
+    {
+      "description": "expand their ability to find target-orientated solutions to complex IT security requirements as part of a project with current relevance;",
+      "credits": null
+    },
+    {
+      "description": "acquire a fundamental understanding of project management",
+      "credits": null
+    },
+    {
+      "description": "are able to analyse key business processes and derive the relevant corporate values from the same;",
+      "credits": null
+    },
+    {
+      "description": "are able to analyse the IT infrastructure and network traffic",
+      "credits": null
+    },
+    {
+      "description": "are able to carry out attacker and threat modelling;",
+      "credits": null
+    },
+    {
+      "description": "are able to carry out a risk assessment for company, software development and, if necessary, software processes;",
+      "credits": null
+    },
+    {
+      "description": "are able to prioritise suitable measures;",
+      "credits": null
+    },
+    {
+      "description": "are able to explain the proportionality of countermeasures;",
+      "credits": null
+    },
+    {
+      "description": "have knowledge of and can apply organisational security measures, BSI standards and ISO standards, such as the 27000 family, cryptographic procedures, identity and access management (IAM) and the public key infrastructure (PKI).",
+      "credits": null
+    },
+    {
+      "description": "have a fundamental understanding of the processes involved in emergency situations: event - emergency - crisis;",
+      "credits": null
+    },
+    {
+      "description": "are able to draw up an emergency management plan including the necessary resources;",
+      "credits": null
+    },
+    {
+      "description": "are able to deploy immediate measures via the alarm system;",
+      "credits": null
+    },
+    {
+      "description": "are able to create business continuation plans;",
+      "credits": null
+    },
+    {
+      "description": "are able to write emergency manuals and emergency exercise plans;",
+      "credits": null
+    },
+    {
+      "description": "are able to set up and maintain the necessary documentation.",
+      "credits": null
+    },
+    {
+      "description": "are familiar with the fundamental elements of      cloud computing (particularly concepts, storage technologies, container      (construction) and serverless computing);",
+      "credits": null
+    },
+    {
+      "description": "are able to develop and deploy mobile      applications independently;",
+      "credits": null
+    },
+    {
+      "description": "are able to develop cloud deployment scenarios      and operating scenarios and know how to implement them;",
+      "credits": null
+    },
+    {
+      "description": "are able to set up a virtualisation environment;",
+      "credits": null
+    },
+    {
+      "description": "are able to use SDN (Software Defined Networks)      in the Could environment;",
+      "credits": null
+    },
+    {
+      "description": "are able to create a simple cloud.",
+      "credits": null
+    },
+    {
+      "description": "historical and current attacks and      vulnerabilities;",
+      "credits": null
+    },
+    {
+      "description": "different types of attackers and attack patterns;",
+      "credits": null
+    },
+    {
+      "description": "typical security risks;",
+      "credits": null
+    },
+    {
+      "description": "the potential threats and security mechanisms on      the various network layers of the ISO/OSI model (IPsec, TLS, 802.1x,      RADIUS, Kerberos, OpenVPN, NATs and firewalls);",
+      "credits": null
+    },
+    {
+      "description": "attack scenarios and defence options for client      and server applications;",
+      "credits": null
+    },
+    {
+      "description": "the risks and functionality of single sign-on      systems;",
+      "credits": null
+    },
+    {
+      "description": "the mode of operation and application of      intrusion detection systems and honeypot systems.",
+      "credits": null
+    },
+    {
+      "description": "configure firewall systems based on application      requirements;",
+      "credits": null
+    },
+    {
+      "description": "implement protection mechanisms for secure web      communication based on TLS;",
+      "credits": null
+    },
+    {
+      "description": "create and implement secure communication      architectures;",
+      "credits": null
+    },
+    {
+      "description": "recognise security risks in existing systems and      isolate vulnerable applications from other applications;",
+      "credits": null
+    },
+    {
+      "description": "understand and correctly categorise complex      issues;",
+      "credits": null
+    },
+    {
+      "description": "develop solutions;",
+      "credits": null
+    },
+    {
+      "description": "use the methods of documentation and presentation      in a target group-specific manner.",
+      "credits": null
+    },
+    {
+      "description": "AWE: Gender and Computing",
+      "credits": null
+    },
+    {
+      "description": "AWE: Modern Mythology: Technology and Cultural      Business Design",
+      "credits": null
+    },
+    {
+      "description": "AWE: The economic of world peace",
+      "credits": null
+    },
+    {
+      "description": "AWE: 3D and 4D Printing with Sustainable      Materials",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "degree_program-information-technology-bachelor"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin English-Language Study Programmes Information Technology (Bachelor) Elective Courses Elective Courses Table of contents Mobile Devices Natural User Interfaces Mathematical Software Analyse medizinischer Daten Statistics Informatics 3 Network and System Security Web Applications / Software Architecture Introduction to Business Administration Basics of DevOps and Cloud IT-Security-Management Project Emergency Preparedness and Management Cloud-IT IT Security English for Cyber Security German as a Foreign Language Interdisciplinary Additional Courses (\"AWE\") Mobile Devices ECTS: 5 [B20 Mobile Devices (SL)] The students are familiar with the features of mobile devices, networks and protocols; are able to develop and test mobile systems according to given or self-created specifications; are familiar with current architectures, APIs and deployment options for mobile applications (e.g. Android, IOS) and can provide mobile systems for the end user; can apply their knowledge of cloud IT and derive knowledge of the relevant cloud architectures and the corresponding software solutions for cloud deployment scenarios; are able to understand deployment scenarios for cloud applications and develop these accordingly; are familiar with the special requirements for mobile applications and systems as well as the special requirements for cloud services from both the customer and provider perspective; acquire a sound knowledge of methods and expertise in computer science and software development in order to develop and modify operational application systems and integrate these within an existing application environment; are able to recognise and compare the complexity, feasibility, safety and degree of innovation of targeted problem solutions; are able to recognise trends in the development of modern information technologies in relation to a specific application requirement and derive the necessary conclusions from the same. Natural User Interfaces ECTS: 5 [B81K Natural User Interfaces (SL) + B81K Natural User Interfaces (PCÜ)] Analysis and design of Natural User Interfaces (NUI), e.g. tangible user interfaces, sketch-based interaction techniques, 3D interaction techniques Design patterns and architectures for NUI Development methods for NUI Multimodal interaction techniques and interfaces Reference implementations and software libraries for the realisation of NUI Sensor fusion Current developments in the field of user interfaces Mathematical Software ECTS: 5 [B25 Mathematische Software (PCÜ)] We will use Python libraries and Jupyter Notebooks in order to solve problems in applied mathematics. Topics include design of algorithms, array operations, visualization of functions and data, animations, graphical user interfaces, numerical methods, simulation of random processes, machine learning, and symbolic computations. Alongside the instruction classes, students will work on projects modelling real-world problems. Analyse medizinischer Daten ECTS: 5 [B92G Analyse medizinischer Daten (PCÜ)] Content: Further information to follow. Statistics ECTS: 5 [B7 Statistic (SL/PCÜ)] The students acquire a fundamental understanding of the procedure of descriptive statistics/contrast with inferential statistics; an overview of data collection methods and important data sources in economic and social statistics; knowledge of methods of descriptive univariate distribution analysis, correlation and regression as well as time series analysis; knowledge of ratios/index numbers as a basis for the construction of value, price and quantity indices; knowledge of the use of statistical software for data collection, data preparation and data analysis using the example of selected standard statistical software; the ability to prepare and carry out computer-aided descriptive data analyses for selected problems using statistical software. Informatics 3 ECTS: 5 Content: Further information to follow. Network and System Security ECTS: 5 [B21 Network and System Security (SL+PCÜ)] The students acquire a general understanding of how network systems work and are familiar with the current network protocols; are able to assess the situation in the network in order to ensure the desired IT security level of a company / organisation; can apply and utilise their basic knowledge of cryptology (cf. module B14); know how security solutions work and develop an understanding of their use in operation and interaction are able to implement and use some of these solutions themselves. The students can build and analyse networks; configure routers and switches; analyse network traffic; assess the limitations of network technologies; develop network applications. Web Applications / Software Architecture ECTS: 5 [B10 Web Applications / Software Architecture] The students are familiar with the typical features of web applications; the fundamental elements of HTML, XHTML; the fundamental elements of CSS; the fundamental elements of JavaScript and JQuery; In addition, the students develop a sound knowledge of methods and expertise in computer science and software development in order to develop new application and software systems, which they are able to modify and integrate within an existing application environment; an understanding of and the ability to implement a customer’s requirements with regard to the structure of a simple website. Introduction to Business Administration ECTS: 5 [B11 Introduction to Business Administration] The students understand fundamental economic models; economics with network theory; systems theory and crypto-economics; fundamental business management concepts; strategy and organisation; internal and external accounting; controlling functions; financing and investment; marketing; production. In addition, students will be able to establish the connections between business and economic decisions and apply the theoretical principles to practical examples. Basics of DevOps and Cloud ECTS: Content: Further information to follow. IT-Security-Management Project ECTS: 5 [B22 IT-Security-Management Project (PS)] The students expand their ability to find target-orientated solutions to complex IT security requirements as part of a project with current relevance; acquire a fundamental understanding of project management are able to analyse key business processes and derive the relevant corporate values from the same; are able to analyse the IT infrastructure and network traffic are able to carry out attacker and threat modelling; are able to carry out a risk assessment for company, software development and, if necessary, software processes; are able to prioritise suitable measures; are able to explain the proportionality of countermeasures; have knowledge of and can apply organisational security measures, BSI standards and ISO standards, such as the 27000 family, cryptographic procedures, identity and access management (IAM) and the public key infrastructure (PKI). Emergency Preparedness and Management ECTS: 5 [B23 Emergency Preparedness and Management (SL/PCÜ)] The students have a fundamental understanding of the processes involved in emergency situations: event - emergency - crisis; are able to draw up an emergency management plan including the necessary resources; are able to deploy immediate measures via the alarm system; are able to create business continuation plans; are able to write emergency manuals and emergency exercise plans; are able to set up and maintain the necessary documentation. Cloud-IT ECTS: 5 [B8 Cloud-IT (SL/PCÜ)] The students are familiar with the fundamental elements of cloud computing (particularly concepts, storage technologies, container (construction) and serverless computing); are able to develop and deploy mobile applications independently; are able to develop cloud deployment scenarios and operating scenarios and know how to implement them; are able to set up a virtualisation environment; are able to use SDN (Software Defined Networks) in the Could environment; are able to create a simple cloud. IT Security ECTS: 6 [B9 Safety and Security in IT-Systems (SL/PCÜ)] The students learn the essential features regardingthe fundamental concepts of IT system and network security; historical and current attacks and vulnerabilities; different types of attackers and attack patterns; typical security risks; the potential threats and security mechanisms on the various network layers of the ISO/OSI model (IPsec, TLS, 802.1x, RADIUS, Kerberos, OpenVPN, NATs and firewalls); attack scenarios and defence options for client and server applications; the risks and functionality of single sign-on systems; the mode of operation and application of intrusion detection systems and honeypot systems. Furthermore, students are able todetermine adequate protection mechanisms for network communication; configure firewall systems based on application requirements; implement protection mechanisms for secure web communication based on TLS; create and implement secure communication architectures; recognise security risks in existing systems and isolate vulnerable applications from other applications; understand and correctly categorise complex issues; develop solutions; use the methods of documentation and presentation in a target group-specific manner. English for Cyber Security ECTS: 4 [B12 English for Cyber Security (GER C1.2)] German as a Foreign Language ECTS 4: Our language department offers a wide range of courses - from General German classes, focusing on the basics of grammar and conversation, to more advanced German courses with specializations in the fields of Design, Business and Technology. Based on your German level you have already got you can attend a German as a Foreign Language course. Please put the level already on your Learning Agreement, e.g. \"German as a Foreign Language, Level A.2\". Interdisciplinary Additional Courses (\"AWE\") ECTS: 2 Every Semester students are able to choose 1-2 AWE from a great range of general courses in order to complement their regular curriculum courses. You will be able to see the full range of optional courses during the course registration period . As not all topics are published yet at the time of the application, please simply select \"AWE - General Course\" on the learning agreement and then apply for your specific General Course(s) before the semester starts. Please note that \"AWE\" have limited places, acceptance is not guaranteed. Current list of AWE for the summer semester 2026: AWE: Gender and Computing AWE: Modern Mythology: Technology and Cultural Business Design AWE: The economic of world peace AWE: 3D and 4D Printing with Sustainable Materials"
+  }
+}

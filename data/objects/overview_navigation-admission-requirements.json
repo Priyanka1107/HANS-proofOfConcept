@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "page_id": "2e475c13abe7c96c",
+    "object_id": "overview_navigation-admission-requirements",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-requirements/",
+    "title": "Admission requirements",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor overview for all admission requirement rules.",
+    "source_html_path": "snapshots_raw/2e475c13abe7c96c.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.388992"
+  },
+  "navigation_info": {
+    "purpose": "Anchor overview for all admission requirement rules.",
+    "scope": "Admission requirements",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-applications",
+    "special_category-no-higher-education-entry",
+    "application_process-certificate-assessment",
+    "application_route_rule-numerus-clausus",
+    "application_route_rule-pre-study-internship",
+    "application_route_rule-mandatory-aptitude-test",
+    "application_route_rule-voluntary-academic-test",
+    "language_proof_rule-german-proficiency-uni-assist",
+    "language_proof_rule-english-proficiency-uni-assist"
+  ],
+  "related_pages": [
+    "overview_navigation-applications",
+    "special_category-no-higher-education-entry",
+    "application_process-certificate-assessment",
+    "application_route_rule-numerus-clausus",
+    "application_route_rule-pre-study-internship",
+    "application_route_rule-mandatory-aptitude-test",
+    "application_route_rule-voluntary-academic-test",
+    "language_proof_rule-german-proficiency-uni-assist",
+    "language_proof_rule-english-proficiency-uni-assist"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission requirements Admission requirements Table of contents General requirements Study programme-specific requirements General requirements For admission to a Bachelor’s degree programme at HTW Berlin, you require a general higher education entrance qualification or a subject-specific higher education entrance qualification or specialist entry qualifications in accordance with § 11 of the Berlin Higher Education Act or a recognised foreign higher education entry qualification . For admission to a Master’s degree programme you require a recognised first academic degree. Study programme-specific requirements A number of study programmes have additional requirements. On the website of your chosen study programme, you can find out whether the study programme is subject to Numerus Clausus (restricted admissions). requires a pre-study internship . requires an aptitude test . offers an academic assessment test . requires professional experience - most distance-learning and further education study programmes require one or more years of professional experience . requires proof of language proficiency . If you have foreign certificates and wish to apply for a study programme conducted in German, you require proof of German proficiency . If you wish to apply for a study programme conducted in English, you require proof of English proficiency . Study programme specific requirements are listed on the respective study programme's website."
+  }
+}

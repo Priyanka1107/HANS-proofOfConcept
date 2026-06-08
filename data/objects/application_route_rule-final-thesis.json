@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "page_id": "deb4369ba96f21e5",
+    "object_id": "application_route_rule-final-thesis",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/assessment-of-academic-achievements/final-thesis/",
+    "title": "Final Thesis",
+    "classification_confidence": "low",
+    "classification_notes": "Rules and procedures governing the final thesis as part of academic achievement assessment.",
+    "source_html_path": "snapshots_raw/deb4369ba96f21e5.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.788271"
+  },
+  "rule_info": {
+    "rule_type": "final-thesis",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules and procedures governing the final thesis as part of academic achievement assessment."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-assessment-academic-achievements",
+    "special_category-study-forms-documents",
+    "overview_navigation-re-registration"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Assessment of Academic Achievements Final Thesis Final Thesis Table of contents Applications Check requirements Find examiners Apply for admission Topic Time frame Thesis submission Publication & confidentiality agreement Failure to pass & repetition Re-registration for the next semester Applications The applications for the thesis can be found under Documents and Forms in the “Thesis” section. In Faculty 4, registration takes place entirely via Moodle. Check requirements Before you register your thesis, ensure that the following applies: All examinations from the previous semesters have been passed according to the examination regulations. Any practical phases, internships or preliminary work have been completed. You are aware of the registration deadline [PDF] for your degree programme (usually found on the degree programme page or in Moodle). Find examiners First examiner : must be a professor at HTW Berlin, possibly teaching in the degree programme in the context of which you wish to write your thesis. Second examiner : must have at least an equivalent university degree to the one you are aiming for with your degree programme. In some degree programmes, this may be an external individual (e.g. an employee of a company) if they are professionally qualified. Apply for admission Obtain written confirmation from the first and second examiner. Please observe the faculty requirements. Collate all application documents (including examiner confirmations) in one PDF file. File name: Bachelorarbeit_Studiengang_Matrikelnummer.pdf or, correspondingly “Masterarbeit”. Delivery: Faculty 1 via Moodle, Faculty 2 via email, Faculty 3 via Moodle, Faculty 4 via Moodle, Faculty 5 via email Topic Minimal topic adjustment : apply to the examination board to change the title of the thesis Change of thesis topic : the topic may be changed once only, and only within the first half of the completion period. Time frame The completion time begins with the official admission to the thesis. The deadline [PDF] depends on the degree programme. Apply for an extension (if necessary): Pregnancy: submit maternity record book → extension for the duration of the maternity protection period. Illness or disability: submit a medical or official certificate with a concrete description of the health impairment pertaining to the ability to take an examination and its duration (no certificate of incapacity for work) within 3 working days Thesis submission Format: one PDF file with cover page and signed Declaration of Originality (max. 25 MB) Cover page: first name and surname only (without matriculation number). Sample [PDF] Submission by email: Faculty 1: Fb1@htw-berlin.de , Faculty 2: fachbereich2@htw-berlin.de , Faculty 3: Fachbereich3@HTW-Berlin.de , Faculty 4: FB4-Service@htw-berlin.de , Faculty 5: f5absch@htw-berlin.de No paper or CD version unless specifically requested Declaration of Originality and AI documentation (in German) Publication & confidentiality agreement Voluntary publication of your work via OPUS (digital archive in the HTW Berlin library) is possible. If you are working with a company, you can mark your work as confidential. This requires a written agreement between the supervisor and the company. Your first supervisor can download a template from the HTW Berlin intranet. Failure to pass & repetition A grade of 5.0 is awarded if the submission deadline is exceeded. any medical certificate extending the completion time is not recognised. the thesis is inadequate from an academic perspective. The examination administration department will send you a notification with the request to submit a New Topic Proposal for Repeating the Thesis [PDF] . You have three attempts at the final thesis and final oral examination. In the event that you do not pass the final examination on the first attempt within the standard period of study, you may be granted a free attempt. Re-registration for the next semester If you submitted your thesis no more than four weeks after the start of the semester and the only thing which is due to take place in the new semester is the final oral examination, re-registration is not necessary. Exception: Public and Nonprofit Management."
+  }
+}

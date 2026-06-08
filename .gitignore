@@ -55,7 +55,8 @@ evaluation/email_thread_memory.json
 !evaluation/README.md
 
 # Raw scraped/generated data
-data/objects/
+# data/objects is committed because it contains the curated RAG seed objects
+# needed to run/rebuild the local PoC knowledge base.
 data/snapshots_raw/
 output/
 results/

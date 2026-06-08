@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "01a3a9c0900cf6d7",
+    "object_id": "application_route_rule-internship-assessment",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/assessment-of-academic-achievements/internship/",
+    "title": "Internship",
+    "classification_confidence": "low",
+    "classification_notes": "Rules for assessment and recognition of internships within study programmes.",
+    "source_html_path": "snapshots_raw/01a3a9c0900cf6d7.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.798093"
+  },
+  "rule_info": {
+    "rule_type": "internship-assessment",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules for assessment and recognition of internships within study programmes."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-assessment-academic-achievements"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Assessment of Academic Achievements Internship Internship The specialist internship is compulsory in most Bachelor’s degree programmes and can be completed either in Germany or abroad. The guidelines, objectives, duration and assessment are set out in the framework internship regulations (PraxO) . Detailed, programme-specific requirements are determined by the respective study regulations. Apply for an internship To apply for an internship, submit the following documents to your internship coordinator: Internship application form [PDF] — Please check your degree programme website to see if there is a different application form for your degree programme. Internship contract Model contract in the framework internship regulations (Annex 3) Get your internship recognised After completing your internship and for recognition as academic achievement, submit the following documents to your degree programme’s internship coordinator: Internship certificate from the training institution Confirmation from the training institution that the internship has been completed Internship report — Please inform yourself of the requirements on your degree programme website."
+  }
+}

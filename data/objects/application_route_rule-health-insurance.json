@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "e273fe6bc2d30e02",
+    "object_id": "application_route_rule-health-insurance",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/health-insurance/",
+    "title": "Health insurance",
+    "classification_confidence": "low",
+    "classification_notes": "Health insurance requirements related to re-registration and enrollment.",
+    "source_html_path": "snapshots_raw/e273fe6bc2d30e02.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.925544"
+  },
+  "rule_info": {
+    "rule_type": "health-insurance",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Health insurance requirements related to re-registration and enrollment."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-re-registration"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Health insurance Health insurance Table of contents Types of insurance Scope of health insurance cover Proof in the event of new enrolment Re-registration suspended - reasons and solutions International students Types of insurance You need valid health insurance for enrolment and studies. Compulsory insurance ends when you complete your studies, after the fourteenth semester or at the latest on your 30th birthday. Until then, the following applies: Family insurance : Up to the age of 25 or on marriage, if income limits are met. Compulsory student insurance : For students up to the age of 30 who do not work more than 20 hours a week. Voluntary statutory insurance : For students over 30 years of age, without a student tariff. Private health insurance : Only recommended in exceptional cases, as it is not possible to switch to statutory insurance. Military welfare insurance : For former soldiers, usually up to two years after completion of service. Scope of health insurance cover Your cover must include at least the following benefits: Medical and dental treatment Supply of medicinal products, surgical dressings, devices and adjuvants Hospital treatment Rehabilitation Treatment during pregnancy and birth Proof in the event of new enrolment Request your statutory health insurance company to report your insurance status to HTW Berlin using reporting reason no. 10. HTW Berlin’s reporting number is: H0002550. If you change your health insurance company at the start of your studies , please also arrange for reporting reason no. 11 to be submitted. Are you privately insured, entitled to a subsidy or insured via the free military welfare scheme? Contact a statutory health insurance company of your choice to apply for exemption from compulsory insurance and to have your insurance status notified. The exemption is valid for the duration of the degree programme and can only be applied for at the beginning of the degree programme. Exception: after at least four weeks without enrolment between Bachelor’s and Master’s degree programmes, you may change your original decision. Re-registration suspended - reasons and solutions Change of health insurance company : Your previous health insurance company will notify us when your insurance policy ends. Your new health insurance company must inform HTW Berlin via reporting reason no. 11. Please also inform us of the change using the contact form. Payment arrears with the health insurance company : If you are in arrears with payment, your insurance status is unclear, which the health insurance company will report to us. Once full payment has been made, the notification is made via reporting reason no. 13 and the suspension is automatically cancelled. International students Check whether your country has a valid social security agreement with Germany (e.g. EU/EEA). If this is the case, you can have your health insurance policy recognised by a German statutory health insurance fund: Submit the European Health Insurance Card (EHIC) as proof and request registration via reporting no. M 10 (HTW Berlin reporting number: H0002550). You can apply for the EHIC free of charge from your health insurance company. If your country does not have a valid social security agreement with Germany or you do not have health insurance in your home country , you must take out statutory or private health insurance before or immediately after entering Germany. If you are over the age of 30 or complete your fourteenth study semester during your studies, you can remain insured by a statutory insurance company by paying a higher premium. If you are already older than 29 when commencing your studies, you can only take out private insurance. A travel health insurance policy (travel insurance) is not sufficient and will not be accepted as proof. Participants in the preparatory course for the preparatory college (Studienkolleg) are not deemed official students and are therefore usually not subject to statutory insurance. Private health insurance is usually required in these cases."
+  }
+}
