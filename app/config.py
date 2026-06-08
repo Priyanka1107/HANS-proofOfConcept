@@ -42,6 +42,7 @@ class Config:
     # API Keys
     # ------------------------------------------------------------------
     ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
+    MISTRAL_API_KEY: str = os.getenv("MISTRAL_API_KEY", "")
     COHERE_API_KEY: str = os.getenv("COHERE_API_KEY", "")
 
     # ------------------------------------------------------------------
@@ -107,8 +108,11 @@ class Config:
     # Generation model:
     # - Used for Anthropic if GENERATION_PROVIDER="anthropic"
     # - Used for Cohere if GENERATION_PROVIDER="cohere" (via COHERE_CHAT_MODEL above)
-    GENERATION_MODEL: str = os.getenv("GENERATION_MODEL", "claude-3-haiku-20240307")
-
+    #GENERATION_MODEL: str = os.getenv("GENERATION_MODEL", "claude-3-haiku-20240307")
+    GENERATION_MODEL: str = os.getenv(
+    "GENERATION_MODEL",
+    "mistral-small-latest" if GENERATION_PROVIDER == "mistral" else "claude-3-haiku-20240307",
+    )
     # ------------------------------------------------------------------
     # Streamlit / frontend
     # ------------------------------------------------------------------

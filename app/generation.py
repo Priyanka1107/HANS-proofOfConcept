@@ -71,18 +71,32 @@ def generate_answer(query: str, docs: List[Dict[str, Any]], conflicts: List[Dict
     """
     provider = (config.GENERATION_PROVIDER or "extractive").strip().lower()
 
+#    if provider == "anthropic":
+#        if not config.ANTHROPIC_API_KEY:
+#            return _generate_extractive(query, docs, conflicts)
+#        return _generate_with_anthropic(query, docs, conflicts)
+#
+#    if provider == "cohere":
+#        if not config.COHERE_API_KEY:
+#            return _generate_extractive(query, docs, conflicts)
+#        return _generate_with_cohere(query, docs, conflicts)
+#
+#    return _generate_extractive(query, docs, conflicts)
+
+    if provider == "mistral":
+        if not getattr(config, "MISTRAL_API_KEY", ""):
+            return _generate_extractive(query, docs, conflicts)
+        return _generate_with_mistral(query, docs, conflicts)
+
     if provider == "anthropic":
         if not config.ANTHROPIC_API_KEY:
             return _generate_extractive(query, docs, conflicts)
         return _generate_with_anthropic(query, docs, conflicts)
 
     if provider == "cohere":
-        if not config.COHERE_API_KEY:
-            return _generate_extractive(query, docs, conflicts)
         return _generate_with_cohere(query, docs, conflicts)
 
     return _generate_extractive(query, docs, conflicts)
-
 
 def _generate_with_anthropic(query: str, docs: List[Dict[str, Any]], conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Claude generation using Anthropic Messages API."""
@@ -132,6 +146,57 @@ def _generate_with_anthropic(query: str, docs: List[Dict[str, Any]], conflicts: 
     usage_dict = _usage_to_dict(getattr(resp, "usage", None))
     return {"answer": answer, "usage": usage_dict}
 
+def _generate_with_mistral(
+    query: str,
+    docs: List[Dict[str, Any]],
+    conflicts: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Generate an answer using the Mistral Chat API."""
+    from mistralai import Mistral
+
+    client = Mistral(api_key=config.MISTRAL_API_KEY)
+    model = getattr(config, "GENERATION_MODEL", "") or "mistral-small-latest"
+
+    context = _docs_context(docs)
+    conflict_note = _conflict_note(conflicts)
+
+    user = f"""
+You are HANS, a staff-support assistant for HTW Berlin student services.
+
+Use only the evidence below. If the evidence is missing, say that the available evidence is not sufficient.
+
+Question:
+{query}
+
+Evidence:
+{context}
+
+Conflicts:
+{conflict_note}
+
+Write a clear, concise answer with citations like [Doc 1], [Doc 2].
+""".strip()
+
+    response = client.chat.complete(
+        model=model,
+        messages=[
+            {
+                "role": "user",
+                "content": user,
+            }
+        ],
+        temperature=0.1,
+        max_tokens=900,
+    )
+
+    answer = response.choices[0].message.content or ""
+
+    return {
+        "answer": answer.strip(),
+        "provider": "mistral",
+        "model": model,
+        "usage": {},
+    }
 
 def _generate_with_cohere(query: str, docs: List[Dict[str, Any]], conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Cohere Chat generation."""

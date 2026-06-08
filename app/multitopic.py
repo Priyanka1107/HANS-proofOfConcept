@@ -299,7 +299,6 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
             r"\btaught in english\b",
             r"\bentirely in english\b",
             r"\bfully in english\b",
-            r"\benglish[- ]taught\b",
             r"\bis (the )?(course|programme|program) in english\b",
             r"\bwhat language (is|are).{0,60}(course|programme|program|lectures|classes)",
             r"\bis (the )?(course|programme|program) taught in english\b",
@@ -518,10 +517,6 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
             r"\bregular deadline\b",
             r"\bregular deadlines\b",
             r"\bwithin the regular deadlines\b",
-            r"\bfall intake\b",
-            r"\bfall semester\b",
-            r"\bwinter semester\b",
-            r"\bstarting this fall\b",
         ],
         "query": "What is the application deadline or application period?",
     },
@@ -931,81 +926,113 @@ def generate_staff_email_draft(
     ]:
         if context.get(key):
             profile_bits.append(f"{label}: {context[key]}")
+
     profile = "\n".join(profile_bits) if profile_bits else "No clear profile information detected."
 
     evidence = _build_context(docs)
     application_fee_guidance = _application_fee_guidance_for_prompt(topics, context)
 
+    system = (
+        "You are drafting an email from HTW Berlin Student Services to a student. "
+        "Write in simple, polite and professional English. "
+        "Use only the evidence documents. "
+        "Do not invent information. "
+        "Write directly to the student using 'you', not 'the student'. "
+        "Keep the email ready to paste and send after staff review. "
+        "Be specific and useful, but stay cautious where formal checking is required."
+    )
+
+    user = (
+        f"ORIGINAL STUDENT EMAIL:\n{original_email}\n\n"
+        f"INTERPRETED STUDENT PROFILE:\n{profile}\n\n"
+        f"TOPICS TO ANSWER ONLY:\n{topics_text}\n\n"
+        f"EVIDENCE DOCUMENTS:\n{evidence}\n\n"
+        f"{application_fee_guidance}\n\n"
+        "DRAFTING RULES:\n"
+        "1) Start with the greeting provided below.\n"
+        f"GREETING: {_student_greeting(context)}\n"
+        "After the greeting, add one short polite opening sentence. "
+        "If a specific programme was detected, write: "
+        "'Thank you for your interest in [programme name] at HTW Berlin.' "
+        "If no specific programme was detected, write: "
+        "'Thank you for your enquiry.'\n"
+        "2) Answer only the topics asked in the student email or listed above. "
+        "Do not add additional sections from the evidence, such as language requirements, deadlines, or fees, unless the student asked about them.\n"
+        "3) Keep each topic to 1-3 short sentences.\n"
+        "4) Do not use markdown headings, tables, or long bullet lists.\n"
+        "5) Include citations like [Doc 1] after factual claims.\n"
+        "6) For application route questions, consider citizenship, residence country, target degree and programme. "
+        "Citizenship and residence country are different. "
+        "If the interpreted profile says Citizenship category: EU/EEA, do not classify the applicant as non-EU only because they live outside the EU or because their school certificate was obtained outside Germany. "
+        "For a first-semester Bachelor application, mention Hochschulstart, HTW portal, or uni-assist only if supported by the evidence.\n"
+        "7) For International Baccalaureate or foreign school certificates, do not state final acceptance. "
+        "Say that the exact subject combination/results must be checked during the application process.\n"
+        "8) For motivation letters, if the evidence does not list a motivation letter as a required document, say it is not listed as a programme-specific required document, "
+        "but the applicant should follow the application portal if it requests one.\n"
+        "9) For application fee questions, answer only application processing fees or uni-assist handling fees. "
+        "Never answer an application fee question by saying that the programme is tuition-free or that only a semester fee is paid. "
+        "Tuition fees and semester contribution are different topics and may only be mentioned if the student explicitly asked about them as separate topics.\n"
+        "10) If evidence is missing for one topic, do not write internal staff notes inside the student email. "
+        "Do not write phrases such as 'This point should be checked by staff before the final reply is sent'. "
+        "Instead, give the most specific confirmed information from the evidence. If a detail is not confirmed, write a normal student-facing sentence such as: "
+        "'The programme page linked below provides the most specific details for this point.'\n"
+        "11) Do not ask the student to repeat the programme name if a specific programme was detected in the interpreted profile.\n"
+        "12) Do not say 'Thank you for your interest in HTW Berlin’s Master’s programmes' if a specific programme was detected. "
+        "Say 'Thank you for your interest in [programme name] at HTW Berlin.'\n"
+        "13) Keep the style close to a normal staff email. Avoid technical words such as evidence, grounding, retrieved documents, or staff review in the student-facing draft.\n"
+        "14) For tuition fee questions, never answer only from the general rule that public universities in Berlin do not charge tuition fees. "
+        "If programme-specific fee evidence is available, use that first. If no programme-specific fee evidence is available, say that the programme page linked below should be used to confirm programme-specific fees.\n"
+        "15) For paid international programmes, mention tuition fees only if the amount is supported by the provided sources.\n"
+        "16) For pending transcript or application-before-graduation questions, first look for evidence about provisional transcripts, final certificates, final results, conditional admission, or later submission deadlines. "
+        "Do not answer only with a generic deadline paragraph if the student asks about pending final documents.\n"
+        "17) End with:\nKind regards,\nHTW Berlin Student Services\n"
+    )
+
     provider = (config.GENERATION_PROVIDER or "extractive").strip().lower()
+    draft = ""
 
-    if provider == "anthropic" and config.ANTHROPIC_API_KEY:
+    if provider == "mistral" and getattr(config, "MISTRAL_API_KEY", ""):
+        from mistralai import Mistral
+
+        client = Mistral(api_key=config.MISTRAL_API_KEY)
+        resp = client.chat.complete(
+            model=getattr(config, "GENERATION_MODEL", "") or "mistral-small-latest",
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            temperature=0.1,
+            max_tokens=1200,
+        )
+
+        if resp.choices:
+            draft = resp.choices[0].message.content or ""
+
+    elif provider == "anthropic" and config.ANTHROPIC_API_KEY:
         from anthropic import Anthropic
+
         client = Anthropic(api_key=config.ANTHROPIC_API_KEY)
-
-        system = (
-            "You are drafting an email from HTW Berlin Student Services to a student. "
-            "Write in simple, polite and professional English. "
-            "Use only the evidence documents. "
-            "Do not invent information. "
-            "Write directly to the student using 'you', not 'the student'. "
-            "Keep the email ready to paste and send after staff review. "
-            "Be specific and useful, but stay cautious where formal checking is required."
-        )
-
-        user = (
-            f"ORIGINAL STUDENT EMAIL:\n{original_email}\n\n"
-            f"INTERPRETED STUDENT PROFILE:\n{profile}\n\n"
-            f"TOPICS TO ANSWER ONLY:\n{topics_text}\n\n"
-            f"EVIDENCE DOCUMENTS:\n{evidence}\n\n"
-            f"{application_fee_guidance}\n\n"
-            "DRAFTING RULES:\n"
-            "1) Start with the greeting provided below.\n"
-            f"GREETING: {_student_greeting(context)}\n"
-            "2) Answer only the topics asked in the student email or listed in DETECTED TOPICS. Do not add additional sections from the evidence, such as language requirements, deadlines, or fees, unless the student asked about them.\n"
-            "3) Keep each topic to 1-3 short sentences.\n"
-            "4) Do not use markdown headings, tables, or long bullet lists.\n"
-            "5) Include citations like [Doc 1] after factual claims.\n"
-            "6) For application route questions, consider citizenship, target degree and programme. For a first-semester Bachelor application, mention Hochschulstart/HTW portal/uni-assist only if supported by the evidence.\n"
-            "7) For International Baccalaureate or foreign school certificates, do not state final acceptance. Say that the exact subject combination/results must be checked during the application process.\n"
-            "8) For motivation letters, if the evidence does not list a motivation letter as a required document, say it is not listed as a programme-specific required document, but the applicant should follow the application portal if it requests one.\n"
-            "9) For application fee questions, answer only application processing fees or uni-assist handling fees. "
-            "Never answer an application fee question by saying that the programme is tuition-free or that only a semester fee is paid. "
-            "Tuition fees and semester contribution are different topics and may only be mentioned if the student explicitly asked about them as separate topics.\n"
-            "10) If evidence is missing for one topic, do not write internal staff notes inside the student email. "
-            "Do not write phrases such as 'This point should be checked by staff before the final reply is sent'. "
-            "Instead, give the most specific confirmed information from the evidence. If a detail is not confirmed, write a normal student-facing sentence such as: "
-            "'The programme page linked below provides the most specific details for this point.'\n"
-            "11) Do not ask the student to repeat the programme name if a specific programme was detected in the interpreted profile.\n"
-            "12) Do not say 'Thank you for your interest in HTW Berlin’s Master’s programmes' if a specific programme was detected. "
-            "Say 'Thank you for your interest in [programme name] at HTW Berlin.'\n"
-            "13) Keep the style close to a normal staff email. Avoid technical words such as evidence, grounding, retrieved documents, or staff review in the student-facing draft.\n"
-            "14) For tuition fee questions, never answer only from the general rule that public universities in Berlin do not charge tuition fees. "
-            "If programme-specific fee evidence is available, use that first. If no programme-specific fee evidence is available, say that the programme page linked below should be used to confirm programme-specific fees.\n"
-            "15) For paid international programmes, mention tuition fees only if the amount is supported by the provided sources.\n"
-            "16) End with:\nKind regards,\nHTW Berlin Student Services\n"
-            "17) For pending transcript or application-before-graduation questions, first look for evidence about provisional transcripts, final certificates, final results, conditional admission, or later submission deadlines. Do not answer only with a generic deadline paragraph if the student asks about pending final documents.\n"
-        )
-
         resp = client.messages.create(
             model=getattr(config, "GENERATION_MODEL", "") or "claude-3-haiku-20240307",
-            max_tokens=650,
-            temperature=0.0,
+            max_tokens=1200,
+            temperature=0.1,
             system=system,
             messages=[{"role": "user", "content": user}],
         )
 
-        draft = ""
-        if resp and getattr(resp, "content", None):
-            draft = getattr(resp.content[0], "text", "") or ""
-        cleaned = clean_staff_draft(draft, context)
-        cleaned = fix_application_fee_confusion(cleaned, topics, docs, context)
-        return add_reference_links_to_draft(cleaned, docs, topics, context)
+        draft = resp.content[0].text if resp.content else ""
 
-    # Extractive fallback if cloud generation is unavailable.
-    cleaned = clean_staff_draft(_extractive_email_draft(context, topics, docs), context)
+    else:
+        draft = _extractive_email_draft(context, topics, docs)
+
+    # Safety fallback if the selected provider returns an empty draft.
+    if not str(draft or "").strip():
+        draft = _extractive_email_draft(context, topics, docs)
+
+    # Clean the actual generated draft, then apply the fee guard and staff reference links.
+    cleaned = clean_staff_draft(draft, context)
     cleaned = fix_application_fee_confusion(cleaned, topics, docs, context)
     return add_reference_links_to_draft(cleaned, docs, topics, context)
-
 
 def _extractive_email_draft(
     context: Dict[str, Optional[str]],
