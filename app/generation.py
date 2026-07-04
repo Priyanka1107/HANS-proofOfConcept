@@ -6,17 +6,23 @@ import re
 
 from app.config import config
 
-_DOC_CITE_RE = re.compile(r"\[(?:Doc\s*)?(\d+)\]")
+_DOC_BLOCK_RE = re.compile(r"\[([^\]]*Doc[^\]]*)\]", re.IGNORECASE)
+_DOC_NUM_RE = re.compile(r"\d+")
 
 
 def extract_citations(text: str) -> List[str]:
-    """Return citations like ['[Doc 1]', '[Doc 2]'] in order of appearance."""
+    """Return citations like ['[Doc 1]', '[Doc 2]'] in order of appearance.
+
+    Supports:
+    - [Doc 1]
+    - [Doc 1, Doc 6]
+    """
     seen = []
-    for m in _DOC_CITE_RE.finditer(text or ""):
-        num = m.group(1)
-        token = f"[Doc {num}]"
-        if token not in seen:
-            seen.append(token)
+    for block in _DOC_BLOCK_RE.finditer(text or ""):
+        for num in _DOC_NUM_RE.findall(block.group(1)):
+            token = f"[Doc {num}]"
+            if token not in seen:
+                seen.append(token)
     return seen
 
 
@@ -123,7 +129,7 @@ def _generate_with_anthropic(query: str, docs: List[Dict[str, Any]], conflicts: 
         f"EVIDENCE DOCUMENTS:\n{context}\n\n"
         "INSTRUCTIONS:\n"
         "1) Write a short answer.\n"
-        "2) Include citations [Doc N] right after the sentence they support.\n"
+        "2) Include separate citations [Doc N] right after the sentence they support. If multiple documents support one sentence, write them separately, for example [Doc 1] [Doc 2]. Do not use grouped citations such as [Doc 1, Doc 2].\n"
         "3) Do not invent details.\n"
     )
 
@@ -157,8 +163,11 @@ def _generate_with_mistral(
     client = Mistral(api_key=config.MISTRAL_API_KEY)
     model = getattr(config, "GENERATION_MODEL", "") or "mistral-small-latest"
 
-    context = _docs_context(docs)
-    conflict_note = _conflict_note(conflicts)
+    context = _build_context(docs)
+
+    conflict_note = ""
+    if conflicts:
+        conflict_note = "NOTE: Conflicts were detected between sources. Prefer canonical and newest content."
 
     user = f"""
 You are HANS, a staff-support assistant for HTW Berlin student services.
@@ -174,7 +183,7 @@ Evidence:
 Conflicts:
 {conflict_note}
 
-Write a clear, concise answer with citations like [Doc 1], [Doc 2].
+Write a clear, concise answer with separate citations such as [Doc 1] [Doc 2]. Do not use grouped citations such as [Doc 1, Doc 2].
 """.strip()
 
     response = client.chat.complete(
@@ -215,7 +224,7 @@ def _generate_with_cohere(query: str, docs: List[Dict[str, Any]], conflicts: Lis
         f"EVIDENCE DOCUMENTS:\n{context}\n\n"
         "INSTRUCTIONS:\n"
         "1) Write a short answer.\n"
-        "2) Include citations [Doc N] right after the sentence they support.\n"
+        "2) Include separate citations [Doc N] right after the sentence they support. If multiple documents support one sentence, write them separately, for example [Doc 1] [Doc 2]. Do not use grouped citations such as [Doc 1, Doc 2].\n"
         "3) Do not invent details.\n"
     )
 
@@ -278,7 +287,11 @@ def validate_answer(answer: str, docs: List[Dict[str, Any]], query: str) -> Dict
     has_citations = len(citations) > 0
 
     valid_nums = set(range(1, len(docs) + 1))
-    cited_nums = [int(m.group(1)) for m in _DOC_CITE_RE.finditer(answer or "")]
+    cited_nums = []
+    for block in _DOC_BLOCK_RE.finditer(answer or ""):
+        for num in _DOC_NUM_RE.findall(block.group(1)):
+            cited_nums.append(int(num))
+            
     citations_valid = all(n in valid_nums for n in cited_nums) if cited_nums else False
 
     evidence_text = " ".join([d.get("content", "") for d in docs])

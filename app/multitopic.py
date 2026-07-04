@@ -106,6 +106,17 @@ EU_CITIZENSHIP_PATTERNS = [
     r"\beea national\b",
     r"\bcitizen of (an )?eu\b",
     r"\bcitizen of (an )?eea\b",
+    # German EU/EEA citizenship wording
+    r"\beu[- ]?bürger\b",
+    r"\beu[- ]?bürgerin\b",
+    r"\beu[- ]?staatsbürger\b",
+    r"\beu[- ]?staatsbürgerin\b",
+    r"\beu[- ]?staatsangehörige\b",
+    r"\beu[- ]?staatsangehöriger\b",
+    r"\bbürger der eu\b",
+    r"\bbürgerin der eu\b",
+    r"\bstaatsangehörige der eu\b",
+    r"\bstaatsangehöriger der eu\b",
 
     # Common EU nationality wording
     r"\bfrench citizen\b",
@@ -129,6 +140,21 @@ def _find_first(patterns: List[str], text: str) -> bool:
     return any(re.search(p, text, flags=re.IGNORECASE) for p in patterns)
 
 
+def _is_german_reply(context: Dict[str, Optional[str]]) -> bool:
+    return str(context.get("reply_language") or context.get("input_language") or "").lower().startswith("de")
+
+
+def _student_greeting_text(context: Dict[str, Optional[str]]) -> str:
+    name = context.get("student_name")
+    if _is_german_reply(context):
+        if name:
+            return f"Guten Tag {name},"
+        return "Sehr geehrte/r Bewerber/in,"
+    if name:
+        return f"Dear {name},"
+    return "Dear applicant,"
+
+
 def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
     """
     Separate background profile from the target study goal.
@@ -148,6 +174,7 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
         "country": None,
         "citizenship_group": None,  # EU/EEA, non-EU, or unknown
         "residence_country": None,
+        "application_route_rule": None,
         "target_program_url": None,
         "target_program_application_url": None,
         "target_program_match_score": None,
@@ -157,10 +184,20 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
         "catalog_study_format": None,
     }
 
-    # Name: only simple first-name extraction for email greeting.
-    name_match = re.search(r"\bmy name is\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]+)", text)
-    if name_match:
-        context["student_name"] = name_match.group(1)
+    # Name extraction for greeting.
+    # Keep this conservative. Avoid generic "I am ..." because it can wrongly
+    # read "I am an EU citizen" as the name "an".
+    name_patterns = [
+        r"\bmy name is\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]+)",
+        r"\bmein name ist\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]+)",
+        r"\bich heiße\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]+)",
+    ]
+
+    for pattern in name_patterns:
+        name_match = re.search(pattern, text, flags=re.IGNORECASE)
+        if name_match:
+            context["student_name"] = name_match.group(1).strip()
+            break
 
     # Previous/current education
     if (
@@ -177,27 +214,54 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
         context["previous_degree"] = "School leaving certificate"
 
     # Target degree. Prefer explicit "apply/interested in ... Master's/Bachelor's programme".
-    if re.search(r"(apply|applying|interested|want|would like).{0,80}(master|master's|master’s)", lower):
-        context["target_degree"] = "Master"
-    elif re.search(r"(master|master's|master’s).{0,80}(programme|program|degree)", lower):
-        context["target_degree"] = "Master"
+    # Keep this sentence-aware so that background education such as
+    # "I completed my Bachelor's degree" does not overwrite a target Master's programme
+    # mentioned in the previous sentence.
+    target_sentences = re.split(r"(?<=[.!?])\s+", lower)
 
-    if re.search(r"(apply|applying|interested|want|would like).{0,80}(bachelor|bachelor's|bachelor’s)", lower):
+    def _sentence_says_target_master(sentence: str) -> bool:
+        return bool(
+            re.search(r"(apply|applying|interested|want|would like|like to).{0,100}(master|master's|master’s|masterstudiengang)", sentence)
+            or re.search(r"(master|master's|master’s).{0,80}(programme|program|study programme|degree)", sentence)
+            or re.search(r"\bmasterstudiengang\b|\bmasterstudium\b", sentence)
+        )
+
+    def _sentence_says_target_bachelor(sentence: str) -> bool:
+        # Do not treat completed/current Bachelor's degree as the target.
+        if re.search(
+            r"(completed|completing|finishing|finished|have|hold|holding|currently in|in the final semester of).{0,80}"
+            r"(bachelor|bachelor's|bachelor’s)\s+(degree|study|studies)",
+            sentence,
+        ):
+            return False
+
+        return bool(
+            re.search(r"(apply|applying|interested|want|would like|like to).{0,100}(bachelor|bachelor's|bachelor’s|bachelorstudiengang)", sentence)
+            or re.search(r"(bachelor|bachelor's|bachelor’s).{0,80}(programme|program|study programme)", sentence)
+            or re.search(r"\bbachelorstudiengang\b|\bbachelorstudium\b", sentence)
+        )
+
+    target_master_detected = any(_sentence_says_target_master(s) for s in target_sentences)
+    target_bachelor_detected = any(_sentence_says_target_bachelor(s) for s in target_sentences)
+
+    if target_master_detected:
+        context["target_degree"] = "Master"
+    elif target_bachelor_detected:
         context["target_degree"] = "Bachelor"
-    elif re.search(r"(bachelor|bachelor's|bachelor’s).{0,80}(programme|program)", lower):
-        # Only use this as target degree if the sentence talks about a programme,
-        # not just a completed previous Bachelor's degree.
-        if not re.search(r"(completed|completing|finishing|have).{0,40}(bachelor|bachelor's|bachelor’s)\s+degree", lower):
-            context["target_degree"] = "Bachelor"
-
+            
     # Programme: first use the dynamic programme catalogue built from scraped data.
     # This is more scalable than adding course names manually in code.
+    explicit_target_degree = context.get("target_degree")
     programme_match = match_programme_from_catalog(text)
     if programme_match:
         context.update(programme_match.to_context_fields())
-        # If the email did not clearly state Bachelor/Master but the catalogue knows it,
-        # use the catalogue degree as a soft target degree.
-        if not context.get("target_degree") and programme_match.degree in {"Bachelor", "Master"}:
+
+        # Do not let catalogue degree override what the student explicitly wrote.
+        # Example: "Master's in International Business" must remain Master even if
+        # a catalogue entry for International Business Bachelor is also present.
+        if explicit_target_degree:
+            context["target_degree"] = explicit_target_degree
+        elif programme_match.degree in {"Bachelor", "Master"}:
             context["target_degree"] = programme_match.degree
     else:
         # Backward-compatible fallback for very common programmes if the catalogue
@@ -208,7 +272,23 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
                 context["target_program_source"] = "fallback_pattern"
                 context["target_program_match_score"] = "0.70"
                 break
+    
+    # German target degree detection.
+    # This keeps German emails aligned with English emails.
+    if re.search(
+        r"(bewerben|bewerbung|interessiere|interessiert|möchte|will|studiengang).{0,100}"
+        r"(masterstudiengang|masterstudium|\bmaster\b)",
+        lower,
+    ) or re.search(r"\bmasterstudiengang\b", lower):
+        context["target_degree"] = "Master"
 
+    if re.search(
+        r"(bewerben|bewerbung|interessiere|interessiert|möchte|will|studiengang).{0,100}"
+        r"(bachelorstudiengang|bachelorstudium|\bbachelor\b)",
+        lower,
+    ) or re.search(r"\bbachelorstudiengang\b", lower):
+        context["target_degree"] = "Bachelor"
+        
     # Country / background. Keep this separate from citizenship when possible.
     for country, pattern in COUNTRY_PATTERNS.items():
         if re.search(pattern, lower):
@@ -225,6 +305,13 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
         context["citizenship_group"] = "EU/EEA"
     elif any(re.search(pattern, lower, flags=re.IGNORECASE) for pattern in NON_EU_CITIZENSHIP_PATTERNS):
         context["citizenship_group"] = "non-EU"
+
+    if context.get("citizenship_group") == "EU/EEA":
+        context["application_route_rule"] = (
+            "Applicant has EU/EEA citizenship. Treat the applicant as EU/EEA for the application route. "
+            "Do not recommend uni-assist as the main route only because the applicant lives outside Germany "
+            "or has a foreign school certificate. Keep qualification recognition separate from application route."
+        )
 
     residence_match = re.search(
         r"\b(?:living|residing|currently living|currently residing)\s+in\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\- ]+)",
@@ -442,12 +529,20 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "patterns": [
             r"\bwhat documents\b",
             r"\bwhich documents\b",
+            r"\bwhich application documents\b",
+            r"\bwhat application documents\b",
             r"\bdocuments (are )?needed\b",
             r"\bdocuments should i prepare\b",
+            r"\bdocuments i should prepare\b",
+            r"\bapplication documents should i prepare\b",
             r"\bdocuments do i need\b",
             r"\brequired documents\b",
             r"\bdocument requirements\b",
             r"\bapplication documents\b",
+            r"\bwhat documentation\b",
+            r"\bwhich documentation\b",
+            r"\bdocumentation (is )?(needed|required)\b",
+            r"\bdocumentation.*(evaluated|evaluation|credit)\b",
             r"\bofficial transcripts\b",
             r"\btranscripts\b",
             r"\bcertificates\b",
@@ -458,9 +553,16 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "label": "Credit recognition",
         "patterns": [
             r"\bcredit recognition\b",
+            r"\bcredit transfer\b",
+            r"\bcredits? (can|could|may|might|would) be (recognised|recognized|transferred)\b",
             r"\bcredits can be (recognised|recognized|transferred)\b",
             r"\bprevious credits\b",
+            r"\bpreviously earned.*credits\b",
+            r"\bearned credits\b",
+            r"\bects[- ]?equivalent credits\b",
             r"\btransfer credits\b",
+            r"\btransfer(ing)? into\b",
+            r"\bcredits?.*(evaluated|evaluation)\b",
         ],
         "query": "Can previous university credits be recognised or transferred?",
     },
@@ -604,6 +706,127 @@ TOPIC_ORDER = [
     "accommodation",
 ]
 
+# German/multilingual topic keywords.
+# These are not answer rules and do not replace multilingual embeddings.
+# They only help the email assistant split German emails into the same topics
+# as equivalent English emails before retrieval.
+GERMAN_EXTRA_TOPIC_PATTERNS: Dict[str, List[str]] = {
+    "application_before_graduation": [
+        r"\bbevor ich (mein|das) (endgültiges|finales)?\s*(zeugnis|abschlusszeugnis|transkript) (erhalte|bekomme)\b",
+        r"\bvor dem abschluss bewerben\b",
+        r"\bvor meinem abschluss bewerben\b",
+        r"\bendgültiges zeugnis erst\b",
+        r"\babschlusszeugnis erst\b",
+    ],
+    "english_language_requirements": [
+        r"\benglischkenntnisse\b",
+        r"\benglisch[- ]?nachweis\b",
+        r"\bnachweis über englischkenntnisse\b",
+        r"\bsprachnachweis englisch\b",
+        r"\btoefl\b|\bielts\b|\btoeic\b",
+    ],
+    "german_language_requirements": [
+        r"\bdeutschkenntnisse\b",
+        r"\bdeutsch[- ]?nachweis\b",
+        r"\bnachweis über deutschkenntnisse\b",
+        r"\bsprachnachweis deutsch\b",
+        r"\btestdaf\b|\bdsh\b",
+    ],
+    "language_of_instruction": [
+        r"\bunterrichtssprache\b",
+        r"\bauf englisch unterrichtet\b",
+        r"\bauf deutsch unterrichtet\b",
+        r"\benglisch oder deutsch\b",
+        r"\bvollständig auf englisch\b",
+        r"\bkomplett auf englisch\b",
+        r"\bob der studiengang.*englisch\b",
+    ],
+    "study_format": [
+        r"\bpräsenzstudium\b",
+        r"\bpräsenz\b",
+        r"\bvor ort\b",
+        r"\bon[- ]campus\b",
+        r"\bauf dem campus\b",
+        r"\bonline\b",
+        r"\bhybrid\b",
+        r"\bvollzeit\b",
+        r"\bteilzeit\b",
+    ],
+    "application_fee": [
+        r"\bbewerbungsgebühr\b",
+        r"\bbewerbungsgebühren\b",
+        r"\buni[- ]assist gebühr\b",
+        r"\buni[- ]assist gebühren\b",
+        r"\bbearbeitungsgebühr\b",
+        r"\bbearbeitungsgebühren\b",
+    ],
+    "tuition_fees": [
+        r"\bstudiengebühr\b",
+        r"\bstudiengebühren\b",
+        r"\btuition\b",
+    ],
+    "semester_contribution": [
+        r"\bsemesterbeitrag\b",
+        r"\bsemestergebühr\b",
+        r"\bsemestergebühren\b",
+    ],
+    "application_route": [
+        r"\büber uni[- ]assist\b",
+        r"\büber hochschulstart\b",
+        r"\büber das htw bewerbungsportal\b",
+        r"\bbewerbungsportal\b",
+        r"\bwie bewerbe ich mich\b",
+        r"\bwo bewerbe ich mich\b",
+        r"\bmuss ich mich.*bewerben\b",
+        r"\bmuss ich.*uni[- ]assist\b",
+    ],
+    "motivation_letter": [
+        r"\bmotivationsschreiben\b",
+    ],
+    "qualification_recognition": [
+        r"\banerkennung\b",
+        r"\banerkannt\b",
+        r"\berfüllt mein.*diplom\b",
+        r"\bib[- ]?diplom\b",
+        r"\binternational baccalaureate\b",
+        r"\bbaccalaur",
+        r"\bhochschulzugangsberechtigung\b",
+        r"\bausländisch(e|er|es)?.*zeugnis\b",
+        r"\banabin\b",
+        r"\bvpd\b",
+    ],
+    "required_documents": [
+        r"\bwelche unterlagen\b",
+        r"\bwelche dokumente\b",
+        r"\bunterlagen.*vorbereiten\b",
+        r"\bdokumente.*hochladen\b",
+        r"\berforderliche unterlagen\b",
+    ],
+    "application_deadline": [
+        r"\bbewerbungsfrist\b",
+        r"\bbewerbungszeitraum\b",
+        r"\bfrist\b",
+        r"\bbis wann\b",
+        r"\bwann.*bewerben\b",
+    ],
+    "work_experience": [
+        r"\bberufserfahrung\b",
+        r"\bberufliche erfahrung\b",
+        r"\bpraktische erfahrung\b",
+        r"\barbeitserfahrung\b",
+    ],
+    "admission_requirements": [
+        r"\bzulassungsvoraussetzungen\b",
+        r"\bzulassungsanforderungen\b",
+        r"\baufnahmevoraussetzungen\b",
+        r"\bvoraussetzungen\b",
+    ],
+}
+
+for _topic_id, _patterns in GERMAN_EXTRA_TOPIC_PATTERNS.items():
+    if _topic_id in TOPIC_DEFINITIONS:
+        TOPIC_DEFINITIONS[_topic_id]["patterns"].extend(_patterns)
+
 
 def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics: int = 4) -> List[Dict[str, str]]:
     """
@@ -628,6 +851,24 @@ def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics
     if re.search(r"\b(language proof|proof of language|what language proof|which language proof|language requirement|language requirements)\b", text):
         if "english_language_requirements" not in found and "german_language_requirements" not in found:
             found.append("english_language_requirements")
+
+    # German topic safety for natural wording that should map to the same topics
+    # as equivalent English emails.
+    if re.search(r"(bewerbungsfrist|bewerbungszeitraum|bis wann.*bewerben|wann.*bewerben)", text, flags=re.IGNORECASE):
+        if "application_deadline" not in found:
+            found.append("application_deadline")
+
+    if re.search(r"(unterrichtssprache|auf englisch unterrichtet|auf deutsch unterrichtet|englisch oder deutsch|vollständig auf englisch|komplett auf englisch)", text, flags=re.IGNORECASE):
+        if "language_of_instruction" not in found:
+            found.append("language_of_instruction")
+
+    if re.search(r"(präsenzstudium|präsenz|vor ort|auf dem campus|on[- ]campus|online|hybrid|vollzeit|teilzeit)", text, flags=re.IGNORECASE):
+        if "study_format" not in found:
+            found.append("study_format")
+
+    if re.search(r"(motivationsschreiben)", text, flags=re.IGNORECASE):
+        if "motivation_letter" not in found:
+            found.append("motivation_letter")
 
     # Only answer language of instruction when the student asks it as a question.
     # Do not add this topic only because the programme name/description says "English-taught".
@@ -675,7 +916,15 @@ def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics
     # If explicit upload/hard copy/translation topics exist, avoid generic required_documents
     # unless "what documents/documents needed/required documents" was explicitly asked.
     if "required_documents" in found_set:
-        explicit_required = re.search(r"\b(what documents|documents (are )?needed|required documents|document requirements)\b", text)
+        explicit_required = re.search(
+            r"\b("
+            r"what documents|which documents|what application documents|which application documents|"
+            r"documents (are )?needed|documents should i prepare|documents i should prepare|"
+            r"required documents|document requirements|application documents|"
+            r"what documentation|which documentation|documentation (is )?(needed|required)"
+            r")\b",
+            text,
+        )
         if not explicit_required:
             found_set.discard("required_documents")
 
@@ -748,9 +997,16 @@ def build_evidence_query(topic_id: str, base_query: str, context: Dict[str, Opti
     if context.get("residence_country") and topic_id == "application_route":
         parts.append(f"Residence country: {context['residence_country']}")
 
+    if context.get("application_route_rule") and topic_id == "application_route":
+        parts.append(f"Application route rule: {context['application_route_rule']}")
+
     # Topic-specific retrieval hints. These are not additional facts; they guide
     # retrieval toward the right HTW/application pages.
     if topic_id == "application_route":
+        if context.get("citizenship_group") == "EU/EEA":
+            parts.append(
+                "EU/EEA application route priority: because the applicant has EU/EEA citizenship, do not recommend uni-assist as the main route only because of residence outside Germany or a foreign school certificate. Mention qualification recognition separately."
+            )
         parts.append("Include application route, Hochschulstart, DoSV, HTW application portal, EU/EEA and uni-assist rules.")
     elif topic_id == "qualification_recognition":
         parts.append("Include International Baccalaureate, IB diploma, foreign school leaving certificate, higher education entrance qualification, anabin and DAAD admission database.")
@@ -797,10 +1053,7 @@ def _build_context(docs: List[Dict[str, Any]]) -> str:
 
 
 def _student_greeting(context: Dict[str, Optional[str]]) -> str:
-    name = context.get("student_name")
-    if name:
-        return f"Dear {name},"
-    return "Dear applicant,"
+    return _student_greeting_text(context)
 
 def _topic_ids(topics: List[Dict[str, str]]) -> set:
     return {str(t.get("topic_id", "") or "") for t in topics}
@@ -891,12 +1144,23 @@ def generate_staff_email_draft(
     context: Dict[str, Optional[str]],
     topics: List[Dict[str, str]],
     docs: List[Dict[str, Any]],
+    generation_provider: Optional[str] = None,
+    generation_model: Optional[str] = None,
 ) -> str:
     """
     Generate ONE final email draft using all retrieved evidence.
     This restores the fluency of the baseline while keeping topic-level retrieval.
     """
     if not docs:
+        if _is_german_reply(context):
+            return (
+                f"{_student_greeting(context)}\n\n"
+                "vielen Dank für Ihre Anfrage.\n\n"
+                "Ich konnte die angefragten Informationen in den verfügbaren Quellen nicht zuverlässig bestätigen. "
+                "Bitte prüfen Sie den Fall direkt mit dem zuständigen Team, bevor Sie antworten.\n\n"
+                "Mit freundlichen Grüßen\n"
+                "HTW Berlin Student Services"
+            )
         return (
             f"{_student_greeting(context)}\n\n"
             "Thank you for your enquiry.\n\n"
@@ -923,6 +1187,8 @@ def generate_staff_email_draft(
         ("country", "Applicant background"),
         ("citizenship_group", "Citizenship category"),
         ("residence_country", "Residence country"),
+        ("application_route_rule", "Application route rule"),
+        ("reply_language", "Reply language"),
     ]:
         if context.get(key):
             profile_bits.append(f"{label}: {context[key]}")
@@ -932,12 +1198,23 @@ def generate_staff_email_draft(
     evidence = _build_context(docs)
     application_fee_guidance = _application_fee_guidance_for_prompt(topics, context)
 
+    reply_language = str(context.get("reply_language") or context.get("input_language") or "en").lower()
+    if reply_language.startswith("de"):
+        language_instruction = (
+            "Write the complete draft in German because the student's email is in German. "
+            "Use German greeting and closing. Do not switch to English except for official programme names, URLs, or cited source titles. "
+        )
+    else:
+        language_instruction = (
+            "Write the complete draft in English because the student's email is in English or the language is unknown. "
+        )
+
     system = (
         "You are drafting an email from HTW Berlin Student Services to a student. "
-        "Write in simple, polite and professional English. "
+        + language_instruction +
         "Use only the evidence documents. "
         "Do not invent information. "
-        "Write directly to the student using 'you', not 'the student'. "
+        "Write directly to the student using 'you'/'Sie', not 'the student'. "
         "Keep the email ready to paste and send after staff review. "
         "Be specific and useful, but stay cautious where formal checking is required."
     )
@@ -949,29 +1226,40 @@ def generate_staff_email_draft(
         f"EVIDENCE DOCUMENTS:\n{evidence}\n\n"
         f"{application_fee_guidance}\n\n"
         "DRAFTING RULES:\n"
+        "0) Reply in the same language as the student's email. If Reply language is 'de', write the complete draft in German, including opening sentence and closing. If Reply language is 'en', write the complete draft in English.\n"
         "1) Start with the greeting provided below.\n"
         f"GREETING: {_student_greeting(context)}\n"
-        "After the greeting, add one short polite opening sentence. "
-        "If a specific programme was detected, write: "
+        "After the greeting, add one short polite opening sentence in the reply language. "
+        "For German replies, use wording such as: "
+        "'vielen Dank für Ihr Interesse an [programme name] an der HTW Berlin.' "
+        "or, if no specific programme was detected: "
+        "'vielen Dank für Ihre Anfrage.' "
+        "For English replies, use wording such as: "
         "'Thank you for your interest in [programme name] at HTW Berlin.' "
-        "If no specific programme was detected, write: "
+        "or, if no specific programme was detected: "
         "'Thank you for your enquiry.'\n"
         "2) Answer only the topics asked in the student email or listed above. "
         "Do not add additional sections from the evidence, such as language requirements, deadlines, or fees, unless the student asked about them.\n"
         "3) Keep each topic to 1-3 short sentences.\n"
         "4) Do not use markdown headings, tables, or long bullet lists.\n"
-        "5) Include citations like [Doc 1] after factual claims.\n"
+        "5) Include separate citations after factual claims, for example [Doc 1] [Doc 2]. Do not use grouped citations such as [Doc 1, Doc 2].\n"
         "6) For application route questions, consider citizenship, residence country, target degree and programme. "
         "Citizenship and residence country are different. "
         "If the interpreted profile says Citizenship category: EU/EEA, do not classify the applicant as non-EU only because they live outside the EU or because their school certificate was obtained outside Germany. "
-        "For a first-semester Bachelor application, mention Hochschulstart, HTW portal, or uni-assist only if supported by the evidence.\n"
+        "For a first-semester Bachelor application, mention Hochschulstart, HTW portal, or uni-assist only if supported by the evidence. "
+        "If Citizenship category is EU/EEA, the main application route must not be uni-assist solely because the applicant lives outside Germany or has a foreign school certificate. Treat qualification recognition as a separate point.\n"
         "7) For International Baccalaureate or foreign school certificates, do not state final acceptance. "
         "Say that the exact subject combination/results must be checked during the application process.\n"
+        "7a) Do not infer that an International Baccalaureate diploma was completed in English unless the student explicitly says so. "
+        "Do not claim that English language proof is not required unless the evidence clearly supports an exemption for the applicant's exact profile. "
+        "If uncertain, say that the applicant should check the programme's English language requirements in the HTW application portal to see whether proof is required or an exemption applies.\n"
         "8) For motivation letters, if the evidence does not list a motivation letter as a required document, say it is not listed as a programme-specific required document, "
         "but the applicant should follow the application portal if it requests one.\n"
-        "9) For application fee questions, answer only application processing fees or uni-assist handling fees. "
-        "Never answer an application fee question by saying that the programme is tuition-free or that only a semester fee is paid. "
-        "Tuition fees and semester contribution are different topics and may only be mentioned if the student explicitly asked about them as separate topics.\n"
+        "9) For application fee questions, answer application processing fees or uni-assist handling fees only. "
+        "Do not answer an application fee question with tuition fees or semester contribution. "
+        "Application fees, tuition fees, and semester contribution are three separate topics. "
+        "If the documents do not show a separate HTW application fee, say that no separate HTW application fee is confirmed from the available programme information. "
+        "If the application route uses uni-assist, mention that uni-assist handling fees apply and that the current amount must be checked on the official uni-assist handling fee page linked below.\n"
         "10) If evidence is missing for one topic, do not write internal staff notes inside the student email. "
         "Do not write phrases such as 'This point should be checked by staff before the final reply is sent'. "
         "Instead, give the most specific confirmed information from the evidence. If a detail is not confirmed, write a normal student-facing sentence such as: "
@@ -985,10 +1273,15 @@ def generate_staff_email_draft(
         "15) For paid international programmes, mention tuition fees only if the amount is supported by the provided sources.\n"
         "16) For pending transcript or application-before-graduation questions, first look for evidence about provisional transcripts, final certificates, final results, conditional admission, or later submission deadlines. "
         "Do not answer only with a generic deadline paragraph if the student asks about pending final documents.\n"
-        "17) End with:\nKind regards,\nHTW Berlin Student Services\n"
+        "16a) Do not add applicant-profile comments unless the student explicitly asked about admission requirements, eligibility, APS, required documents, qualification recognition, or work experience. "
+        "If the student only asks about deadline, language of instruction, study format, or application fees, do not mention APS certificate, document requirements, work experience, or whether the applicant fulfils admission requirements.\n"
+        "17) End with the closing in the reply language. "
+        "For German replies, end with:\nMit freundlichen Grüßen\nHTW Berlin Student Services\n"
+        "For English replies, end with:\nKind regards,\nHTW Berlin Student Services\n"
     )
 
-    provider = (config.GENERATION_PROVIDER or "extractive").strip().lower()
+    provider = (generation_provider or config.GENERATION_PROVIDER or "extractive").strip().lower()
+    model = generation_model or getattr(config, "GENERATION_MODEL", "") or ""
     draft = ""
 
     if provider == "mistral" and getattr(config, "MISTRAL_API_KEY", ""):
@@ -996,7 +1289,7 @@ def generate_staff_email_draft(
 
         client = Mistral(api_key=config.MISTRAL_API_KEY)
         resp = client.chat.complete(
-            model=getattr(config, "GENERATION_MODEL", "") or "mistral-small-latest",
+            model=model or "mistral-small-latest",
             messages=[
                 {"role": "system", "content": system},
                 {"role": "user", "content": user},
@@ -1013,7 +1306,7 @@ def generate_staff_email_draft(
 
         client = Anthropic(api_key=config.ANTHROPIC_API_KEY)
         resp = client.messages.create(
-            model=getattr(config, "GENERATION_MODEL", "") or "claude-3-haiku-20240307",
+            model=model or "claude-haiku-4-5",
             max_tokens=1200,
             temperature=0.1,
             system=system,
@@ -1029,9 +1322,13 @@ def generate_staff_email_draft(
     if not str(draft or "").strip():
         draft = _extractive_email_draft(context, topics, docs)
 
-    # Clean the actual generated draft, then apply the fee guard and staff reference links.
+    # Clean the actual generated draft, remove unasked profile advice,
+    # then apply the fee guard and staff reference links.
     cleaned = clean_staff_draft(draft, context)
+    cleaned = remove_unasked_profile_advice(cleaned, topics, context)
     cleaned = fix_application_fee_confusion(cleaned, topics, docs, context)
+    cleaned = fix_topic_specific_cleanup(cleaned, topics, docs, context)
+    cleaned = fix_unverified_english_exemption_claims(cleaned, original_email, topics, context)
     return add_reference_links_to_draft(cleaned, docs, topics, context)
 
 def _extractive_email_draft(
@@ -1039,6 +1336,18 @@ def _extractive_email_draft(
     topics: List[Dict[str, str]],
     docs: List[Dict[str, Any]],
 ) -> str:
+    if _is_german_reply(context):
+        lines = [
+            _student_greeting(context),
+            "",
+            "vielen Dank für Ihre Anfrage.",
+            "",
+        ]
+        for i, t in enumerate(topics[:4], start=1):
+            lines.append(f"Zu {t['label'].lower()} prüfen Sie bitte die folgenden Informationen aus den verfügbaren HTW-Quellen [Doc {min(i, len(docs))}].")
+        lines.extend(["", "Mit freundlichen Grüßen", "HTW Berlin Student Services"])
+        return "\n".join(lines)
+
     lines = [
         _student_greeting(context),
         "",
@@ -1099,14 +1408,14 @@ def fix_application_fee_confusion(
     context: Dict[str, Optional[str]],
 ) -> str:
     """
-    Fix a common LLM failure:
-    The student asks about application fees, but the draft answers tuition fees
-    or semester contribution instead.
+    Fix common application-fee failures.
 
-    This guard only runs when:
-    - application_fee is a detected topic,
-    - tuition_fees and semester_contribution are not detected as separate topics,
-    - the draft contains a fee paragraph that wrongly says tuition-free or semester fee.
+    This guard handles two cases:
+    1. The model answers application fees with tuition fees or semester contribution.
+    2. The model says the evidence does not contain fee information, even though
+       we can still give a safe staff-review answer: application fees are separate
+       from tuition/semester contribution, and uni-assist handling fees apply
+       when the application route uses uni-assist.
     """
     text = draft or ""
     topic_ids = _topic_ids(topics)
@@ -1115,13 +1424,15 @@ def fix_application_fee_confusion(
         return text
 
     # If the student explicitly asked about tuition or semester contribution too,
-    # do not rewrite the fee paragraph.
+    # do not rewrite the whole fee paragraph.
     if "tuition_fees" in topic_ids or "semester_contribution" in topic_ids:
         return text
 
     lower = text.lower()
+    is_de = _is_german_reply(context)
 
-    fee_confusion_markers = [
+    fee_confusion_or_uncertainty_markers = [
+        # Old confusion: application fee answered as tuition/semester fee.
         "programme itself is tuition-free",
         "program itself is tuition-free",
         "master's programme itself is tuition-free",
@@ -1129,52 +1440,74 @@ def fix_application_fee_confusion(
         "only pay a semester fee",
         "only pay a semester contribution",
         "tuition-free, and you only pay",
+
+        # New issue: safe but too vague / system-like.
+        "evidence documents provided do not contain specific information",
+        "evidence documents do not contain specific information",
+        "do not contain specific information about application processing fees",
+        "do not contain specific information about application fees",
+        "available information does not specify application fees",
+        "could not confirm a specific application processing fee",
+        "could not confirm specific application processing fees",
     ]
 
-    if not any(marker in lower for marker in fee_confusion_markers):
+    if not any(marker in lower for marker in fee_confusion_or_uncertainty_markers):
         return text
 
     citation = _find_best_application_fee_citation(docs)
     citation_text = f" {citation}" if citation else ""
 
-    country = str(context.get("country") or "").strip()
-    previous_degree = str(context.get("previous_degree") or "").strip()
-
-    if country or previous_degree:
+    if is_de:
         corrected_paragraph = (
-            "Application fees: Since your previous education was completed outside Germany, "
-            "you may need to apply via uni-assist depending on the application route confirmed for your case. "
-            f"Applications via uni-assist are subject to processing or handling fees, which must be paid by the application deadline{citation_text}. "
-            "Please check the official uni-assist handling fee page linked below for the current amount."
+            "Bewerbungsgebühren: Bewerbungsgebühren sind von Studiengebühren und dem Semesterbeitrag zu unterscheiden. "
+            "Aus den verfügbaren Programminformationen geht keine separate HTW-Bewerbungsgebühr hervor. "
+            "Wenn Ihr Bewerbungsweg jedoch über uni-assist läuft, fallen dort Bearbeitungs- bzw. Handlinggebühren an, "
+            f"die fristgerecht bezahlt werden müssen{citation_text}. "
+            "Bitte prüfen Sie den unten verlinkten offiziellen uni-assist-Hinweis zu den aktuellen Gebühren."
         )
+        closing_marker = "Mit freundlichen Grüßen"
+        paragraph_heading_pattern = r"(Bewerbungsgebühren:\s*|Application fees:\s*)"
     else:
         corrected_paragraph = (
-            "Application fees: Application fees refer to application processing costs, for example uni-assist handling fees where uni-assist is used. "
-            f"If your application route uses uni-assist, the processing or handling fee must be paid by the application deadline{citation_text}. "
+            "Application fees: Application fees are different from tuition fees and the semester contribution. "
+            "The available programme information does not show a separate HTW application fee. "
+            "However, if your application route uses uni-assist, uni-assist handling fees apply and must be paid by the deadline"
+            f"{citation_text}. "
             "Please check the official uni-assist handling fee page linked below for the current amount."
         )
+        closing_marker = "Kind regards"
+        paragraph_heading_pattern = r"(Application fees:\s*|Bewerbungsgebühren:\s*)"
 
-    # Replace an existing "Application fees:" paragraph.
+    # Replace an existing application-fee paragraph.
     pattern = re.compile(
-        r"(Application fees:\s*)(.*?)(?=\n\n[A-Z][A-Za-z /-]+:|\n\nFor detailed|\n\nKind regards|$)",
+        paragraph_heading_pattern
+        + r".*?(?=\n\n[A-ZÄÖÜ][A-Za-zÄÖÜäöüß /-]+:|\n\nFor further|\n\nWeitere|\n\nKind regards|\n\nMit freundlichen Grüßen|$)",
         flags=re.IGNORECASE | re.DOTALL,
     )
 
     if pattern.search(text):
         text = pattern.sub(corrected_paragraph, text, count=1)
-        return text.strip()
+        return re.sub(r"\n{3,}", "\n\n", text).strip()
 
-    # If no explicit paragraph found, add a corrected paragraph before closing.
-    if "Kind regards" in text:
-        text = text.replace("Kind regards", corrected_paragraph + "\n\nKind regards", 1)
+    # If no explicit paragraph found, add corrected paragraph before closing.
+    if closing_marker in text:
+        text = text.replace(closing_marker, corrected_paragraph + "\n\n" + closing_marker, 1)
     else:
         text = text.rstrip() + "\n\n" + corrected_paragraph
 
-    return text.strip()
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 def clean_staff_draft(draft: str, context: Dict[str, Optional[str]]) -> str:
-    """Remove common model artefacts and make the text more student-facing."""
+    """Remove common model artefacts and make the text more student-facing.
+
+    Important multilingual behaviour:
+    - German drafts should end only with the German closing.
+    - English drafts should end only with the English closing.
+    - The AI disclaimer can remain English because it is appended later and is
+      meant for staff review.
+    """
     text = draft or ""
+    german_reply = _is_german_reply(context)
 
     # Remove markdown formatting.
     text = re.sub(r"#+\s*", "", text)
@@ -1184,7 +1517,7 @@ def clean_staff_draft(draft: str, context: Dict[str, Optional[str]]) -> str:
     # Make it directly student-facing.
     text = re.sub(r"\bthe student\b", "you", text, flags=re.IGNORECASE)
     text = re.sub(r"\bthe applicant\b", "you", text, flags=re.IGNORECASE)
-    
+
     # Remove internal staff-check wording from the student-facing draft.
     text = re.sub(
         r"This point should be checked by staff before the final reply is sent\.?",
@@ -1192,7 +1525,6 @@ def clean_staff_draft(draft: str, context: Dict[str, Optional[str]]) -> str:
         text,
         flags=re.IGNORECASE,
     )
-
     text = re.sub(
         r"This point should be reviewed by staff before the final reply is sent\.?",
         "The programme page linked below provides the most specific details for this point.",
@@ -1209,20 +1541,326 @@ def clean_staff_draft(draft: str, context: Dict[str, Optional[str]]) -> str:
     # Avoid repeated greeting if model adds extra notes.
     greeting = _student_greeting(context)
     if greeting in text:
-        before, after = text.split(greeting, 1)
+        _before, after = text.split(greeting, 1)
         text = greeting + after
     else:
         text = greeting + "\n\n" + text.strip()
 
-    # Normalize endings.
-    if "Kind regards" not in text:
-        text = text.rstrip() + "\n\nKind regards,\nHTW Berlin Student Services"
+    if german_reply:
+        # Remove accidental English closing added by the model or by older cleanup code.
+        text = re.sub(
+            r"\n{1,3}(Kind regards|Best regards|Sincerely),?\s*\nHTW Berlin Student Services\s*",
+            "\n",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+        # Add German closing only if missing.
+        if "Mit freundlichen Grüßen" not in text:
+            text = text.rstrip() + "\n\nMit freundlichen Grüßen\nHTW Berlin Student Services"
+    else:
+        # Remove accidental German closing from an English draft.
+        text = re.sub(
+            r"\n{1,3}Mit freundlichen Grüßen,?\s*\nHTW Berlin Student Services\s*",
+            "\n",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+        # Add English closing only if missing.
+        if "Kind regards" not in text:
+            text = text.rstrip() + "\n\nKind regards,\nHTW Berlin Student Services"
 
     # Collapse excessive blank lines.
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
 
     return text
 
+
+def remove_unasked_profile_advice(
+    draft: str,
+    topics: List[Dict[str, str]],
+    context: Dict[str, Optional[str]],
+) -> str:
+    """
+    Remove extra applicant-profile advice when the student did not ask about it.
+
+    Example: if the student asks only about deadline, language of instruction, and
+    study format, do not add paragraphs about APS, work experience, admission
+    requirements, or whether the applicant fulfils the requirements.
+    """
+    text = draft or ""
+    topic_ids = _topic_ids(topics)
+
+    allowed_profile_topics = {
+        "admission_requirements",
+        "aps_certificate",
+        "required_documents",
+        "document_uploads",
+        "hard_copy_documents",
+        "certified_translations",
+        "qualification_recognition",
+        "work_experience",
+    }
+
+    if topic_ids & allowed_profile_topics:
+        return text
+
+    risky_terms = [
+        "aps",
+        "academic test centre",
+        "academic test center",
+        "work experience",
+        "professional experience",
+        "qualified professional experience",
+        "berufserfahrung",
+        "berufliche erfahrung",
+        "admission requirements",
+        "zulassungsvoraussetzungen",
+        "fulfil the admission requirements",
+        "fulfill the admission requirements",
+        "fulfils the admission requirements",
+        "fulfills the admission requirements",
+        "erfüllen sie die",
+        "erfüllt die",
+        "required documents",
+        "application documents",
+    ]
+
+    paragraphs = re.split(r"\n\s*\n", text)
+    kept: List[str] = []
+
+    for paragraph in paragraphs:
+        lower = paragraph.lower()
+        if any(term in lower for term in risky_terms):
+            continue
+        kept.append(paragraph)
+
+    cleaned = "\n\n".join(p.strip() for p in kept if p.strip())
+    return re.sub(r"\n{3,}", "\n\n", cleaned).strip()
+
+
+def _best_topic_citation(
+    docs: List[Dict[str, Any]],
+    context: Dict[str, Optional[str]],
+    preferred_keywords: Optional[List[str]] = None,
+) -> str:
+    """
+    Pick a conservative citation for a topic-level cleanup.
+
+    Preference:
+    - a document related to the detected programme,
+    - otherwise a document containing the preferred keywords,
+    - otherwise the first retrieved document.
+    """
+    if not docs:
+        return ""
+
+    preferred_keywords = [str(k or "").lower() for k in (preferred_keywords or []) if str(k or "").strip()]
+
+    # Programme-specific documents first.
+    if context.get("target_program"):
+        scored = [(idx, _doc_programme_score(doc, context)) for idx, doc in enumerate(docs, start=1)]
+        scored = sorted(scored, key=lambda x: x[1], reverse=True)
+        if scored and scored[0][1] >= 3:
+            return f"[Doc {scored[0][0]}]"
+
+    # Keyword-specific backup.
+    for idx, doc in enumerate(docs, start=1):
+        combined = " ".join(
+            str(doc.get(key, "") or "")
+            for key in ["title", "source_url", "url", "object_type", "content", "chunk_text"]
+        ).lower()
+        if any(keyword in combined for keyword in preferred_keywords):
+            return f"[Doc {idx}]"
+
+    return "[Doc 1]"
+
+
+def fix_topic_specific_cleanup(
+    draft: str,
+    topics: List[Dict[str, str]],
+    docs: List[Dict[str, Any]],
+    context: Dict[str, Optional[str]],
+) -> str:
+    """
+    Final topic-specific cleanup before reference links are added.
+
+    Fixes:
+    - Follow-up motivation-letter drafts sometimes have no [Doc N] citation.
+    - International Business follow-ups can wrongly say Bachelor when the stored
+      thread context says the target degree is Master.
+    - Some English-language wording can incorrectly imply Portugal is an
+      English-speaking country.
+    """
+    text = draft or ""
+    topic_ids = _topic_ids(topics)
+
+    # Keep the target degree consistent with the thread context.
+    target_degree = str(context.get("target_degree") or "").strip()
+    target_program = str(context.get("target_program") or "").strip()
+
+    if target_degree == "Master" and target_program:
+        program_re = re.escape(target_program)
+        text = re.sub(
+            rf"({program_re})\s+Bachelor('?s)?\s+programme",
+            rf"\1 Master's programme",
+            text,
+            flags=re.IGNORECASE,
+        )
+        text = re.sub(
+            rf"({program_re})\s+Bachelor('?s)?\s+program",
+            rf"\1 Master's programme",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+    if target_degree == "Bachelor" and target_program:
+        program_re = re.escape(target_program)
+        text = re.sub(
+            rf"({program_re})\s+Master('?s)?\s+programme",
+            rf"\1 Bachelor's programme",
+            text,
+            flags=re.IGNORECASE,
+        )
+        text = re.sub(
+            rf"({program_re})\s+Master('?s)?\s+program",
+            rf"\1 Bachelor's programme",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+    # Add a citation to the motivation-letter paragraph if the topic was asked
+    # and the model answered it without citation.
+    if "motivation_letter" in topic_ids and docs:
+        citation = _best_topic_citation(
+            docs,
+            context,
+            preferred_keywords=["motivation letter", "letter of motivation", "required document", "application documents"],
+        )
+        paragraphs = re.split(r"\n\s*\n", text)
+        fixed_paragraphs: List[str] = []
+
+        for paragraph in paragraphs:
+            lower = paragraph.lower()
+            mentions_motivation = (
+                "motivation letter" in lower
+                or "letter of motivation" in lower
+                or "motivationsschreiben" in lower
+            )
+            if mentions_motivation and "[doc" not in lower and citation:
+                paragraph = paragraph.rstrip()
+                if paragraph.endswith("."):
+                    paragraph = paragraph + f" {citation}"
+                else:
+                    paragraph = paragraph + f". {citation}"
+            fixed_paragraphs.append(paragraph)
+
+        text = "\n\n".join(p.strip() for p in fixed_paragraphs if p.strip())
+
+    # Remove contradictory wording around English-speaking countries.
+    text = re.sub(
+        r"Since you obtained your qualification from an English-speaking country\s*\(Portugal is not listed as an English-speaking OECD country[^)]*\),\s*you may need",
+        "Because Portugal is not listed as an English-speaking OECD country in the cited rule, you may need",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Since you obtained your qualification from an English-speaking country\s*\(Portugal is not classified as an English-speaking OECD country[^)]*\),\s*you may need",
+        "Because Portugal is not classified as an English-speaking OECD country in the cited rule, you may need",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Since you obtained your qualification from an English-speaking country\s*\([^)]*English-speaking OECD country[^)]*\),\s*you may need",
+        "Because the cited exemption rule depends on English-speaking OECD-country status, you may need",
+        text,
+        flags=re.IGNORECASE,
+    )
+
+    # Avoid assuming the IB was completed in English unless the student explicitly said so.
+    text = re.sub(
+        r"Since you completed your IB in English,\s*you should check",
+        "For English-language proof, please check",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Since you completed the IB in English,\s*you should check",
+        "For English-language proof, please check",
+        text,
+        flags=re.IGNORECASE,
+    )
+
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
+
+
+def fix_unverified_english_exemption_claims(
+    draft: str,
+    original_email: str,
+    topics: List[Dict[str, str]],
+    context: Dict[str, Optional[str]],
+) -> str:
+    """
+    Remove overconfident English-proof exemption claims.
+
+    General safety rule:
+    - Do not infer that a qualification was obtained in an English-speaking
+      country just because the student mentions an International Baccalaureate
+      or a country of residence.
+    - Only keep a "no English proof required" claim when the incoming email
+      itself explicitly says the qualification was taught/completed in English
+      or that the applicant is from an English-speaking country.
+    """
+    text = draft or ""
+    original = (original_email or "").lower()
+
+    explicit_english_medium = any(
+        marker in original
+        for marker in [
+            "taught in english",
+            "completed in english",
+            "studied in english",
+            "medium of instruction was english",
+            "medium of instruction is english",
+            "english-speaking country",
+            "english speaking country",
+            "english-speaking oecd",
+            "english speaking oecd",
+        ]
+    )
+
+    if explicit_english_medium:
+        return text
+
+    replacement = (
+        "Please check the programme's English language requirements in the HTW application portal "
+        "to confirm whether you need to provide additional English proof or whether an exemption applies."
+    )
+
+    risky_patterns = [
+        r"Since you obtained your qualification from an English-speaking country,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"Because you obtained your qualification from an English-speaking country,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"As you obtained your qualification from an English-speaking country,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"Since your qualification was obtained in English,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"Because your qualification was obtained in English,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"As your qualification was obtained in English,\s*additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+        r"Additional English language proof is not required for this programme\.?\s*(?:\[Doc\s*\d+\]\s*)?",
+    ]
+
+    changed = False
+    for pattern in risky_patterns:
+        updated = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+        if updated != text:
+            changed = True
+            text = updated
+
+    if changed:
+        text = re.sub(r"\n{3,}", "\n\n", text).strip()
+
+    return text
 
 def _doc_url(doc: Dict[str, Any]) -> str:
     return (doc.get("source_url", "") or doc.get("url", "") or "").strip()
@@ -1640,78 +2278,98 @@ def add_reference_links_to_draft(
     context: Optional[Dict[str, Optional[str]]] = None,
 ) -> str:
     """
-    Add a short verification section for staff.
+    Add a short staff verification section.
 
-    The email body can still use [Doc 1] citation markers for grounding, but staff
-    also need the actual URLs in the same draft view. This keeps the PoC
-    staff-facing and easy to verify before sharing.
+    Default behaviour:
+    - list only the documents actually cited in the draft as [Doc N].
+    - do not add extra programme, portal, Hochschulstart, anabin or DAAD links.
+
+    Exception:
+    - if the draft itself discusses uni-assist handling fees, add the official
+      uni-assist fee page as a staff verification link, because this is an
+      external fee-check page rather than a retrieved Doc N citation.
     """
+    context = context or {}
     text = (draft or "").strip()
+    german_reply = _is_german_reply(context)
 
     # Avoid adding duplicate reference sections if the function is called twice.
-    if "Reference links for staff verification:" in text:
+    if (
+        "Reference links for staff verification:" in text
+        or "Referenzlinks zur Prüfung durch Mitarbeitende:" in text
+    ):
         return text
 
-    cited_numbers = []
-    for m in re.finditer(r"\[(?:Doc\s*)?(\d+)\]", text):
-        n = int(m.group(1))
-        if n not in cited_numbers:
-            cited_numbers.append(n)
+    cited_numbers: List[int] = []
+    for match in re.finditer(r"\[Doc\s*(\d+)\]", text, flags=re.IGNORECASE):
+        number = int(match.group(1))
+        if number not in cited_numbers:
+            cited_numbers.append(number)
 
     reference_lines: List[str] = []
 
-    # Add matched programme URLs from the programme catalogue. This avoids saying
-    # "check the programme website" without giving staff the exact URL.
-    for line in programme_reference_lines(context or {}):
-        reference_lines.append(line)
-
-    # Add cited source URLs only. This keeps the draft short and avoids dumping all
-    # retrieved sources into the student-ready part.
-    for n in cited_numbers:
-        if 1 <= n <= len(docs):
-            doc = docs[n - 1]
+    # Add only cited retrieved documents.
+    for number in cited_numbers:
+        if 1 <= number <= len(docs):
+            doc = docs[number - 1]
             url = _doc_url(doc)
-            if url:
-                title = (doc.get("title", "") or doc.get("object_type", "") or "Source").strip()
-                reference_lines.append(f"- [Doc {n}] {title}: {url}")
+            if not url:
+                continue
 
-    # If the answer discusses uni-assist fees, include the official fee page as a
-    # verification link. We do not hard-code the fee amount here unless the source
-    # is indexed and retrieved.
-    lower = text.lower()
-    topic_ids = {t.get("topic_id", "") for t in topics}
+            title = (
+                doc.get("title", "")
+                or doc.get("object_type", "")
+                or doc.get("type", "")
+                or "Source"
+            ).strip()
+
+            reference_lines.append(f"- [Doc {number}] {title}: {url}")
+
+    # Add uni-assist fee verification link only when the draft itself talks about it.
+    # This keeps the reference section clean but still gives staff the exact fee page.
+    topic_ids = _topic_ids(topics)
+    lower_text = text.lower()
     mentions_uni_assist_fee = (
         "application_fee" in topic_ids
-        or "uni-assist" in lower and ("fee" in lower or "processing" in lower or "cost" in lower)
-    )
-    if mentions_uni_assist_fee and UNI_ASSIST_HANDLING_FEES_URL not in text:
-        reference_lines.append(
-            f"- Official uni-assist handling fees: {UNI_ASSIST_HANDLING_FEES_URL}"
+        and "uni-assist" in lower_text
+        and (
+            "handling fee" in lower_text
+            or "handling fees" in lower_text
+            or "processing fee" in lower_text
+            or "processing fees" in lower_text
+            or "bearbeitungsgebühr" in lower_text
+            or "bearbeitungsgebühren" in lower_text
         )
+    )
 
-    # Add official verification links for common external checks. These help staff
-    # verify the draft quickly without changing the retrieved HTW evidence.
-    if "application_route" in topic_ids:
-        reference_lines.append(f"- Hochschulstart: {HOCHSCHULSTART_URL}")
-        reference_lines.append(f"- HTW Berlin application portal: {HTW_APPLICATION_PORTAL_URL}")
-
-    if "qualification_recognition" in topic_ids:
-        reference_lines.append(f"- anabin qualification database: {ANABIN_URL}")
-        reference_lines.append(f"- DAAD admission database: {DAAD_ADMISSIONS_DATABASE_URL}")
-        reference_lines.append(f"- HTW admission requirements: {HTW_ADMISSION_REQUIREMENTS_URL}")
+    if mentions_uni_assist_fee:
+        if german_reply:
+            reference_lines.append(
+                f"- Offizielle uni-assist-Bearbeitungsgebühren: {UNI_ASSIST_HANDLING_FEES_URL}"
+            )
+        else:
+            reference_lines.append(
+                f"- Official uni-assist handling fees: {UNI_ASSIST_HANDLING_FEES_URL}"
+            )
 
     if not reference_lines:
         return text
 
     # Deduplicate while preserving order.
     seen = set()
-    unique_lines = []
+    unique_lines: List[str] = []
     for line in reference_lines:
         if line not in seen:
             seen.add(line)
             unique_lines.append(line)
 
-    return text.rstrip() + "\n\nReference links for staff verification:\n" + "\n".join(unique_lines)
+    heading = (
+        "Referenzlinks zur Prüfung durch Mitarbeitende:"
+        if german_reply
+        else "Reference links for staff verification:"
+    )
+
+    return text.rstrip() + "\n\n" + heading + "\n" + "\n".join(unique_lines)
 
 
 # ---------------------------------------------------------------------
@@ -1739,12 +2397,27 @@ def strip_disclaimer_for_metrics(text: str) -> str:
             break
     return cleaned
 
+_DOC_BLOCK_RE = re.compile(r"\[([^\]]*Doc[^\]]*)\]", re.IGNORECASE)
+_DOC_NUM_RE = re.compile(r"\d+")
+
+
 def extract_doc_citations(text: str) -> List[str]:
+    """Extract document citations from generated drafts.
+
+    Supports:
+    - [Doc 1]
+    - [Doc 1, Doc 6]
+
+    Returns citations in normalised form:
+    - [Doc 1]
+    - [Doc 6]
+    """
     seen = []
-    for m in re.finditer(r"\[(?:Doc\s*)?(\d+)\]", text or ""):
-        c = f"[Doc {m.group(1)}]"
-        if c not in seen:
-            seen.append(c)
+    for block in _DOC_BLOCK_RE.finditer(text or ""):
+        for num in _DOC_NUM_RE.findall(block.group(1)):
+            citation = f"[Doc {num}]"
+            if citation not in seen:
+                seen.append(citation)
     return seen
 
 
@@ -1763,13 +2436,10 @@ def assess_email_quality(
     validation: Dict[str, Any],
 ) -> Dict[str, Any]:
     """
-    Technical review signal.
+    Technical quality-warning signal for staff review.
 
-    V5.3 adjustment:
-    - keep the V4.6-style usable draft quality,
-    - do not over-flag drafts just because they contain cautious wording,
-    - still flag genuinely unsafe cases: no sources, no citations, low grounding,
-      unknown programme for programme-specific questions, or wrong programme source.
+    Important: this score is a staff-review usability score, not a guarantee
+    that the answer is legally/administratively correct.
     """
     reasons: List[str] = []
     citations = extract_doc_citations(draft)
@@ -1793,19 +2463,56 @@ def assess_email_quality(
     if confidence < 0.65:
         reasons.append("Low grounding confidence")
 
+    body_only = strip_disclaimer_for_metrics(draft)
+    lower_draft = (body_only or "").lower()
     bad_phrase = has_bad_draft_phrase(draft)
 
-    # Bad phrase alone should not destroy the result if the draft is grounded
-    # and cited. It should reduce the score, but not always force review.
-    if bad_phrase and (not citations or not is_grounded):
-        reasons.append("Draft contains uncertain or unsuitable wording")
+    unresolved_markers = [
+        "evidence documents provided do not contain specific information",
+        "evidence documents do not contain specific information",
+        "available information does not specify",
+        "not available in our current documentation",
+        "could not confirm",
+        "cannot confirm",
+        "not confirm",
+        "not specified in the available",
+    ]
+    unresolved_topic = any(marker in lower_draft for marker in unresolved_markers)
+
+    if unresolved_topic:
+        reasons.append("One or more requested topics remain unresolved")
+
+    # Application-fee answer can be usable, but if it relies on checking the
+    # official uni-assist fee page, it should not receive a perfect score.
+    # This is not a hard quality warning; it is a score adjustment.
+    fee_answer_needs_external_verification = (
+        "application_fee" in topic_ids
+        and "uni-assist" in lower_draft
+        and (
+            "handling fee" in lower_draft
+            or "handling fees" in lower_draft
+            or "processing fee" in lower_draft
+            or "processing fees" in lower_draft
+            or "bearbeitungsgebühr" in lower_draft
+            or "bearbeitungsgebühren" in lower_draft
+        )
+    )
+
+    if fee_answer_needs_external_verification:
+        reasons.append("Application-fee answer needs external fee verification")
+
+    unsupported_english_exemption = (
+        "english-speaking country" in lower_draft
+        and "not required" in lower_draft
+        and "english" in lower_draft
+    )
+
+    if unsupported_english_exemption:
+        reasons.append("Possible unsupported English-proof exemption claim")
 
     # Degree mismatch: target Master but draft appears to call the target programme
     # a Bachelor programme. Do not flag harmless phrases such as "completed a
     # Bachelor's degree".
-    body_only = strip_disclaimer_for_metrics(draft)
-    lower_draft = body_only.lower()
-    
     if context.get("target_degree") == "Master":
         unsafe_bachelor_target = re.search(
             r"(interest(ed)? in|apply(ing)? for|admission to|the)\s+(a\s+)?bachelor('?s)?\s+programme",
@@ -1842,51 +2549,58 @@ def assess_email_quality(
         reasons.append("Weak programme match")
 
     # Check whether programme-specific docs are likely from the detected programme.
-    # This flags cases like PROITD answered using Information Technology Master pages.
     if context.get("target_program") and topic_ids & programme_specific_topics and docs:
         programme_scores = [_doc_programme_score(doc, context) for doc in docs]
         if max(programme_scores or [0]) < 3:
             reasons.append("No strong programme-specific source found")
 
-    # Score is less aggressive than the previous latest version.
     score = 100
 
     if not topics:
         score -= 20
-
     if not docs:
         score -= 30
-
     if not citations:
         score -= 25
-
     if validation and not is_grounded:
         score -= 25
-
     if confidence < 0.65:
         score -= 15
-
     if bad_phrase:
         score -= 10
-
+    if unresolved_topic:
+        score -= 20
+    if "Application-fee answer needs external fee verification" in reasons:
+        score -= 10
+    if "Possible unsupported English-proof exemption claim" in reasons:
+        score -= 20
     if "Possible degree mismatch" in reasons:
         score -= 25
-
     if "Programme not confidently matched" in reasons:
         score -= 15
-
     if "Weak programme match" in reasons:
         score -= 10
-
     if "No strong programme-specific source found" in reasons:
         score -= 10
-
     if len(topics) > 4:
         score -= 10
 
+    # Score caps make the UI more honest.
+    if unresolved_topic:
+        score = min(score, 75)
+    if "No citations in draft" in reasons or "No sources retrieved" in reasons:
+        score = min(score, 60)
+    if "Draft not grounded according to validator" in reasons:
+        score = min(score, 65)
+    if "Possible degree mismatch" in reasons:
+        score = min(score, 65)
+    if "Possible unsupported English-proof exemption claim" in reasons:
+        score = min(score, 70)
+    if "Programme not confidently matched" in reasons:
+        score = min(score, 75)
+
     score = max(0, min(100, score))
 
-    # Review only for real risk.
     hard_review_reasons = {
         "No topics detected",
         "No sources retrieved",
@@ -1894,7 +2608,9 @@ def assess_email_quality(
         "Draft not grounded according to validator",
         "Low grounding confidence",
         "Possible degree mismatch",
+        "Possible unsupported English-proof exemption claim",
         "Programme not confidently matched",
+        "One or more requested topics remain unresolved",
     }
 
     review_required = any(reason in hard_review_reasons for reason in reasons)

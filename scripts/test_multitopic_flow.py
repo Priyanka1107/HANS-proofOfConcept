@@ -453,7 +453,7 @@ def main() -> None:
         print(f"  Detected: {row['detected_topics']}")
         print(f"  Coverage: {row['topic_coverage_percent']}%")
         print(f"  Quality: {row['quality_label']} ({row['quality_score']})")
-        print(f"  Review: {row['review_required']} - {row['review_reason']}")
+        print(f"  Quality warning: {row['review_required']} - {row['review_reason']}")
         print(f"  Time: {row['response_time_seconds']} sec")
 
     write_csv(RESULTS_CSV, rows)
@@ -475,7 +475,7 @@ def main() -> None:
     print(f"  JSONL: {RESULTS_JSONL}")
     print("\nSummary:")
     print(f"  Good without review: {good}/{len(rows)}")
-    print(f"  Review required:     {review}/{len(rows)}")
+    print(f"  Quality warnings:    {review}/{len(rows)}")
     print(f"  Avg. time:           {avg_time} sec")
     print(f"  Avg. topic coverage: {avg_coverage}%")
     print("=" * 80)
