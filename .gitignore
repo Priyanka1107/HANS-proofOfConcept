@@ -119,3 +119,7 @@ app/main_v5.py
 app/multitopic_v5.py
 streamlit_app_v5.py
 apply_quality_warning_label_patch.py
+
+# Local helper scripts not needed for final run
+clean_eval_logs.ps1
+run_hans_mixed_version_tests.py
