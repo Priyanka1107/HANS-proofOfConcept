@@ -1,0 +1,60 @@
+{
+  "rubric_name": "Final HANS RAG manual evaluation rubric",
+  "scale": "0-2 per criterion unless stated otherwise",
+  "criteria": [
+    {
+      "criterion": "topic_coverage",
+      "score_0": "misses important requested topics",
+      "score_1": "covers some but not all requested topics",
+      "score_2": "covers all requested topics clearly"
+    },
+    {
+      "criterion": "programme_match",
+      "score_0": "wrong or hallucinated programme",
+      "score_1": "partly matched or uncertain",
+      "score_2": "correct programme and degree level"
+    },
+    {
+      "criterion": "source_relevance",
+      "score_0": "sources irrelevant or missing",
+      "score_1": "some useful sources but not ideal",
+      "score_2": "sources directly support answer"
+    },
+    {
+      "criterion": "faithfulness_groundedness",
+      "score_0": "claims unsupported or contradicted by sources",
+      "score_1": "mostly supported but has uncertainty",
+      "score_2": "all important claims supported by cited evidence"
+    },
+    {
+      "criterion": "citation_quality",
+      "score_0": "no citations for claims",
+      "score_1": "citations present but incomplete/weak",
+      "score_2": "citations clearly placed next to supported claims"
+    },
+    {
+      "criterion": "staff_usefulness",
+      "score_0": "not useful as a staff draft",
+      "score_1": "usable with major edits",
+      "score_2": "usable with minor checks/edits"
+    },
+    {
+      "criterion": "safety_review_decision",
+      "score_0": "unsafe answer not flagged",
+      "score_1": "review decision partly reasonable",
+      "score_2": "risk/uncertainty correctly flagged or not flagged"
+    },
+    {
+      "criterion": "language_and_tone",
+      "score_0": "wrong language or unprofessional",
+      "score_1": "minor language/tone issues",
+      "score_2": "appropriate language and staff tone"
+    }
+  ],
+  "manual_review_sample_recommendation": "Review at least 12-15 outputs across passed, partial, and failed cases, including both providers and both QA modes.",
+  "literature_alignment": [
+    "RAGAS: faithfulness, answer relevancy, context precision/recall",
+    "ARES: context relevance, answer faithfulness, answer relevance",
+    "G-Eval/LLM-as-judge: rubric-based qualitative assessment with human oversight"
+  ]
+}

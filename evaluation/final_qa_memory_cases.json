@@ -1,0 +1,245 @@
+[
+  {
+    "case_id": "qa_pair_001_mpmd_language_followup",
+    "source": "manual_previous_smoke_case",
+    "title": "MPMD admission requirements followed by language question",
+    "language": "de",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "Ich interessiere mich für den Masterstudiengang Project Management and Data Science an der HTW Berlin. Wo finde ich die Zulassungsvoraussetzungen?",
+        "expected_topics": [
+          "admission_requirements"
+        ],
+        "expected_programme": "Project Management and Data Science",
+        "reference_answer_points": [
+          "Should answer in German and mention admission requirements / Zulassungsvoraussetzungen."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Wird er auf Englisch oder Deutsch unterrichtet?",
+        "expected_topics": [
+          "language_of_instruction"
+        ],
+        "expected_programme": "Project Management and Data Science",
+        "reference_answer_points": [
+          "Conversational QA should resolve 'er' to Project Management and Data Science and answer that it is taught in English. Baseline may not resolve the pronoun."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_002_conrem_deadline_followup",
+    "source": "email_thread_test_cases_v5",
+    "title": "ConREM programme context followed by deadline question",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "I am interested in Construction and Real Estate Management at HTW Berlin. What are the English language requirements and application documents?",
+        "expected_topics": [
+          "english_language_requirements",
+          "required_documents"
+        ],
+        "expected_programme": "Construction and Real Estate Management",
+        "reference_answer_points": [
+          "Should answer using ConREM context and cite sources."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "What is the application deadline for it?",
+        "expected_topics": [
+          "application_deadline"
+        ],
+        "expected_programme": "Construction and Real Estate Management",
+        "reference_answer_points": [
+          "Conversational QA should preserve Construction and Real Estate Management as the programme context."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_003_csb_route_motivation_followup",
+    "source": "multitopic_test_cases",
+    "title": "Cyber Security route followed by motivation letter question",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "I am an EU citizen living in Portugal with an International Baccalaureate diploma. How do I apply for Cyber Security and Business at HTW Berlin?",
+        "expected_topics": [
+          "application_route",
+          "qualification_recognition"
+        ],
+        "expected_programme": "Cyber Security and Business",
+        "reference_answer_points": [
+          "Should distinguish EU/EEA route from qualification recognition."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Is a motivation letter required for this programme?",
+        "expected_topics": [
+          "motivation_letter"
+        ],
+        "expected_programme": "Cyber Security and Business",
+        "reference_answer_points": [
+          "Conversational QA should resolve 'this programme' to Cyber Security and Business."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_004_proitd_fees_followup",
+    "source": "programme_catalog_test_cases_v5_1",
+    "title": "PROITD admission followed by tuition fee question",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "What are the admission requirements for Professional IT Business and Digitalization at HTW Berlin?",
+        "expected_topics": [
+          "admission_requirements"
+        ],
+        "expected_programme": "Professional IT Business and Digitalization",
+        "reference_answer_points": [
+          "Should mention degree/ECTS and work experience requirements if supported."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Are there tuition fees for it?",
+        "expected_topics": [
+          "tuition_fees"
+        ],
+        "expected_programme": "Professional IT Business and Digitalization",
+        "reference_answer_points": [
+          "Conversational QA should keep PROITD context."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_005_ib_credit_documents_followup",
+    "source": "HANS_QA_Testing_xlsx_row_6",
+    "title": "International Business credit recognition followed by documents",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "Hello, I am interested in transferring into your Bachelor’s program in International Business from an institution in South Korea, where I’ve completed three semesters of Business Administration. I would like to understand whether any of my previously earned ECTS-equivalent credits could be transferred, and what documentation is needed to have these credits officially evaluated by your admissions office.",
+        "expected_topics": [
+          "credit_recognition"
+        ],
+        "expected_programme": "International Business",
+        "reference_answer_points": [
+          "The answer is is completely correct."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Which documents are needed to have these credits evaluated?",
+        "expected_topics": [
+          "required_documents"
+        ],
+        "expected_programme": "International Business",
+        "reference_answer_points": [
+          "Conversational QA should resolve 'these credits' to prior International Business transfer credits."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_006_ib_bachelor_english_followup",
+    "source": "HANS_QA_Testing_xlsx_row_10",
+    "title": "International Business Bachelor English certificate follow-up",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "Hello, I am planning to apply for the Bachelor’s program in International Business and I noticed on your website that the requirements include a C1 English certificate. I have already taken an English proficiency exam at my university in Brazil, where English was the primary medium of instruction. Would this be considered valid, or would I need to take an additional standardized test like IELTS or TOEFL? Also, could you let me know whether a motivation letter is mandatory for this program?",
+        "expected_topics": [
+          "english_language_requirements"
+        ],
+        "expected_programme": "International Business",
+        "reference_answer_points": [
+          "International Business is a course where they have lots of applicant, and C1 is required due to filtering. The requirements are therefore different for this one is differnet - a letter from the university is not enough - but the student needs to be from an English speaking country."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Is a university medium-of-instruction letter enough for this requirement?",
+        "expected_topics": [
+          "english_language_requirements"
+        ],
+        "expected_programme": "International Business",
+        "reference_answer_points": [
+          "Should not overgeneralise; for International Business English certificate requirements may be strict."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_007_uniassist_document_followup",
+    "source": "HANS_QA_Testing_xlsx_row_3",
+    "title": "Uni-assist document submission followed by hard-copy question",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "I am currently in the process of finalizing my application via Uni-Assist for the upcoming winter semester. However, I am facing some confusion regarding the document submission deadlines and whether hard copies need to be sent by post, or if digital uploads are sufficient. Additionally, could you please confirm whether the application portal requires certified translations of all academic transcripts at this stage, or only upon admission?",
+        "expected_topics": [
+          "document_uploads",
+          "application_deadline"
+        ],
+        "expected_programme": null,
+        "reference_answer_points": [
+          "Correct, the only mistake is the deadline (June 30th, not July 15th - this is only on uniassist)"
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "So do I need to send hard copies by post?",
+        "expected_topics": [
+          "hard_copy_documents"
+        ],
+        "expected_programme": null,
+        "reference_answer_points": [
+          "Conversational QA should keep document-submission context."
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "qa_pair_008_unknown_programme_followup",
+    "source": "programme_catalog_test_cases_v5_1",
+    "title": "Unknown programme followed by start-semester question",
+    "language": "en",
+    "turns": [
+      {
+        "turn_index": 1,
+        "query": "I want to apply for the Master's programme in Space Robotics and Ocean Finance at HTW Berlin. What are the admission requirements?",
+        "expected_topics": [
+          "admission_requirements"
+        ],
+        "expected_programme": null,
+        "reference_answer_points": [
+          "Should not confidently invent a non-existing programme."
+        ]
+      },
+      {
+        "turn_index": 2,
+        "query": "Does it start in the winter semester?",
+        "expected_topics": [
+          "start_semester"
+        ],
+        "expected_programme": null,
+        "reference_answer_points": [
+          "Conversational QA should remain cautious because programme was not confidently matched."
+        ]
+      }
+    ]
+  }
+]

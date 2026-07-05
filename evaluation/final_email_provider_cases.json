@@ -1,0 +1,505 @@
+[
+  {
+    "case_id": "pd_001",
+    "source": "multitopic_test_cases",
+    "source_case_id": "pd_001",
+    "title": "International Business Master pending graduation, English proof and application fee",
+    "language": null,
+    "input_type": "email",
+    "student_email": "ananya.pd001@example.com",
+    "subject": "Application for International Business Master",
+    "thread_id": "final_pd_001",
+    "turns": [
+      "Dear Student Services, my name is Ananya and I am completing my Bachelor's degree in Business Administration in India. I would like to apply for the Master's in International Business for the winter semester. Can I apply before I receive my final transcript, do I need English language proof, and are there any application fees?"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "application_before_graduation",
+      "english_language_requirements",
+      "application_fee"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pd_002",
+    "source": "multitopic_test_cases",
+    "source_case_id": "pd_002",
+    "title": "Cybersecurity and Business Bachelor IB diploma, uni-assist and motivation letter",
+    "language": null,
+    "input_type": "email",
+    "student_email": "student.pd002@example.com",
+    "subject": "Application for Cybersecurity and Business Bachelor",
+    "thread_id": "final_pd_002",
+    "turns": [
+      "Hello, I am an EU citizen living in Portugal and I am finishing high school with an International Baccalaureate diploma. I want to apply for the Cybersecurity and Business Bachelor's programme. Do I apply through uni-assist, does my IB diploma meet the admission requirements, and is a motivation letter required?"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "application_route",
+      "admission_requirements",
+      "motivation_letter"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pd_000a",
+    "source": "multitopic_test_cases",
+    "source_case_id": "pd_000a",
+    "title": "Dual citizen French and Moroccan Business Bachelor application route and diploma recognition",
+    "language": null,
+    "input_type": "email",
+    "student_email": "student.pd000a@example.com",
+    "subject": "Business Bachelor application route and French Baccalaureate recognition",
+    "thread_id": "final_pd_000a",
+    "turns": [
+      "Dear Admissions Team, I am a dual citizen (French and Moroccan), currently residing in Morocco and holding a French Baccalauréat diploma. I want to apply for the English-taught Bachelor’s in Business but am unsure whether I should apply as an EU applicant or international. Also, would my French diploma fulfill the general university entrance requirements, or would I need to obtain a VPD from Uni-Assist?"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "application_route",
+      "qualification_recognition"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_001",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_001",
+    "title": "MPMD full name: deadline, language and study format",
+    "language": null,
+    "input_type": "email",
+    "student_email": "arjun.mpmd@example.com",
+    "subject": "Project Management and Data Science application",
+    "thread_id": "final_pc_001",
+    "turns": [
+      "Dear Admissions Team,\n\nI have completed my Bachelor's degree in Electronics Engineering from India and I am currently working as a software engineer. I would like to apply for the Master's programme in Project Management and Data Science. Could you please tell me the application deadline, whether the programme is taught entirely in English, and whether it is an on-campus course?\n\nKind regards,\nArjun"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction",
+      "study_format"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_002",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_002",
+    "title": "MPMD full name: work experience, documents and English proof",
+    "language": null,
+    "input_type": "email",
+    "student_email": "neha.mpmd@example.com",
+    "subject": "MPMD admission requirements",
+    "thread_id": "final_pc_002",
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in the Project Management and Data Science Master's programme at HTW Berlin. I have a Bachelor's degree in Computer Science and around 10 months of work experience. Could you please tell me whether work experience is required, which documents I should prepare, and whether I need English language proof?\n\nKind regards,\nNeha"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "work_experience",
+      "required_documents",
+      "english_language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "Yes",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_003",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_003",
+    "title": "MPMD abbreviation only",
+    "language": null,
+    "input_type": "email",
+    "student_email": "samir.mpmd@example.com",
+    "subject": "MPMD application before graduation",
+    "thread_id": "final_pc_003",
+    "turns": [
+      "Dear Admissions Team,\n\nI am in the final semester of my Bachelor's degree and would like to apply for MPMD. I will receive my final certificate after the application deadline. Can I still apply, and do I need to submit the final certificate later?\n\nKind regards,\nSamir"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_before_graduation",
+      "final_certificate_submission"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_004",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_004",
+    "title": "PROITD full name: route, fee and language proof",
+    "language": null,
+    "input_type": "email",
+    "student_email": "lina.proitd@example.com",
+    "subject": "Professional IT and Digitalization application",
+    "thread_id": "final_pc_004",
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in the Professional IT and Digitalization Master's programme. I completed my Bachelor's degree outside Germany. Could you please tell me whether I need to apply through uni-assist, whether there are application fees, and what language proof is required?\n\nKind regards,\nLina"
+    ],
+    "expected_programme": "Professional IT Business and Digitalization",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_route",
+      "application_fee",
+      "language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_005",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_005",
+    "title": "PROITD abbreviation only",
+    "language": null,
+    "input_type": "email",
+    "student_email": "sara.proitd@example.com",
+    "subject": "PROITD admission",
+    "thread_id": "final_pc_005",
+    "turns": [
+      "Dear Admissions Team,\n\nI would like to apply for PROITD at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether English proof is needed?\n\nKind regards,\nSara"
+    ],
+    "expected_programme": "Professional IT Business and Digitalization",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_007",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_007",
+    "title": "Construction and Real Estate Management",
+    "language": null,
+    "input_type": "email",
+    "student_email": "maria.conrem@example.com",
+    "subject": "Construction and Real Estate Management",
+    "thread_id": "final_pc_007",
+    "turns": [
+      "Dear Admissions Team,\n\nI am interested in Construction and Real Estate Management at HTW Berlin. Could you please tell me whether English language proof is required, which application documents I should prepare, and whether I need to pay a semester contribution?\n\nKind regards,\nMaria"
+    ],
+    "expected_programme": "Construction and Real Estate Management",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "english_language_requirements",
+      "required_documents",
+      "semester_contribution"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pc_008",
+    "source": "programme_catalog_test_cases_v5_1",
+    "source_case_id": "pc_008",
+    "title": "Unknown programme should be reviewed",
+    "language": null,
+    "input_type": "email",
+    "student_email": "unknown.programme@example.com",
+    "subject": "Unknown programme application",
+    "thread_id": "final_pc_008",
+    "turns": [
+      "Dear Admissions Team,\n\nI would like to apply for the Master's programme in Space Robotics and Ocean Finance at HTW Berlin. Could you please tell me the admission requirements, the application deadline, and whether English proof is required?\n\nKind regards,\nTest Applicant"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "Yes",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pd_021",
+    "source": "multitopic_test_cases",
+    "source_case_id": "pd_021",
+    "title": "International Business Bachelor transfer from South Korea credit recognition and documents",
+    "language": null,
+    "input_type": "email",
+    "student_email": "student.pd021@example.com",
+    "subject": "International Business Bachelor transfer and credit recognition",
+    "thread_id": "final_pd_021",
+    "turns": [
+      "Hello, I am interested in transferring into your Bachelor’s program in International Business from an institution in South Korea, where I’ve completed three semesters of Business Administration. I would like to understand whether any of my previously earned ECTS-equivalent credits could be transferred, and what documentation is needed to have these credits officially evaluated by your admissions office."
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "credit_recognition",
+      "required_documents"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "pd_012",
+    "source": "multitopic_test_cases",
+    "source_case_id": "pd_012",
+    "title": "Transfer to Computer Science Bachelor credit recognition, deadline and language",
+    "language": null,
+    "input_type": "email",
+    "student_email": "student.pd012@example.com",
+    "subject": "Computer Science Bachelor transfer enquiry",
+    "thread_id": "final_pd_012",
+    "turns": [
+      "Hello, I studied Computer Science for two semesters at another university and would like to transfer to HTW Berlin. Can previous credits be recognised, what application deadline applies, and which language requirements do I need to meet?"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "credit_recognition",
+      "application_deadline",
+      "language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "",
+    "expected_answer_points": [],
+    "notes": ""
+  },
+  {
+    "case_id": "de_mpmd_deadline_language_format",
+    "source": "manual_previous_smoke_case",
+    "source_case_id": "manual_de_mpmd",
+    "title": "German MPMD deadline, language and study format",
+    "language": "de",
+    "input_type": "email",
+    "student_email": "arjun.finalde@example.com",
+    "subject": "Bewerbung Project Management and Data Science",
+    "thread_id": "final_de_mpmd",
+    "turns": [
+      "Sehr geehrtes Zulassungsteam,\n\nich habe meinen Bachelorabschluss in Electronics Engineering in Indien abgeschlossen und arbeite derzeit als Softwareentwickler. Ich möchte mich für den Masterstudiengang Project Management and Data Science bewerben. Können Sie mir bitte mitteilen, wann die Bewerbungsfrist ist, ob der Studiengang vollständig auf Englisch unterrichtet wird und ob es sich um ein Präsenzstudium handelt?\n\nMit freundlichen Grüßen\nArjun"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction",
+      "study_format"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [
+      "German response",
+      "Application period/deadline",
+      "English-taught programme",
+      "On-campus/presence study format"
+    ],
+    "notes": "German version of the MPMD smoke-test case."
+  },
+  {
+    "case_id": "de_ib_master_pending_graduation",
+    "source": "manual_previous_smoke_case",
+    "source_case_id": "manual_de_ib",
+    "title": "German International Business Master pending graduation, English proof and fees",
+    "language": "de",
+    "input_type": "email",
+    "student_email": "ananya.finalde@example.com",
+    "subject": "Bewerbung International Business Master",
+    "thread_id": "final_de_ib",
+    "turns": [
+      "Sehr geehrtes Zulassungsteam,\n\nmein Name ist Ananya und ich schließe derzeit meinen Bachelor in Betriebswirtschaftslehre in Indien ab. Ich möchte mich für den Masterstudiengang International Business zum Wintersemester bewerben. Da ich mein endgültiges Zeugnis erst im Juli erhalte, kann ich mich trotzdem vor dem Abschluss bewerben? Brauche ich einen Nachweis über Englischkenntnisse und fallen Bewerbungsgebühren an?\n\nMit freundlichen Grüßen\nAnanya"
+    ],
+    "expected_programme": "International Business",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_before_graduation",
+      "english_language_requirements",
+      "application_fee"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [
+      "German response",
+      "Keeps Master context",
+      "Application before final certificate",
+      "English proof",
+      "Fee handling"
+    ],
+    "notes": "German version of International Business multi-topic case."
+  },
+  {
+    "case_id": "de_csb_eu_ib_route",
+    "source": "manual_previous_smoke_case",
+    "source_case_id": "manual_de_csb",
+    "title": "German Cyber Security and Business EU citizen with IB diploma",
+    "language": "de",
+    "input_type": "email",
+    "student_email": "student.finalde@example.com",
+    "subject": "Bewerbung Cyber Security and Business",
+    "thread_id": "final_de_csb",
+    "turns": [
+      "Sehr geehrtes Zulassungsteam,\n\nich bin EU-Bürger und lebe in Portugal. Ich mache derzeit mein International Baccalaureate Diploma und möchte mich für den Bachelorstudiengang Cyber Security and Business bewerben. Muss ich mich über uni-assist bewerben, erfüllt mein IB-Diplom die Zulassungsvoraussetzungen und brauche ich ein Motivationsschreiben?\n\nMit freundlichen Grüßen"
+    ],
+    "expected_programme": "Cyber Security and Business",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_route",
+      "qualification_recognition",
+      "admission_requirements",
+      "motivation_letter"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [
+      "German response",
+      "EU/EEA route",
+      "No uni-assist as main route",
+      "IB recognition cautious",
+      "Motivation letter cautious"
+    ],
+    "notes": "German route-safety case."
+  },
+  {
+    "case_id": "hans_uniassist_documents_deadline",
+    "source": "HANS_QA_Testing_xlsx",
+    "source_case_id": "row_3",
+    "title": "I am currently in the process of finalizing my application via Uni-Assist for th",
+    "language": "en",
+    "input_type": "email",
+    "student_email": "hans_uniassist_documents_deadline@example.com",
+    "subject": "Reference QA email case",
+    "thread_id": "final_hans_uniassist_documents_deadline",
+    "turns": [
+      "I am currently in the process of finalizing my application via Uni-Assist for the upcoming winter semester. However, I am facing some confusion regarding the document submission deadlines and whether hard copies need to be sent by post, or if digital uploads are sufficient. Additionally, could you please confirm whether the application portal requires certified translations of all academic transcripts at this stage, or only upon admission?"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "document_uploads",
+      "hard_copy_documents",
+      "application_deadline"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "Yes",
+    "expected_answer_points": [
+      "Correct, the only mistake is the deadline (June 30th, not July 15th - this is only on uniassist)"
+    ],
+    "reference_answer": "Dear prospective applicant,\n\nThank you for your interest in studying at HTW Berlin and for reaching out with your questions regarding the application process.\n\nRegarding your document submission, please note that **all documents must be uploaded digitally via the Uni-Assist platform.** There is no need to send hard copies by post. \n\nConcerning certified translations, **we require certified translations of all academic transcripts *at the time of application* through Uni-Assist.** Please ensure these are uploaded alongside your original transcripts. Uni-Assist will verify these documents as part of their initial assessment.\n\nPlease remember the application deadline for the winter semester is **July 15th**. We strongly advise you to upload all required documents, including certified translations, well in advance of this date to avoid any potential issues.\n\nYou can find detailed information on required documents and the application procedure on our website:\n\n[https://www.htw-berlin.de/en/studies/applications/application-via-uni-assist/](https://www.htw-berlin.de/en/studies/applications/application-via-uni-assist/)\n\nIf you have further questions or encounter any difficulties during the application process, please don’t hesitate to contact us.\n\nWe wish you the best of luck with your application!",
+    "staff_comment": "Correct, the only mistake is the deadline (June 30th, not July 15th - this is only on uniassist)",
+    "notes": "Selected from HANS Q&A Testing spreadsheet for reference-based/manual review."
+  },
+  {
+    "case_id": "hans_ib_bachelor_english_proof",
+    "source": "HANS_QA_Testing_xlsx",
+    "source_case_id": "row_10",
+    "title": "Hello, I am planning to apply for the Bachelor’s program in International Busine",
+    "language": "en",
+    "input_type": "email",
+    "student_email": "hans_ib_bachelor_english_proof@example.com",
+    "subject": "Reference QA email case",
+    "thread_id": "final_hans_ib_bachelor_english_proof",
+    "turns": [
+      "Hello, I am planning to apply for the Bachelor’s program in International Business and I noticed on your website that the requirements include a C1 English certificate. I have already taken an English proficiency exam at my university in Brazil, where English was the primary medium of instruction. Would this be considered valid, or would I need to take an additional standardized test like IELTS or TOEFL? Also, could you let me know whether a motivation letter is mandatory for this program?"
+    ],
+    "expected_programme": "International Business",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "english_language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [
+      "International Business is a course where they have lots of applicant, and C1 is required due to filtering. The requirements are therefore different for this one is differnet - a letter from the university is not enough - but the student needs to be from an English speaking country."
+    ],
+    "reference_answer": "Dear [Student Name],\n\nThank you for your interest in the Bachelor’s program in International Business at HTW Berlin.\n\nRegarding your English proficiency, please note that a C1 certificate is generally required. However, we do consider proof of English proficiency gained through prior studies where English was the primary medium of instruction. You would need to submit documentation from your university in Brazil confirming this – ideally a transcript indicating the language of instruction and successful completion of courses taught in English. This will be reviewed to determine if it meets our requirements. \n\nInformation on language requirements can be found here: Proof of English proficiency ([https://international-business.htw-berlin.de/](https://international-business.htw-berlin.de/)). Please ensure any supporting documents are submitted by the end of the application period.\n\nRegarding your second question, a motivation letter *is* mandatory for the International Business program. Please ensure you include this as part of your application.\n\nYou can find more detailed information on the application procedure, required documents, and deadlines here:\n\n*   Application periods\n*   Admission requirements\n*   Application via uni-assist ([https://www.htw-berlin.de/en/studies/applications/special-cases/](https://www.htw-berlin.de/en/studies/applications/special-cases/))\n\nPlease also check anabin to confirm whether you have the necessary higher education entry qualification for Germany: Certificate assessment.\n\nIf you have any further questions, please do not hesitate to contact us.\n\nBest regards,\n\n[HTW Berlin Student Services Staff]",
+    "staff_comment": "International Business is a course where they have lots of applicant, and C1 is required due to filtering. The requirements are therefore different for this one is differnet - a letter from the university is not enough - but the student needs to be from an English speaking country.",
+    "notes": "Selected from HANS Q&A Testing spreadsheet for reference-based/manual review."
+  },
+  {
+    "case_id": "hans_hospitality_to_business_analytics",
+    "source": "HANS_QA_Testing_xlsx",
+    "source_case_id": "row_11",
+    "title": "To whom it may concern, I recently completed my Bachelor’s degree in Hospitality",
+    "language": "en",
+    "input_type": "email",
+    "student_email": "hans_hospitality_to_business_analytics@example.com",
+    "subject": "Reference QA email case",
+    "thread_id": "final_hans_hospitality_to_business_analytics",
+    "turns": [
+      "To whom it may concern, I recently completed my Bachelor’s degree in Hospitality Management from a private university in the Philippines, and I’m very interested in transitioning into Business Analytics through one of your Master’s programs. I’d like to know whether my degree is recognized for admission in Germany, and if not, whether any preparatory programs or bridging options are available to help me meet the eligibility requirements."
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "qualification_recognition",
+      "admission_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "Yes",
+    "expected_answer_points": [
+      "It’s a tricky question and its so specific that it must be checked internally."
+    ],
+    "reference_answer": "Dear prospective applicant,\n\nThank you for your interest in pursuing a Master’s degree at HTW Berlin and for reaching out to us.\n\nRegarding the recognition of your Bachelor’s degree in Hospitality Management for admission to our Master’s programs, particularly in Business Analytics, we recommend checking the “anabin” database. This is the official database used in Germany to assess international educational qualifications. It will provide information on whether your degree is directly recognized for university admission.\n\nYou can find the database here: [https://anabin.kmk.org/no_cache/filter/hochschulabschluesse.html](https://anabin.kmk.org/no_cache/filter/hochschulabschluesse.html)\n\nIf your degree is not directly recognized, or if you are unsure, you may need to demonstrate additional qualifications or complete preparatory studies. Depending on the assessment, this could involve completing a “Studienkolleg” (preparatory course) or taking specific bridging courses.\n\nPlease also review the general admission requirements for our Master’s programs here: [https://www.htw-berlin.de/en/studies/applications/applying-with-foreign-certificates/](https://www.htw-berlin.de/en/studies/applications/applying-with-foreign-certificates/) \n\nSpecifically, information about our Business Analytics program can be found here: [Insert link to Business Analytics Master's program if available, otherwise remove this line].\n\nIf you meet the basic requirements, the application periods are typically [Insert Application Deadlines - e.g., May 31st for the Winter Semester and November 15th for the Summer Semester]. Please check the website for the most up-to-date information as deadlines can change.\n\nIf you have further questions regarding specific eligibility requirements or bridging options, please don't hesitate to contact us again. You may also find helpful information on our website regarding special cases: [https://www.htw-berlin.de/en/studies/applications/special-cases/](https://www.htw-berlin.de/en/studies/applications/special-cases/)",
+    "staff_comment": "It’s a tricky question and its so specific that it must be checked internally.",
+    "notes": "Selected from HANS Q&A Testing spreadsheet for reference-based/manual review."
+  },
+  {
+    "case_id": "hans_conrem_mexican_architect",
+    "source": "HANS_QA_Testing_xlsx",
+    "source_case_id": "row_27",
+    "title": "I am a mexican architect interested in applying to the Construction and Real Est",
+    "language": "en",
+    "input_type": "email",
+    "student_email": "hans_conrem_mexican_architect@example.com",
+    "subject": "Reference QA email case",
+    "thread_id": "final_hans_conrem_mexican_architect",
+    "turns": [
+      "I am a mexican architect interested in applying to the\nConstruction and Real Estate Management Master program starting on winter semester 2026 .\n\nI read that an IELTS Academic score of 7.0 is required for admission. Could you please\nclarify whether this refers to the overall band score only, or if there is a minimum score\nrequired in each individual component (Listening, Reading, Writing, Speaking)?"
+    ],
+    "expected_programme": "Construction and Real Estate Management",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "admission_requirements",
+      "application_deadline",
+      "english_language_requirements"
+    ],
+    "expected_followup_type": "new_enquiry",
+    "expected_review_required": "No",
+    "expected_answer_points": [
+      "Dear [Student],\n\nThank you for your interest in the Construction and Real Estate Management Master program at HTW Berlin. I'm happy to help clarify the IELTS Academic score requirement for admission.\n\nTo answer your question, our university requires an overall IELTS Academic score of 7.0 for admission to our master's programs. However, we also consider the minimum scores in each individual component (Listening, Reading, Writing, Speaking). Please note that you need to meet the minimum score requirements in all four components.\n\nIf you intend to apply for a degree programme conducted entirely in English, you are required to prove the existence of C1 level of English language proficiency with a recognised language test. Awarding of a place on the programme is dependent on this requirement. The minimum level shall be indicated via a recognized language certificate in the form of specific lanaguage test result.\nEnglish as a higher subject in your school leaving certificate is not accepted.\nOne of the certificates (level C1) mentioned in the following link must be attested:\nhttps://www.htw-berlin.de/studium/bewerbung/bewerbung-ueber-uni-assist/englisch-sprachnachweis/"
+    ],
+    "reference_answer": "Dear [Student],\n\nThank you for your interest in the Construction and Real Estate Management Master program at HTW Berlin. I'm happy to help clarify the IELTS Academic score requirement for admission.\n\nTo answer your question, our university requires an overall IELTS Academic score of 7.0 for admission to our master's programs. However, we also consider the minimum scores in each individual component (Listening, Reading, Writing, Speaking). Please note that you need to meet the minimum score requirements in all four components.\n\nPlease find more information on our language requirements and application process here: [insert link to language requirements page] and [insert link to application process page].\n\nAs you prepare your application, please ensure that you submit all required documents by the deadline. We recommend starting your application early to avoid any last-minute issues.\n\nIf you have any further questions or concerns, please don't hesitate to reach out to us. We're here to support you throughout the application process.\n\nBest regards,\n\n[Your Name]\nHTW Berlin Student Services",
+    "staff_comment": "Dear [Student],\n\nThank you for your interest in the Construction and Real Estate Management Master program at HTW Berlin. I'm happy to help clarify the IELTS Academic score requirement for admission.\n\nTo answer your question, our university requires an overall IELTS Academic score of 7.0 for admission to our master's programs. However, we also consider the minimum scores in each individual component (Listening, Reading, Writing, Speaking). Please note that you need to meet the minimum score requirements in all four components.\n\nIf you intend to apply for a degree programme conducted entirely in English, you are required to prove the existence of C1 level of English language proficiency with a recognised language test. Awarding of a place on the programme is dependent on this requirement. The minimum level shall be indicated via a recognized language certificate in the form of specific lanaguage test result.\nEnglish as a higher subject in your school leaving certificate is not accepted.\nOne of the certificates (level C1) mentioned in the following link must be attested:\nhttps://www.htw-berlin.de/studium/bewerbung/bewerbung-ueber-uni-assist/englisch-sprachnachweis/",
+    "notes": "Selected from HANS Q&A Testing spreadsheet for reference-based/manual review."
+  }
+]
