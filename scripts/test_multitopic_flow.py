@@ -20,7 +20,7 @@ import argparse
 import time
 from datetime import datetime
 from typing import Any, Dict, List, Set
-
+import re
 import requests
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -265,6 +265,12 @@ def run_case(api_url: str, case: Dict[str, Any], version: str, comment: str, tim
         citations = data.get("citations", [])
         sources = data.get("sources", [])
         staff_draft = data.get("staff_draft", "")
+        
+        draft_citations = []
+        for match in re.finditer(r"\[(?:Doc\s*)?(\d+)\]", staff_draft or "", flags=re.IGNORECASE):
+            citation = f"[Doc {match.group(1)}]"
+            if citation not in draft_citations:
+                draft_citations.append(citation)
 
         # Additional test-level review: if expected topics are missing, mark review.
         review_required = bool(quality.get("review_required", False))
@@ -335,7 +341,7 @@ def run_case(api_url: str, case: Dict[str, Any], version: str, comment: str, tim
             adjusted_score -= 15
         if validation and validation.get("is_grounded") is False:
             adjusted_score -= 20
-        if not citations:
+        if not draft_citations:
             adjusted_score -= 20
         adjusted_score = max(0, min(100, round(adjusted_score, 2)))
 
@@ -373,8 +379,8 @@ def run_case(api_url: str, case: Dict[str, Any], version: str, comment: str, tim
             "bad_draft_phrase": quality.get("bad_draft_phrase", ""),
             "is_grounded": validation.get("is_grounded", ""),
             "grounding_confidence": validation.get("confidence", ""),
-            "citation_count": quality.get("citation_count", len(citations)),
-            "citations": ", ".join(citations),
+            "citation_count": len(draft_citations),
+            "citations": ", ".join(draft_citations),
             "source_count": len(sources),
             "staff_draft": staff_draft,
             "http_status": http_status,
@@ -447,7 +453,7 @@ def main() -> None:
         print(f"  Detected: {row['detected_topics']}")
         print(f"  Coverage: {row['topic_coverage_percent']}%")
         print(f"  Quality: {row['quality_label']} ({row['quality_score']})")
-        print(f"  Review: {row['review_required']} - {row['review_reason']}")
+        print(f"  Quality warning: {row['review_required']} - {row['review_reason']}")
         print(f"  Time: {row['response_time_seconds']} sec")
 
     write_csv(RESULTS_CSV, rows)
@@ -469,7 +475,7 @@ def main() -> None:
     print(f"  JSONL: {RESULTS_JSONL}")
     print("\nSummary:")
     print(f"  Good without review: {good}/{len(rows)}")
-    print(f"  Review required:     {review}/{len(rows)}")
+    print(f"  Quality warnings:    {review}/{len(rows)}")
     print(f"  Avg. time:           {avg_time} sec")
     print(f"  Avg. topic coverage: {avg_coverage}%")
     print("=" * 80)

@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "page_id": "b0319578de593a7e",
+    "object_id": "overview_navigation-current-students",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/students/",
+    "title": "Students",
+    "classification_confidence": "low",
+    "classification_notes": "Landing page for current students.",
+    "source_html_path": "snapshots_raw/b0319578de593a7e.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.575159"
+  },
+  "navigation_info": {
+    "purpose": "Landing page for current students.",
+    "scope": "Students",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "fees_funding_rule-living-in-berlin",
+    "deadline_rule-academic-calendar",
+    "fees_funding_rule-semester-fee",
+    "special_category-study-forms-documents",
+    "application_process-module-registration",
+    "application_route_rule-examinations",
+    "application_route_rule-internship-assessment",
+    "university_profile-foreign-languages-centre"
+  ],
+  "related_pages": [
+    "fees_funding_rule-living-in-berlin",
+    "deadline_rule-academic-calendar",
+    "fees_funding_rule-semester-fee",
+    "special_category-study-forms-documents",
+    "application_process-module-registration",
+    "application_route_rule-examinations",
+    "application_route_rule-internship-assessment",
+    "university_profile-foreign-languages-centre"
+  ],
+  "content": {
+    "full_text": "Start of studies First semester welcome Enrolment ceremony & orientation days Study plan for first semester students Special regulation for first semester students Living in Berlin Accommodation Communications & Account HTW account : Your personal account provides access to online services, exam registrations and learning platforms. HTW e-mail : Official means of communication: All important messages from the university are sent here. Instructions for e-mail LSF : Online portal for study organisation, e.g. timetable, course registration, exam registration and grade overview. Instructions for LSF Moodle : Learning platform with course materials, assignments and forums. Instructions for Moodle Important deadlines & documents Academic calendar Semester dates at a glance Semester fee To be paid before the start of the semester. Forms & documents Important documents for your studies Study organisation Module registration : Course enrolment takes place in several phases. There are special regulations for certain groups (e.g. students with children). Examination periods : There are two examination periods per semester, which are announced via the academic calendar. Examination registration : Examinations must be registered. Please note the deadlines and regulations of your examination regulations. Compulsory internship : There are special formalities and registration processes for the compulsory internship in the Bachelor's programme. Foreign languages : Bachelor's students must take at least one foreign language and choose an examination option."
+  }
+}

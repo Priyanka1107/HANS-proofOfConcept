@@ -1,0 +1,151 @@
+[
+  {
+    "case_id": "pd_001",
+    "dataset_group": "multitopic",
+    "title": "International Business Master pending graduation, English proof and application fee",
+    "student_email": "ananya.pd001@example.com",
+    "subject": "Application for International Business Master",
+    "thread_id": "thread_pd_001",
+    "language": "EN",
+    "input_type": "email",
+    "turns": [
+      "Dear Student Services, my name is Ananya and I am completing my Bachelor's degree in Business Administration in India. I would like to apply for the Master's in International Business for the winter semester. Can I apply before I receive my final transcript, do I need English language proof, and are there any application fees?"
+    ],
+    "expected_programme": "International Business",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_before_graduation",
+      "english_language_requirements",
+      "application_fee"
+    ],
+    "expected_topic_count": 3,
+    "expected_source_type": "programme_page + general_application_page",
+    "expected_answer_points": [
+      "Explains whether application before final transcript is possible",
+      "Explains English proof requirement",
+      "Mentions application or uni-assist fee only if supported by source"
+    ],
+    "answerable": "yes",
+    "expected_review_required": false,
+    "expected_review_reason": ""
+  },
+  {
+    "case_id": "pc_008",
+    "dataset_group": "programme_catalog",
+    "title": "Unknown programme should review",
+    "student_email": "unknown.catalog@example.com",
+    "subject": "Unknown programme check",
+    "thread_id": "pc_thread_008",
+    "language": "EN",
+    "input_type": "email",
+    "turns": [
+      "Dear Admissions Team, I am interested in a programme called Digital Space Robotics at HTW Berlin. Could you please tell me the application deadline and whether it is taught in English? Kind regards, Test Applicant"
+    ],
+    "expected_programme": null,
+    "expected_programme_required": false,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction"
+    ],
+    "expected_topic_count": 2,
+    "expected_source_type": "none_or_general_only",
+    "expected_answer_points": [
+      "Should not confidently invent programme-specific deadline",
+      "Should not claim the programme exists unless supported",
+      "Should recommend staff review or checking official programme list"
+    ],
+    "answerable": "partial",
+    "expected_review_required": true,
+    "expected_review_reason": "Unknown programme should be reviewed"
+  },
+  {
+    "case_id": "pd_002",
+    "dataset_group": "multitopic",
+    "title": "Cybersecurity and Business Bachelor IB diploma, uni-assist and motivation letter",
+    "student_email": "student.pd002@example.com",
+    "subject": "Application for Cybersecurity and Business Bachelor",
+    "thread_id": "thread_pd_002",
+    "language": "EN",
+    "input_type": "email",
+    "turns": [
+      "Hello, I am an EU citizen living in Portugal and I am finishing high school with an International Baccalaureate diploma. I want to apply for the Cybersecurity and Business Bachelor's programme. Do I apply through uni-assist, does my IB diploma meet the admission requirements, and is a motivation letter required?"
+    ],
+    "expected_programme": "Cyber Security and Business",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_route",
+      "admission_requirements",
+      "motivation_letter"
+    ],
+    "expected_topic_count": 3,
+    "expected_source_type": "programme_page + general_application_page",
+    "expected_answer_points": [
+      "Explains the correct application route for an EU applicant",
+      "Explains that IB diploma recognition or admission eligibility must be checked during application",
+      "Mentions whether a motivation letter is required only if supported by source"
+    ],
+    "answerable": "yes",
+    "expected_review_required": false,
+    "expected_review_reason": ""
+  },
+  {
+    "case_id": "pd_005",
+    "dataset_group": "multitopic",
+    "title": "Professional IT and Digitalization Master work experience, fees and application route",
+    "student_email": "student.pd005@example.com",
+    "subject": "Professional IT and Digitalization Master application enquiry",
+    "thread_id": "thread_pd_005",
+    "language": "EN",
+    "input_type": "email",
+    "turns": [
+      "Dear Team, I am interested in the Professional IT and Digitalization Master's programme. I would like to know whether professional work experience is required, whether tuition fees apply, and whether I should apply through HTW Berlin or uni-assist."
+    ],
+    "expected_programme": "Professional IT Business and Digitalization",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "work_experience",
+      "tuition_fees",
+      "application_route"
+    ],
+    "expected_topic_count": 3,
+    "expected_source_type": "programme_page + programme_application_page",
+    "expected_answer_points": [
+      "Explains whether professional work experience is required",
+      "Explains whether tuition fees apply",
+      "Explains the correct application route only if supported by programme-specific source"
+    ],
+    "answerable": "yes",
+    "expected_review_required": false,
+    "expected_review_reason": ""
+  },
+  {
+    "case_id": "pc_001",
+    "dataset_group": "programme_catalog",
+    "title": "MPMD deadline language format",
+    "student_email": "arjun.catalog@example.com",
+    "subject": "MPMD application questions",
+    "thread_id": "pc_thread_001",
+    "language": "EN",
+    "input_type": "email",
+    "turns": [
+      "Dear Admissions Team,\n\nI have completed my Bachelor's degree in Electronics Engineering from India and I am currently working as a software engineer. I would like to apply for the Master's programme in Project Management and Data Science. Could you please tell me the application deadline, whether the programme is taught entirely in English, and whether it is an on-campus course?\n\nKind regards,\nArjun"
+    ],
+    "expected_programme": "Project Management and Data Science",
+    "expected_programme_required": true,
+    "expected_topics": [
+      "application_deadline",
+      "language_of_instruction",
+      "study_format"
+    ],
+    "expected_topic_count": 3,
+    "expected_source_type": "programme_page",
+    "expected_answer_points": [
+      "Explains the application deadline or application period if supported by the programme source",
+      "Explains the language of instruction",
+      "Explains whether the programme is on-campus or the study format"
+    ],
+    "answerable": "yes",
+    "expected_review_required": false,
+    "expected_review_reason": ""
+  }
+]

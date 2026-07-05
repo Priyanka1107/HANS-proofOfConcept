@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "656cfad51ffdc76e",
+    "object_id": "overview_navigation-applications",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/applications/",
+    "title": "Applications",
+    "classification_confidence": "low",
+    "classification_notes": "Top-level applications entry point.",
+    "source_html_path": "snapshots_raw/656cfad51ffdc76e.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.504175"
+  },
+  "navigation_info": {
+    "purpose": "Top-level applications entry point.",
+    "scope": "Applications",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-applications-bachelors",
+    "overview_navigation-degree-programmes-filtered-bachelors"
+  ],
+  "related_pages": [
+    "overview_navigation-applications-bachelors",
+    "overview_navigation-degree-programmes-filtered-bachelors"
+  ],
+  "content": {
+    "full_text": "Bachelor’s application Submit Bachelor’s application here Overview of all Bachelor’s degree programmes"
+  }
+}

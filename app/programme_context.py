@@ -43,6 +43,23 @@ def _normalise(text: str) -> str:
     return text
 
 
+def _explicit_degree_from_text(text: str) -> str:
+    lower = (text or "").lower()
+
+    if re.search(r"(master|master's|master’s|masterstudiengang)", lower):
+        return "Master"
+
+    if re.search(r"(bachelor|bachelor's|bachelor’s|bachelorstudiengang)", lower):
+        # Avoid interpreting "completed my Bachelor's degree" as the target
+        # when no Bachelor programme is being requested.
+        if re.search(r"(completed|completing|finishing|have|abgeschlossen|schließe).{0,50}(bachelor|bachelorabschluss)", lower):
+            if not re.search(r"(apply|applying|interested|want|would like|bewerben|interessiere).{0,80}(bachelor|bachelorstudiengang)", lower):
+                return ""
+        return "Bachelor"
+
+    return ""
+
+
 def match_programme(text: str) -> Optional[Dict[str, Any]]:
     """
     Match programme from catalogue using programme name and aliases.
@@ -101,6 +118,7 @@ def build_programme_context_block(email_text: str, subject: str = "") -> Dict[st
     """
     combined_text = f"{subject}\n{email_text}"
     programme = match_programme(combined_text)
+    explicit_degree = _explicit_degree_from_text(combined_text)
 
     if not programme:
         return {
@@ -109,11 +127,15 @@ def build_programme_context_block(email_text: str, subject: str = "") -> Dict[st
             "context_block": "",
             "url": "",
             "application_url": "",
+            "degree": explicit_degree,
+            "language": "",
+            "study_format": "",
         }
 
     program_name = str(programme.get("program_name", "") or "").strip()
     aliases = programme.get("aliases", []) or []
-    degree = str(programme.get("degree", "") or "").strip()
+    catalogue_degree = str(programme.get("degree", "") or "").strip()
+    degree = explicit_degree or catalogue_degree
     language = str(programme.get("language", "") or "").strip()
     study_format = str(programme.get("study_format", "") or "").strip()
     url = str(programme.get("url", "") or "").strip()
@@ -130,7 +152,12 @@ def build_programme_context_block(email_text: str, subject: str = "") -> Dict[st
         lines.append(f"- Known aliases: {alias_text}")
 
     if degree:
-        lines.append(f"- Degree level: {degree}")
+        if explicit_degree and catalogue_degree and explicit_degree != catalogue_degree:
+            lines.append(f"- Degree level from student email: {explicit_degree}")
+            lines.append(f"- Catalogue degree hint: {catalogue_degree}")
+            lines.append("- Important: prefer the degree level explicitly stated by the student email.")
+        else:
+            lines.append(f"- Degree level: {degree}")
 
     if language:
         lines.append(f"- Catalogue language hint: {language}")
@@ -149,6 +176,7 @@ def build_programme_context_block(email_text: str, subject: str = "") -> Dict[st
             "",
             "Important instruction:",
             "- Use the programme name above when retrieving and drafting.",
+            "- If the student email explicitly states Bachelor or Master, do not override it only because of a catalogue hint.",
             "- If the retrieved documents do not confirm a programme-specific fact, do not ask for the exact programme title again.",
             "- Instead, mention that the specific point should be reviewed by staff and include the programme URL for verification.",
         ]
@@ -160,6 +188,11 @@ def build_programme_context_block(email_text: str, subject: str = "") -> Dict[st
         "context_block": "\n".join(lines),
         "url": url,
         "application_url": application_url,
+        "degree": degree,
+        "catalogue_degree": catalogue_degree,
+        "explicit_degree": explicit_degree,
+        "language": language,
+        "study_format": study_format,
     }
 
 

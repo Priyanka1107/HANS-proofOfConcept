@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "3f10f7a7846f482d",
+    "object_id": "application_route_rule-visa-residence-uni-assist",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/application-via-uni-assist/visa-and-residence-permit/",
+    "title": "Visa and residence permit",
+    "classification_confidence": "low",
+    "classification_notes": "Visa and residence permit rules tied to uni-assist applications.",
+    "source_html_path": "snapshots_raw/3f10f7a7846f482d.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.216993"
+  },
+  "rule_info": {
+    "rule_type": "visa-residence-uni-assist",
+    "scope": "External requirement",
+    "applies_to": [],
+    "description": "Visa and residence permit rules tied to uni-assist applications."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-application-uni-assist"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Application via uni-assist Visa and residence permit Visa and residence permit Table of contents Visa and residence permit Registering with the local registration office Visa and residence permit If you come from an EU Member State country or Iceland, Liechtenstein or Norway and wish to study at HTW Berlin, you do not require a visa or a residence permit. If you come from another country and wish to study at HTW Berlin, you require a visa and a residence permit. Full information can be found on the official Berlin website . Please forward a copy of your residence permit to the Student Service Centre of HTW Berlin. To re-register for the following semester, a copy of your residence permit must be sent to HTW Berlin at the latest by the end of your first semester — this means by 30 September in the summer semester, by 31 March in the winter semester. Registering with the local registration office When you arrive in Germany, please register with the local registration office (Bürgeramt). As a rule, you have two weeks to do this. If you move within Germany at a later point in time, you will need to inform the local registration office of your new address. Full information can be found on the official Berlin website ."
+  }
+}

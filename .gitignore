@@ -55,7 +55,8 @@ evaluation/email_thread_memory.json
 !evaluation/README.md
 
 # Raw scraped/generated data
-data/objects/
+# data/objects is committed because it contains the curated RAG seed objects
+# needed to run/rebuild the local PoC knowledge base.
 data/snapshots_raw/
 output/
 results/
@@ -91,3 +92,34 @@ app/multitopic_v4good.py
 
 # Temporary debug script
 scripts/debug_one_thread.py
+# Runtime memory files - generated locally, not needed for a fresh pull
+evaluation/query_session_memory.json
+evaluation/email_thread_memory.json
+
+# Local evaluation output folders
+evaluation_*/
+evaluation_501/
+
+# Local backup / patch files from development iterations
+app/main_v5.py
+app/multitopic_v5.py
+streamlit_app_v5.py
+apply_quality_warning_label_patch.py
+
+# Runtime memory files - generated locally, not needed for a fresh pull
+evaluation/query_session_memory.json
+evaluation/email_thread_memory.json
+
+# Local evaluation output folders
+evaluation_*/
+evaluation_501/
+
+# Local backup / patch files from development iterations
+app/main_v5.py
+app/multitopic_v5.py
+streamlit_app_v5.py
+apply_quality_warning_label_patch.py
+
+# Local helper scripts not needed for final run
+clean_eval_logs.ps1
+run_hans_mixed_version_tests.py

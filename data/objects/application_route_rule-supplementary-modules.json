@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "616794d063055477",
+    "object_id": "application_route_rule-supplementary-modules",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/module-registration/supplementary-modules/",
+    "title": "Supplementary Modules",
+    "classification_confidence": "low",
+    "classification_notes": "Rules governing registration and handling of supplementary modules.",
+    "source_html_path": "snapshots_raw/616794d063055477.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.852810"
+  },
+  "rule_info": {
+    "rule_type": "supplementary-modules",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules governing registration and handling of supplementary modules."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "application_process-module-registration"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Module registration Supplementary Modules Supplementary Modules Table of contents Compulsory and elective modules Foreign language courses: options Accreditation of supplementary modules (AWE) Compulsory and elective modules Supplementary modules teach interdisciplinary skills. They are offered as Compulsory modules (CM) Elective or compulsory elective modules (EM/CEM): foreign language modules or non-linguistic modules There are no guaranteed places on supplementary module courses. The content of the non-linguistic modules may not correspond to the specialist training offered by the student’s own degree programme. Foreign language courses: options All Bachelor students must take at least one foreign language . Depending on the degree programme, a second foreign language or additional non-linguistic supplementary modules are also possible. Your chosen language option is determined when you first register for the examination and can only be changed later in exceptional cases. Students who have obtained their higher education entrance qualification in a language other than German may choose German as a foreign language. The options specified in your study regulations determine the possible combinations: Option 1: foreign language (specialised language level) and non-linguistic supplementary modules from the selection offered by the faculties Option 2: first foreign language (specialised language level) and second foreign language (usually from foundation level) Option 3: specialisation of first foreign language (specialised language level + advanced level) Please note: for students of Faculties 1 and 2 , options 2 and 3 are in reverse. Accreditation of supplementary modules (AWE) In the event that no information on accreditation is provided in the course information, the following applies: The decision on whether a supplementary module from another subject area is accredited is taken by the examination board of your degree programme."
+  }
+}

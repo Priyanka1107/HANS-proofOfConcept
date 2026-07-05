@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "page_id": "65daeb997b403133",
+    "object_id": "overview_navigation-degree-programmes-filtered-bachelors",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/studies/degree-programmes/?fachrichtung=&certificate=1&semester=1&kind=&language=",
+    "title": "Degree programmes",
+    "classification_confidence": "low",
+    "classification_notes": "Filtered bachelor programme listing. Not a standalone content page.",
+    "source_html_path": "snapshots_raw/65daeb997b403133.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.546117"
+  },
+  "navigation_info": {
+    "purpose": "Filtered bachelor programme listing. Not a standalone content page.",
+    "scope": "Degree programmes",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [],
+  "related_pages": [],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Degree programmes Degree programmes Die Studiengänge stehen derzeit nicht zur Verfügung oder Ihre Internetverbindung ist zu langsam."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "page_id": "888f1114884dfa58",
+    "object_id": "language_proof_rule-language-certificates",
+    "object_type": "language_proof_rule",
+    "url": "https://www.htw-berlin.de/en/studies/foreign-languages-centre/certificates/",
+    "title": "Certificates",
+    "classification_confidence": "low",
+    "classification_notes": "Explains language certificates issued by the Foreign Languages Centre and their relevance for language proof and study requirements.",
+    "source_html_path": "snapshots_raw/888f1114884dfa58.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.581206"
+  },
+  "language_info": {
+    "language": null,
+    "test_name": "Certificates",
+    "required_for": [],
+    "description": "Explains language certificates issued by the Foreign Languages Centre and their relevance for language proof and study requirements."
+  },
+  "requirement_details": {},
+  "test_details": null,
+  "related_pages": [
+    "university_profile-foreign-languages-centre",
+    "curriculum_page-language-modules-english",
+    "curriculum_page-language-modules-french",
+    "curriculum_page-language-modules-russian",
+    "language_proof_rule-german-language-test-for-university-entry-dsh"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Foreign Languages Centre Certificates Certificates Table of contents English French Russian Spanish German English UNIcert® II Business, Engineering, Design TOEIC IELTS (preparatory course only) TOEFL (preparatory course only) French UNIcert® I UNIcert® II Business Russian UNIcert® I UNIcert® II Business Spanish UNIcert® I German DSH"
+  }
+}

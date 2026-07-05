@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "page_id": "a915f9d623079469",
+    "object_id": "curriculum_page-electrical-engineering-master-electives",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/english-language-study-programmes/electrical-engineering-master/core-courses-acceptance-guaranteed/",
+    "title": "Core courses  (Acceptance guaranteed)",
+    "classification_confidence": "high",
+    "classification_notes": "Describes elective course options for the Electrical Engineering Masters program, subject to faculty capacity.",
+    "source_html_path": "snapshots_raw/a915f9d623079469.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.182287"
+  },
+  "curriculum_info": {
+    "program_reference": [
+      "degree_program-electrical-engineering-master"
+    ],
+    "module_type": "core"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "International",
+      "credits": null
+    },
+    {
+      "description": "Pathways to HTW Berlin",
+      "credits": null
+    },
+    {
+      "description": "English-Language Study Programmes",
+      "credits": null
+    },
+    {
+      "description": "Electrical Engineering (Master)",
+      "credits": null
+    },
+    {
+      "description": "Advanced Control Engineering",
+      "credits": null
+    },
+    {
+      "description": "Electronics",
+      "credits": null
+    },
+    {
+      "description": "Project Electrical Engineering",
+      "credits": null
+    },
+    {
+      "description": "Project Laboratory in Sciences and Technology",
+      "credits": null
+    },
+    {
+      "description": "Research and Development Laboratory",
+      "credits": null
+    },
+    {
+      "description": "Scientific Writing with LaTeX",
+      "credits": null
+    },
+    {
+      "description": "Review classic control methods",
+      "credits": null
+    },
+    {
+      "description": "Introduction in time discrete control",
+      "credits": null
+    },
+    {
+      "description": "Linear algebra review",
+      "credits": null
+    },
+    {
+      "description": "State-space models",
+      "credits": null
+    },
+    {
+      "description": "Continuous-time linear state-space models",
+      "credits": null
+    },
+    {
+      "description": "Discrete-time linear state-space models",
+      "credits": null
+    },
+    {
+      "description": "Canonical forms",
+      "credits": null
+    },
+    {
+      "description": "Controllability, observability",
+      "credits": null
+    },
+    {
+      "description": "Pole placement method",
+      "credits": null
+    },
+    {
+      "description": "Linear quadratic regulator approach",
+      "credits": null
+    },
+    {
+      "description": "Observer design (full and reduced models)",
+      "credits": null
+    },
+    {
+      "description": "Computer aided system design using Matlab",
+      "credits": null
+    },
+    {
+      "description": "Controller validation with assessment criteria",
+      "credits": null
+    },
+    {
+      "description": "Passive building elements: (discrete and integrated building elements), ohmic resistance, coil and capacity",
+      "credits": null
+    },
+    {
+      "description": "Semiconductor technologies: terms and principles of IC design and production, pn junction, semiconductor technologies",
+      "credits": null
+    },
+    {
+      "description": "Active building elements: bipolar transistor, CMOS transistor",
+      "credits": null
+    },
+    {
+      "description": "Principles of analogue technology: basic circuits, biasing, static and dynamic behaviour, 2-port network theory, simulation techniques",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "degree_program-electrical-engineering-master"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin English-Language Study Programmes Electrical Engineering (Master) Core courses (Acceptance guaranteed) Core courses (Acceptance guaranteed) Table of contents Advanced Control Engineering Electronics Project Electrical Engineering Project Laboratory in Sciences and Technology Research and Development Laboratory Scientific Writing with LaTeX Advanced Control Engineering ECTS 5: Learning Outcomes and Competences: Understanding the key concepts and methods of advanced control engineering, such as model-based design, pole placement, observer design, observer based state-space controller, and Kalman filter design. Ability to apply the methods to develop model-based control systems for real world problems. Content: Review classic control methods Introduction in time discrete control Linear algebra review State-space models Continuous-time linear state-space models Discrete-time linear state-space models Canonical forms Controllability, observability Pole placement method Linear quadratic regulator approach Observer design (full and reduced models) Computer aided system design using Matlab Controller validation with assessment criteria Electronics ECTS 5: Content: Passive building elements: (discrete and integrated building elements), ohmic resistance, coil and capacity Semiconductor technologies: terms and principles of IC design and production, pn junction, semiconductor technologies Active building elements: bipolar transistor, CMOS transistor Principles of analogue technology: basic circuits, biasing, static and dynamic behaviour, 2-port network theory, simulation techniques Project Electrical Engineering ECTS 15: Learning outcomes and competences: Further development of problem-solving skills, strategy development, advancement of subject-specific knowledge and its application in real industry-related tasks, increased independence, development of judgement abilities, developing and applying techniques for problem-solving strategy, analysing and writing scientific texts. Advancement of subject knowledge to generate application-related technical knowledge; ability to realise test setups, development with due consideration of scientific aspects Project Laboratory in Sciences and Technology ECTS 2: Learning outcomes and competences: Under the supervision of the lecturer and potentially under the instruction of a tutor, students work in small groups on a scientific or engineering project chosen from the areas of physics, electrical engineering or software engineering that can be implemented with the available resources (time frame, facilities and equipment). Content: As the final outcome, the students develop a functioning circuit, build a device or conduct an experiment. Students are responsible for theoretical preparation, practical implementation and documentation of circuits/protocols and evaluations of experiments. Students will acquire any missing knowledge by studying relevant literature during the semester or from the lecturer if necessary. The results of the project must be presented. Different presentation forms can be chosen following discussion with the lecturer. Research and Development Laboratory ECTS 2: The students carry out subsequent research and development work. On the basis of the previously developed device or experiment, students apply scientific methods to systematically look for new findings or practically implement the first concrete application. The available resources (time frame, facilities and equipment) must be taken into account. First, the project groups have to devise a theoretical or applied research question. On this basis, a concept must be developed and documented in a requirements specification. The requirements specification is then submitted to the supervisor and discussed. On the basis of the devised concept, the students conduct experiments or further develop the implementations, analysing their findings with a theoretical or applied research approach. The results must be presented as a research poster or research paper or as a documented system or acceptance test to provide functional verification. In addition, the students must give a final presentation. Scientific Writing with LaTeX ECTS 2: Learning outcomes and competences: This module provides students with a basic knowledge of LaTeX. A key focus is the application of LaTeX to create texts with mathematical formulas and implement algorithmic methods of numeric mathematics. They also use the Scientific Notebook tool. Students learn how to independently create texts with LaTeX."
+  }
+}

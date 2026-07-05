@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "ac0743aa8e380539",
+    "object_id": "overview_navigation-student-advisory-services",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/organisational-units/central-offices/centre-for-student-advisory-career-services/",
+    "title": "Centre for Student Advisory & Career Services",
+    "classification_confidence": "low",
+    "classification_notes": "Anchor overview for student advisory services, providing framing and links to counselling and support offerings.",
+    "source_html_path": "snapshots_raw/ac0743aa8e380539.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.475451"
+  },
+  "navigation_info": {
+    "purpose": "Anchor overview for student advisory services, providing framing and links to counselling and support offerings.",
+    "scope": "Centre for Student Advisory & Career Services",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "special_category-general-student-advisory",
+    "special_category-psychological-counselling",
+    "accessibility_support-barrier-free-education"
+  ],
+  "related_pages": [
+    "special_category-general-student-advisory",
+    "special_category-psychological-counselling",
+    "accessibility_support-barrier-free-education"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Organisational units Central Offices Centre for Student Advisory & Career Services Centre for Student Advisory & Career Services As a student advisory service and career service, we inform, advise, support and empower prospective and current students throughout the entire academic process, from choosing a degree programme and answering individual questions about the organisation of studies to subsequent career transition. We also provide support in sensitive circumstances and are there to help students overcome study-related difficulties. General Student Advisory Service Information & counselling for prospective students Career Services Counselling, workshops & practical insights for career orientation & career entry Psychological counselling Support with small and larger-scale crises during your studies Barrier-Free Education Support around studying with a disability"
+  }
+}

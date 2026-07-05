@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "page_id": "340e58964fa7fa1e",
+    "object_id": "application_process-accepting-study-place",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-or-refusal/accepting-your-study-place/",
+    "title": "Accepting your study place",
+    "classification_confidence": "low",
+    "classification_notes": "Critical post-admission step. High student query relevance.",
+    "source_html_path": "snapshots_raw/340e58964fa7fa1e.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.033538"
+  },
+  "process_info": {
+    "name": "Accepting your study place",
+    "applies_to": [],
+    "description": "Critical post-admission step. High student query relevance."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-admission-or-refusal",
+    "application_route_rule-health-insurance"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission or refusal Accepting your study place Accepting your study place Table of contents Offer of admission via hochschulstart.de Notice of admission Documents required for enrolment Enrolment HTW StudentCard Taking up your study place Offer of admission via hochschulstart.de If you have applied for admission-restricted Bachelor’s study programmes via the dialogue-oriented service procedure (DOSV), you will receive an offer of admission for up to 12 applications. Only once you have accepted an offer of admission on hochschulstart.de will the notice of admission be generated in the application portal of HTW Berlin and you can then enrol. This does not apply if you have applied for the following study programmes: Master’s study programme Bachelor’s study programme with aptitude test Bachelor’s study programme without admission restriction Notice of admission To accept your study place, you need to enrol online in the application portal sign and date the application for enrolment/acceptance declaration, then send the original document to bewerbungsunterlagen+<Ihre Bewerbernummer>@htw-berlin.de and transfer the semester fee to the specified bank account by the date stated on your notice of admission. Documents required for enrolment The application for enrolment/acceptance declaration contains a list of outstanding documents that must be submitted by enrolment. This applies regardless of whether or not you are already enrolled on a different study programme at HTW Berlin. The general deadline is the start of the semester: 1 April for the summer semester 1 October for the winter semester Only exception: For Master’s study programmes the deadline for degree certificates which were not available at the time of application can be extended. This is stated in the acceptance declaration. Please see the information on proof of health insurance . Enrolment When you have sent us your signed application for enrolment, paid the semester fee and submitted all documents required for enrolment, you will be automatically enrolled at HTW Berlin. HTW StudentCard After successful enrolment we will send your login information for the Campus Management System (LSF) via E-Mail to you. If you submit all the documents required for enrolment , you will receive a QR code in the Campus Management System to create an HTW StudentCard at the card terminals at the HTW Berlin . Taking up your study place For all study programmes conducted in German , the following deadlines apply for submitting all enrolment-relevant documents, receiving your login data for your HTW account and starting your studies: 15 April for the summer semester 15 October for the winter semester For all study programmes conducted in English , extended deadlines apply: 30 April for the summer semester 30 October for the winter semester"
+  }
+}

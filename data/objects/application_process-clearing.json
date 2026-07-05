@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "1d98c75878bf9fa1",
+    "object_id": "application_process-clearing",
+    "object_type": "application_process",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-or-refusal/clearing-process/",
+    "title": "Clearing process",
+    "classification_confidence": "low",
+    "classification_notes": "Explains the clearing process after admission decisions. Frequently asked during late application phases.",
+    "source_html_path": "snapshots_raw/1d98c75878bf9fa1.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.022621"
+  },
+  "process_info": {
+    "name": "Clearing process",
+    "applies_to": [],
+    "description": "Explains the clearing process after admission decisions. Frequently asked during late application phases."
+  },
+  "steps": [],
+  "deadlines": null,
+  "requirements": null,
+  "fees": null,
+  "contact": null,
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-admission-or-refusal"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission or refusal Clearing process Clearing process Table of contents Coordinated Clearing process for Bachelor’s study programmes in DoSV Clearing process for Master's study programmes Study places that are not accepted or are refused by applicants who have been granted admission will be re-allocated through the step-up process. Master's study programmes have a university clearing process. For Bachelors study programmes, free places will be offered in the coordinated clearing process in DoSV. The registration for the clearing process takes place in the application portal of Hochschulstart Coordinated Clearing process for Bachelor’s study programmes in DoSV In the dialogue-oriented service procedure (DoSV) all study places that are not accepted are continually re-allocated. If free study places are still available after this procedure has finished, you can register for the coordinated clearing process for these places at the portal of Hochschulstart . Clearing process for Master's study programmes In order to participate in this process, you must have received a notice of refusal in the main admission procedure. The clearing process can take until after the beginning of the semester. Only when you can actually be offered a study place will you receive a notice of admission online in the application portal . If you have not been granted admission, you will not be informed."
+  }
+}

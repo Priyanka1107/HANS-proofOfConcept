@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "page_id": "c470af9f81e88c16",
+    "object_id": "curriculum_page-language-modules-arabic",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/studies/foreign-languages-centre/language-modules/arabisch/",
+    "title": "Arabic",
+    "classification_confidence": "medium",
+    "classification_notes": "Overview of Arabic language modules offered by the Foreign Languages Centre.",
+    "source_html_path": "snapshots_raw/c470af9f81e88c16.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.684869"
+  },
+  "curriculum_info": {
+    "program_reference": [],
+    "module_type": "core"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "Studies",
+      "credits": null
+    },
+    {
+      "description": "Foreign Languages Centre",
+      "credits": null
+    },
+    {
+      "description": "Language modules",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "university_profile-foreign-languages-centre",
+    "overview_navigation-language-modules"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Foreign Languages Centre Language modules Arabic Arabic Knowledge of the general language Arabic can be acquired at the Foreign Languages Center (basic level 1, CEFR: A1). No previous knowledge is required to start this course. The course concludes with a module examination; 4 credit points are awarded if the course is passed. Head of Language Team - Other Languages Stephen Mortimer +49 30 5019-2652 Stephen.Mortimer@HTW-Berlin.de English as a foreign language Associate Lecturer Neil Belakhdar belakhd@htw-berlin.de"
+  }
+}

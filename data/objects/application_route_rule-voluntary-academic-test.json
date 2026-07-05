@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "3652e8b0e6f8a5dd",
+    "object_id": "application_route_rule-voluntary-academic-test",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-requirements/voluntary-academic-assessment-test/",
+    "title": "Voluntary academic assessment test",
+    "classification_confidence": "low",
+    "classification_notes": "Information on voluntary academic assessment tests used in admission.",
+    "source_html_path": "snapshots_raw/3652e8b0e6f8a5dd.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.301078"
+  },
+  "rule_info": {
+    "rule_type": "voluntary-academic-test",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Information on voluntary academic assessment tests used in admission."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-admission-requirements",
+    "special_category-study-orientation-self-assessment"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission requirements Voluntary academic assessment test Voluntary academic assessment test Table of contents Advantages Tests for Bachelor’s degree programmes Test for Academic Studies (TestAS) Self assessments Applying for a study place Advantages If you take an academic assessment test, you can increase your chances of admission check for yourself whether the subject you have chosen is really right for you Tests for Bachelor’s degree programmes For a number of study programmes you can take an academic assessment test free of charge: Wirtschaft und Politik You are not obliged to take this test. Test for Academic Studies (TestAS) If you obtained your higher education entry qualification abroad and wish to start a Bachelor’s degree programme in Germany, you can take the TestAS to check whether studying is the right choice for you. If you are from a non-EU country or if you are stateless, you can improve your prospects of a study place with good test results. Self assessments HTW Berlin offers self assessments for individual study programmes. A self-assessment is a good way to test whether a degree programme is right for you. You can also find out more about the structure and content of the study programme. Unlike the voluntary academic assessment test, however, it will not increase your chances of receiving a study place. Applying for a study place Submit your application within the standard application deadlines — regardless whether you take the academic assessment test or not. If you are applying with certificates obtained in Germany , use the online application system of HTW Berlin. foreign certificates , please use the uni-assist system."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "8f6662a03eb7c515",
+    "object_id": "application_route_rule-numerus-clausus",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-requirements/numerus-clausus/",
+    "title": "Numerus clausus",
+    "classification_confidence": "low",
+    "classification_notes": "Explains numerus clausus and selection thresholds.",
+    "source_html_path": "snapshots_raw/8f6662a03eb7c515.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.378717"
+  },
+  "rule_info": {
+    "rule_type": "numerus-clausus",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Explains numerus clausus and selection thresholds."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-admission-requirements",
+    "overview_navigation-application-uni-assist",
+    "special_category-second-degree",
+    "special_category-no-higher-education-entry"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission requirements Numerus clausus Numerus clausus Table of contents NC – what does that mean? Selection procedure for Bachelor’s degree programmes Selection procedure for Master’s degree programmes Ranking and step-up process NC – what does that mean? The Numerus Clausus or NC (restricted admission) listed for a study programme indicates how high your general university/university of applied sciences entry qualification grade would have to have been in order to have successfully applied for a study place last semester. The NC does not indicate how good your chances will be in the future, as the NC can sometimes be very different from semester to semester. The Numerus Clausus for a study programme depends on how many study places are allocated, how many applications are received and how many admitted applicants actually accept their study place. It is therefore always worth applying for a study place on your chosen programme of study. The Study Advisory Service team will be pleased to advise you. Selection procedure for Bachelor’s degree programmes Study places for Bachelor’s degree programmes are generally allocated as follows: 20% based on the general university/university of applied sciences entry qualification grade, 20% based on waiting time, i.e. the number of six-month periods between obtaining the higher education entry qualification and the time of application minus the number of semesters enrolled at a German or European university or a university of a Member State of the Agreement on the European Economic Area, 60% based on the internal selection procedure in which study places are allocated on the basis of 50% for the general university/university of applied sciences entry qualification grade and 50% for the completed vocational training grade. Exceptions apply for the following study programmes: For Wirtschaft und Politik a voluntary academic assessment test is included in the calculation. For Internationale Medieninformatik mathematics, computer science and/or physics are included in the calculation as advanced course(s). Different preliminary quotas also apply. For Wirtschaftskommunikation 50% of the places are allocated according to the (subject) Abitur grade and 50% according to the waiting time, i.e. there is no university selection. For Game Design, Industrial Design , Kommunikationsdesign , Konservierung und Restaurierung/Grabungstechnik and Modedesign applicants must take an aptitude test. For certain applicant groups preliminary quotas exist , i.e. a set percentage of study places is reserved for these groups. This applies to you if you o btained your higher education entry qualification abroad and are not an EU/EEA citizen, you are applying for your second degree programme , you are applying for recognition of hardship , you are applying for a study programme and have a vocational qualification . Selection procedure for Master’s degree programmes Study places for Master’s degree programmes are generally awarded as follows: 80% based on the university’s internal selection criteria, 20% based on waiting time, i.e. the number of six-month periods between obtaining your first academic degree and the time of application (minus the number of semesters enrolled at a university during this period). Study places for Master’s degree programmes are allocated according to the university’s internal selection criteria (grade of the first academic degree qualifying the graduate for employment and professional experience). The criteria can be found in the respective Admissions Regulations. Ranking and step-up process Approx. four weeks after the close of applications, you will receive a letter of admission or refusal in the application portal . If you have not been allocated a study place during the main allocation process, it is possible to receive a study place in the step-up-process of HTW Berlin or the coordinated step-up process by hochschulstart.de . Information on rankings will not be disclosed. Please therefore refrain from enquiring."
+  }
+}

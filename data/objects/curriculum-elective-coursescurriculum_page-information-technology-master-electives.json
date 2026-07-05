@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "page_id": "f41dfdaf393c20cc",
+    "object_id": "curriculum-elective-coursescurriculum_page-information-technology-master-electives",
+    "object_type": "curriculum_page",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/english-language-study-programmes/information-technology-master/elective-courses/",
+    "title": "Elective courses",
+    "classification_confidence": "high",
+    "classification_notes": "Lists elective course options within the Information Technology Masters program.",
+    "source_html_path": "snapshots_raw/f41dfdaf393c20cc.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.051221"
+  },
+  "curriculum_info": {
+    "program_reference": [
+      "msc-information-tedegree_program-information-technology-masterchnology"
+    ],
+    "module_type": "elective"
+  },
+  "modules": [
+    {
+      "description": "HTW Berlin - University of Applied Sciences - studies, research, further education",
+      "credits": null
+    },
+    {
+      "description": "International",
+      "credits": null
+    },
+    {
+      "description": "Pathways to HTW Berlin",
+      "credits": null
+    },
+    {
+      "description": "English-Language Study Programmes",
+      "credits": null
+    },
+    {
+      "description": "Information Technology (Master)",
+      "credits": null
+    },
+    {
+      "description": "System Engineering",
+      "credits": null
+    },
+    {
+      "description": "B2B and Online Marketing",
+      "credits": null
+    },
+    {
+      "description": "Data Mining",
+      "credits": null
+    },
+    {
+      "description": "Semantic Modeling",
+      "credits": null
+    },
+    {
+      "description": "Statistical Learning in Finance and Insurance",
+      "credits": null
+    },
+    {
+      "description": "Interdisciplinary Additional Courses (\"AWE\")",
+      "credits": null
+    },
+    {
+      "description": "German as a Foreign Language",
+      "credits": null
+    },
+    {
+      "description": "methods and techniques of system analysis",
+      "credits": null
+    },
+    {
+      "description": "system definition and structure",
+      "credits": null
+    },
+    {
+      "description": "proces of problem solving, management and optimisation.",
+      "credits": null
+    },
+    {
+      "description": "Online marketing and opinion formation on the Internet, Fake News.",
+      "credits": null
+    },
+    {
+      "description": "Online marketing and fairness of AI systems",
+      "credits": null
+    },
+    {
+      "description": "Auditing of AI systems, e.g. with regard to fairness.",
+      "credits": null
+    },
+    {
+      "description": "data mining processes, data sources",
+      "credits": null
+    },
+    {
+      "description": "Data Wrangling, Data Pre-Processing, Feature Engineering",
+      "credits": null
+    },
+    {
+      "description": "Data models: regression, classification, clustering, association",
+      "credits": null
+    },
+    {
+      "description": "techniques: linear and logistic regression, decision and regression trees, random forest, boosted trees, SVN",
+      "credits": null
+    },
+    {
+      "description": "k-NN, k-Means, Agglomerative Clustering, Frequent Item Sets, PCA",
+      "credits": null
+    },
+    {
+      "description": "Evaluation and cross-validation, choice of best model,",
+      "credits": null
+    },
+    {
+      "description": "boosting and regularization",
+      "credits": null
+    },
+    {
+      "description": "programming in R with RStudio and Python.",
+      "credits": null
+    },
+    {
+      "description": "AWE: Gender and Computing",
+      "credits": null
+    },
+    {
+      "description": "AWE: Modern Mythology: Technology and Cultural Business Design",
+      "credits": null
+    },
+    {
+      "description": "AWE: The economic of world peace",
+      "credits": null
+    },
+    {
+      "description": "AWE: 3D and 4D Printing with Sustainable Materials",
+      "credits": null
+    }
+  ],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "msc-information-tedegree_program-information-technology-masterchnology"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin English-Language Study Programmes Information Technology (Master) Elective courses Elective courses Table of contents System Engineering B2B and Online Marketing Data Mining Semantic Modeling Statistical Learning in Finance and Insurance Interdisciplinary Additional Courses (\"AWE\") German as a Foreign Language ← back to course choice System Engineering ECTS: 5 [1.4 - SE Systems Engineering (6194130)] Students gain knowledge and abilities in basic methods and tasks of system engineering. They are able to understand and analyse the taught data sets and methods and are able to sort them and put them inot perspective. Students learn about: methods and techniques of system analysis system definition and structure proces of problem solving, management and optimisation. Students are able to analyse and describe systems and design target models. B2B and Online Marketing ECTS: 5 [W3-B2BOM: Management von B2B Geschäftsbeziehungen und Online-Marketing (6130151)] Main topics: Online marketing and opinion formation on the Internet, Fake News. Online marketing and fairness of AI systems Auditing of AI systems, e.g. with regard to fairness. The course takes place as a research seminar. You are expected to read the provided English-language scientific publications and be able to discuss them. You are expected to read the provided English-language scientific publications regularly and to be able to discuss them. The examination performance consists of semester-long submissions/short presentations and a term paper. Data Mining ECTS: 5 [W2-DM: Data Mining] The students gain knowledge in basic methods, techniques and algorithms for data mining. They learn how to extract knowledge from raw data. They know how to apply data mining tools and understand data mining models. Contents include: data mining processes, data sources Data Wrangling, Data Pre-Processing, Feature Engineering Data models: regression, classification, clustering, association techniques: linear and logistic regression, decision and regression trees, random forest, boosted trees, SVN k-NN, k-Means, Agglomerative Clustering, Frequent Item Sets, PCA Evaluation and cross-validation, choice of best model, boosting and regularization programming in R with RStudio and Python. Semantic Modeling ECTS: 5 [WT2: Semantic Modeling] In this course we will be investigating how we can go about defining not just the syntax of a system, but its semantics, and what we can learn from manipulating semantic models. In particular, we will be contributing to the semantic modeling project Wikidata. Statistical Learning in Finance and Insurance ECTS: 4 [Statistical Learning in Finance and Insurance] Introduction to statistical learning methods for use in finance and insurance. Interdisciplinary Additional Courses (\"AWE\") ECTS: 2 Every Semester students are able to choose 1-2 AWE from a great range of general courses in order to complement their regular curriculum courses. You will be able to see the full range of optional courses during the course registration period . As not all topics are published yet at the time of the application, please simply select \"AWE - General Course\" on the learning agreement and then apply for your specific General Course(s) before the semester starts. Please note that \"AWE\" have limited places, acceptance is not guaranteed. Current list of AWE for the summer semester 2026: AWE: Gender and Computing AWE: Modern Mythology: Technology and Cultural Business Design AWE: The economic of world peace AWE: 3D and 4D Printing with Sustainable Materials German as a Foreign Language ECTS: 4 Our language department offers a wide range of courses - from General German classes, focusing on the basics of grammar and conversation, to more advanced German courses with specializations in the fields of Design, Business and Technology. Based on your German level you have already got you can attend a German as a Foreign Language course. Please put the level already on your Learning Agreement, e.g. \"German as a Foreign Language, Level A.2\"."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "6fe8aaf975f9ae61",
+    "object_id": "application_route_rule-preferential-admission",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/special-cases/preferential-admission/",
+    "title": "Preferential admission",
+    "classification_confidence": "low",
+    "classification_notes": "Rules governing preferential admission cases.",
+    "source_html_path": "snapshots_raw/6fe8aaf975f9ae61.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.089557"
+  },
+  "rule_info": {
+    "rule_type": "preferential-admission",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules governing preferential admission cases."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-special-cases"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Special cases Preferential admission Preferential admission You can apply for preferential admission if you have already been admitted to your desired degree programme at HTW Berlin at the beginning of or during your service and were unable to start your studies due to your service. This includes, for example Federal Voluntary Service according to the BFDG Development service according to the EhfG Youth Voluntary Service according to the JFDG Prerequisites The letter of admission is not older than the previous semester (or not older than the semester before last for degree programmes that only start once a year). Your service began at the time of admission or shortly before. Proof of both requirements must be provided by the application deadline. Application You apply for preferential admission as part of your study place application in the HTW application portal. The regular deadlines for applications apply. Please note that you can only successfully submit a special application if the respective requirements are met and you have provided full proof of this. All required documents must be uploaded to the application portal by the application deadline. Letter of admission from the previous semester for the same degree programme Certificate of employment"
+  }
+}

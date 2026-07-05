@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "3b59fd707f042271",
+    "object_id": "application_route_rule-dual-enrolment",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/re-registration/dual-enrolment/",
+    "title": "Dual enrolment",
+    "classification_confidence": "low",
+    "classification_notes": "Rules governing dual enrolment at HTW Berlin.",
+    "source_html_path": "snapshots_raw/3b59fd707f042271.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.894803"
+  },
+  "rule_info": {
+    "rule_type": "dual-enrolment",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Rules governing dual enrolment at HTW Berlin."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "overview_navigation-re-registration",
+    "deadline_rule-application-periods"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Re-registration Dual enrolment Dual enrolment Multiple enrolment means that you are enrolled in two degree programmes at the same time and are working towards a degree in both. This can be done: At the same university → double degree programme At two different universities in Berlin or Brandenburg Please remember: On average, studying at HTW Berlin corresponds to a 40-hour week. So think carefully about whether you can cope with the additional effort. Requirements & restrictions You cannot be enrolled on two NC degree programmes at the same time. If you are admitted to both, you must choose one. Already enrolled in an NC-restricted degree programme? You will only be admitted to the second NC-restricted degree programme if no one is excluded from the first degree programme as a result. Application procedure Regular application for the chosen degree programme within the deadlines . Do not apply for multiple enrolment until you have been admitted. Documents required for enrolment: Declaration on the exercise of membership rights [PDF] You only pay the semester fee at the university at which you exercise your membership rights If membership rights are not exercised at HTW Berlin: Proof of payment of the semester fee at the other university Current certificate of enrolment from the other university Only for multiple enrolment in two Bachelor’s degree programmes: Proof that the Bachelor’s degree programme at the other university is NC-free"
+  }
+}

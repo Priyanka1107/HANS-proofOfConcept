@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "page_id": "6d4ca8b046b4e527",
+    "object_id": "application_route_rule-module-registration-special",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/module-registration/special-regulations/",
+    "title": "Special Regulations",
+    "classification_confidence": "low",
+    "classification_notes": "Special regulations affecting module registration.",
+    "source_html_path": "snapshots_raw/6d4ca8b046b4e527.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.841900"
+  },
+  "rule_info": {
+    "rule_type": "module-registration-special",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Special regulations affecting module registration."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "application_process-module-registration",
+    "overview_navigation-student-exchange-programmes-htw"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Module registration Special Regulations Special Regulations Table of contents Enrolment for first-year students Prioritised enrolment Enrolment for guest listeners and visiting students Enrolment for incoming students (exchange semester) Enrolment for first-year students In the first study semester, all compulsory courses are automatically booked for you (exception: Communication Design). Please note: it is advisable to check whether you need to adjust the foreign language (English is usually the standard) and the foreign language level. You can find your sample timetable in the LSF campus management system under “Personal timetable”. In some degree programmes, it is only visible approx. one week before the start of the semester — please wait until then before making any enquiries. In the part-time study programme , you create your own study plan. If you are studying in Faculty 1, your enrolment on courses is prioritised. If you have any questions, please contact your faculty administration or programme counselling service. Supplementary modules and a second foreign language can be taken in phases 1 to 3 (if places are available). Prioritised enrolment Your enrolment on courses prior to the initial place allocation phase will be prioritised in the event that you share a household with a child under the age of 13 . Proof: birth certificate; Faculty 3: current registration certificate ( max. 1 year old) have a physical impairment or chronic illness . Proof: written recommendation from the Representative for Disabled and Chronically Ill Students care for close relatives . Proof of care activity and time required perform competitive sports . Proof: confirmation from the university sports department are studying in Faculty 1 for a conditions-based or part-time Master’s degree, have changed your degree programme or are newly enrolled in a higher study semester. Procedure: Register for the desired courses in the LSF campus management system as usual. Register by email to the faculty administration by the end of phase 1 at the latest (repeat process every semester): Proof that you fall into one of the above categories (see above) If applicable, LSF printout of the registered courses (e.g. timetable) You are not included in the automatic allocation of places. If the course request cannot be fulfilled, the administration will provide support in finding an alternative. Enrolment for guest listeners and visiting students Enrolment is not possible via the LSF, but directly in the first course session using sign-up lists. Contact the lecturer before the start of the session. The lecturer confirms free capacity on the course with their signature. Enrolment for incoming students (exchange semester) Information and dates can be obtained from the International Office during the introductory weeks."
+  }
+}

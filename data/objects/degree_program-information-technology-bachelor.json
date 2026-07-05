@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "page_id": "ff76330ef70f96b5",
+    "object_id": "degree_program-information-technology-bachelor",
+    "object_type": "degree_program",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/english-language-study-programmes/information-technology-bachelor/",
+    "title": "Information Technology (Bachelor)",
+    "classification_confidence": "high",
+    "classification_notes": "Landing page for the English-taught Bachelors program in Information Technology.",
+    "source_html_path": "snapshots_raw/ff76330ef70f96b5.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.060087"
+  },
+  "program_info": {
+    "name": "Information Technology",
+    "degree_type": "Bachelor",
+    "degree_abbreviation": "B.Sc.",
+    "duration_semesters": null,
+    "ects_credits": null,
+    "language": "",
+    "start_semesters": [
+      "summer"
+    ]
+  },
+  "admission_requirements": {},
+  "curriculum": {
+    "description": "",
+    "related_curriculum_pages": [
+      "curriculum_page-information-technology-bachelor-electives"
+    ]
+  },
+  "application_info": {
+    "related_application_pages": []
+  },
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "curriculum_page-information-technology-bachelor-electives"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin English-Language Study Programmes Information Technology (Bachelor) Information Technology (Bachelor) Table of contents Short description Requirements for admission Programme parts Courses offered under reserve Courses offered in Summer Semester 2026 Short description This is the track for Information Technology students, any subject ranging from Computer Science to Business Informatics or Information Systems… It is offered by Faculty 4 - School of Computing, Communication and Business . It offers a combination of classes focusing on fundamental principles of Applied Computer Science, and on the identification and solution of design issues associated with efficiency, usability and security. You will become familiar with various aspects of software development, like algorithms, networked systems, and data security. You can also apply your knowledge, reinforce your skills and strengthen your design practice by completing project work in these areas. Requirements for admission In order to be admitted and to succeed in this track, you have to fulfill certain prerequities: You are an enrolled student at a partner university of HTW Berlin. You will have covered at least two semesters in in a Computer Science/Information Technology study programme prior to participation. Basic knowledge in programming is expected. An advanced level of B2 in English is compulsory. Programme parts During your semester or year at HTW Berlin, you can select a combination of different modules. The majority of classes will be from the study programme at HTW Berlin. Additionally, you may enroll in 1-2 language classes and 1-2 AWE classes (supplementary course programme, providing students with interdisciplinary skills). Courses offered under reserve Please note: The courses are offered under reserve for summer semester 2026. S ubject to modifications. Courses offered in Summer Semester 2026 Elective Courses Check which courses are available."
+  }
+}

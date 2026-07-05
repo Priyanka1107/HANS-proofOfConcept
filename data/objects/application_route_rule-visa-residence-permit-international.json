@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "6e031857de546ded",
+    "object_id": "application_route_rule-visa-residence-permit-international",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/international-degree-seeking-students/visa-residence-permit/",
+    "title": "Visa / Residence Permit",
+    "classification_confidence": "low",
+    "classification_notes": "Explains visa and residence permit requirements for international degree-seeking students. Defines mandatory legal conditions affecting the study and enrollment route.",
+    "source_html_path": "snapshots_raw/6e031857de546ded.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:57.960004"
+  },
+  "rule_info": {
+    "rule_type": "visa-residence-permit-international",
+    "scope": "External requirement",
+    "applies_to": [],
+    "description": "Explains visa and residence permit requirements for international degree-seeking students. Defines mandatory legal conditions affecting the study and enrollment route."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "overview_navigation-international-degree-seeking-students"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin International Degree-Seeking Students Visa / Residence Permit Visa / Residence Permit According to the Residence Act * (AufenthG), international students generally require a permit for entry ** to and residence in Germany. International students therefore need a residence permit for their stay, which is issued by the Berlin Immigration Office. Students and their relatives please apply for a residence permit at the Keplerstraße location : Keplerstrasse 2 10589 Berlin (Mierendorffplatz subway station) Tel: (030) 90269-4000 Opening hours: Mon, Tue 7 a.m. to 2 p.m. Thursday 10 a.m. - 6 p.m. Please also note the information on the following website of the Berlin Immigration Office . * Does not apply to Union citizens who are entitled to freedom of movement and their family members or diplomats. ** For some countries, an exception applies to entry. See website of the Berlin Immigration Office . How to apply for your residence permit online! NEW the digital residence permit application for studying! Good to know: The online applications are intended for both the initial issue and the extension of the residence permit for studying. How does the online application process work? After submitting your data in the online application, you will be shown a PDF document as confirmation of your application. Please make sure to save this document and print it out if possible. You can present the PDF document to other authorities or employers, for example, as proof of the continued validity of your current residence permit. Once you have submitted your online application, you will either be given an appointment for an interview or asked to submit further documents. Due to the very high number of applications, it may take some time before you receive feedback on your application. Please refrain from making inquiries during this time. Please note To apply for or extend a residence permit for studying, please use only our online applications. Requests for an appointment via a contact form are not sufficient and are no substitute for the online application. Applications that reach the migration office by other means (e.g. via contact form, letter or e-mail) can only be processed secondarily for organizational reasons. Further information can be found on the following website www.berlin.de/einwanderung/ueber-uns/aktuelles/artikel.1499961.php"
+  }
+}

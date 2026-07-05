@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "4a714c3a9277fc9a",
+    "object_id": "fees_funding_rule-semester-fee",
+    "object_type": "fees_funding_rule",
+    "url": "https://www.htw-berlin.de/en/studies/study-organisation/semester-fee/",
+    "title": "Semester fee",
+    "classification_confidence": "low",
+    "classification_notes": "Semester fee structure and payment details.",
+    "source_html_path": "snapshots_raw/4a714c3a9277fc9a.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.473536"
+  },
+  "financial_info": {
+    "type": "fee",
+    "description": "Semester fee structure and payment details.",
+    "amounts_mentioned": [
+      "19.94",
+      "19.94"
+    ]
+  },
+  "eligibility": null,
+  "application_process": null,
+  "deadlines": null,
+  "related_pages": [
+    "overview_navigation-study-organisation",
+    "application_route_rule-dual-enrolment",
+    "application_route_rule-leave-of-absence"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Study organisation Semester fee Semester fee Please transfer the semester fee within the re-registration deadlines in order to continue your studies. The amounts in the table apply to most students. You can find the amount applicable to you in your LSF campus management system fees account. A separate request for payment will not be made. Semester fee for on-campus study and preparatory course Administration fee 50.00 € Contribution to the student body 12.50 € Contribution to the student organisation Studierendenwerk Berlin 85.00 € Semester ticket 208.80 € Contribution to the semester ticket social fund 1.00 € Total amount 357.30 €* An additional fee of €19.94 will be charged for late re-registration . Special regulations: Semester fee for exchange students (“incoming students”): 307.30 € “Double programme” students with main membership at another university only pay the semester fee at the other university (proof required) Semester fee for Division of Continuing Education (ZbwS) degree programmes Bachelor’s and Master’s degree programmes 62,50 € Further education Master’s degree programmes 324,90 € Sabbatical semester 62,50 € An additional fee of €19.94 will be charged for late re-registration ."
+  }
+}

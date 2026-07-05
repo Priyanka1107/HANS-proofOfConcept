@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "page_id": "bc4c1358ff90f255",
+    "object_id": "application_route_rule-required-documents-bachelor-refugees",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/refugees-pathways-into-studying/documents-required-for-a-bachelors-study-programme/",
+    "title": "Documents required for a Bachelor’s study programme",
+    "classification_confidence": "low",
+    "classification_notes": "Lists mandatory documents required for refugees applying to a bachelors degree program. This page defines binding application requirements.",
+    "source_html_path": "snapshots_raw/bc4c1358ff90f255.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:57.869466"
+  },
+  "rule_info": {
+    "rule_type": "required-documents-bachelor-refugees",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Lists mandatory documents required for refugees applying to a bachelors degree program. This page defines binding application requirements."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "overview_navigation-refugees-pathways-into-studying",
+    "language_proof_rule-german-proficiency-uni-assist",
+    "language_proof_rule-english-proficiency-uni-assist",
+    "application_route_rule-pre-study-internship",
+    "application_route_rule-mandatory-aptitude-test",
+    "overview_navigation-changing-study-programme",
+    "application_route_rule-health-insurance"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin Refugees: Pathways into studying Documents required for a Bachelor’s study programme Documents required for a Bachelor’s study programme Apply via uni-assist . All documents will be accepted in German and English. Documents in other languages require a German or English translation. Do not send original documents, please provide officially certified copies of your documents. Table of contents Documents for your application Documents for enrolment Documents for your application Submit the following documents by the application deadline — 31 December for the summer semester, 30 June for the winter semester: School certificates, university degree certificates and transcripts from your country of origin Information from the Central Office for Foreign Education (Zentralstelle für ausländisches Bildungswesen – ZAB) regarding the admission requirements for German universities can be found at anabin.de . Proof of German proficiency to level C1 for all study programmes conducted in German This also applies if you have German citizenship but your school/university certificate is from abroad. Proof of English proficiency to level C1 for study programmes conducted in English If English is the official national language of the country in which you received your higher education entrance qualification or if you completed secondary school or a study programme in English, you do not require proof of English proficiency. Pre-study internship certificate if this is a requirement for the programme of study you wish to apply for. This should be submitted in the form of a comprehensive and detailed certificate from the employer. The pre-study internship can be completed in Germany or abroad. Aptitude test (Eignungsprüfung) if this is a requirement for the programme of study you wish to apply for. Registration for the aptitude test is arranged directly with the programme of study and takes place independently from your application for a study place. Proof of previous courses and examinations at other German universities If you are/were enrolled at another German universities and wish to transfer to HTW Berlin, please provide full documentations of all periods of study in Germany. Proof of previous courses and examinations at foreign universities If you have only studied abroad, you can apply for accreditation of your previous courses and examinations. Please provide supporting documentation. Documents for enrolment Before beginning your study programme — summer semester begins on 1 April, winter semester on 1 October — you must provide the following: Semester fee Pay the fee initially in the full amount. For the semester ticket you can apply to the semester ticket office for assistance from the social fund. The amount of payment from the social fund will be decided by the semester ticket office. For the contribution to the central student union ( AStA ) you can submit a hardship application to AStA in order to receive permanent exemption. German language test certificate (e.g. DSH-2) for university entry or an equivalent language test for all study programmes conducted in German This also applies if you have German citizenship but your school/university certificate is from abroad. Proof of health insurance All students up to the age of 30 are obliged to provide proof of membership in a German statutory health insurance scheme or a copy of the EHIC. In the case of private or foreign health insurance cover, please also provide proof of exemption from participation in a statutory health insurance scheme. At the welcome event for foreign students which the International Office organises shortly before the semester begins, all necessary information will be provide as well as contact with the main German statutory health insurance providers. In Berlin, refugee students will continue to receive benefits under the Asylum Seekers Benefits Act ( Asylbewerberleistungsgesetz ). After 15 months, the option then exists to apply for financial support in accordance with the Federal Training Assistance Act ( BAföG ). Refugees will therefore continue to have health insurance coverage under the Asylum Seekers Benefits Act. In such cases proof of health insurance will not be required for enrolment. A copy of your passport or identity card"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "page_id": "c40d5e2c74b35371",
+    "object_id": "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "object_type": "overview_navigation",
+    "url": "https://www.htw-berlin.de/en/international/wege-an-die-htw-berlin/",
+    "title": "Pathways to HTW Berlin",
+    "classification_confidence": "low",
+    "classification_notes": "High-level entry page outlining pathways to studying at HTW Berlin, with explanatory framing.",
+    "source_html_path": "snapshots_raw/c40d5e2c74b35371.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:58.242148"
+  },
+  "navigation_info": {
+    "purpose": "High-level entry page outlining pathways to studying at HTW Berlin, with explanatory framing.",
+    "scope": "Pathways to HTW Berlin",
+    "audience": []
+  },
+  "sections": [],
+  "child_pages": [
+    "overview_navigation-student-exchange-programmes-htw",
+    "overview_navigation-international-degree-seeking-students",
+    "overview_navigation-htw-foundation",
+    "special_category-studienkolleg",
+    "overview_navigation-refugees-pathways-into-studying"
+  ],
+  "related_pages": [
+    "overview_navigation-student-exchange-programmes-htw",
+    "overview_navigation-international-degree-seeking-students",
+    "overview_navigation-htw-foundation",
+    "special_category-studienkolleg",
+    "overview_navigation-refugees-pathways-into-studying"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin Pathways to HTW Berlin Student Exchange Programmes at HTW Berlin Semester abroad for Incomings International Degree-Seeking Students Advice for international full-time students HTW Foundation Study preparation for international applicants Studienkolleg (university preparatory course) Requirements and application Refugees: Pathways into studying Application and formalities"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "afccd3926f6f0d9c",
+    "object_id": "application_route_rule-assessment-foreign-education-refugees",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/international/pathways-to-htw-berlin/refugees-pathways-into-studying/assessment-of-foreign-education-and-studies/",
+    "title": "Assessment of foreign education and studies",
+    "classification_confidence": "low",
+    "classification_notes": "Explains how prior foreign education and studies are assessed for refugees seeking to study at HTW Berlin. Defines eligibility and assessment conditions that directly affect the study application route.",
+    "source_html_path": "snapshots_raw/afccd3926f6f0d9c.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:57.859502"
+  },
+  "rule_info": {
+    "rule_type": "assessment-foreign-education-refugees",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Explains how prior foreign education and studies are assessed for refugees seeking to study at HTW Berlin. Defines eligibility and assessment conditions that directly affect the study application route."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-pathoverview_navigation-pathways-to-htw-berlinways-to-htw-berlin",
+    "overview_navigation-refugees-pathways-into-studying"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education International Pathways to HTW Berlin Refugees: Pathways into studying Assessment of foreign education and studies Assessment of foreign education and studies Table of contents Example Syria Example Iraq Example Afghanistan Example Albania Example Eritrea Example Syria General Secondary Education Certificate (Scientific or Literary Section) with an overall grade of 60% to 69% of the maximum score → You can apply for the university preparatory course ( esp. subject-specific). General Secondary Education Certificate (Scientific or Literary Section) with an overall grade of 60% to 69% of the maximum score plus one year of academic study → You can apply for a programme of study ( esp. subject-specific). General Secondary Education Certificate (Scientific or Literary Section) with an overall grade of more than 70% of the maximum score → You can apply for the programme of study ( esp. subject-specific). At least 4 years of study at an accredited university → You can apply for a (Master’s) programme of study . Example Iraq Primary Teacher Training School certificate or Institute of Fine Arts certificate or Baccalaureate Examination for Secondary / Preparatory Schools → You can apply for the university preparatory course ( esp. subject-specific). Primary Teacher Training School certificate or Institute of Fine Arts certificate or Baccalaureate Examination for Secondary / Preparatory Schools plus one to two years of academic study → You can apply for a programme of study ( esp. subject-specific). Diploma from a Technological Institute → You can apply for a programme of study ( esp. subject-specific). At least three years of study at an accredited university → You can apply for a (Master’s) programme of study . Example Afghanistan Secondary school leaving certificate → You can apply for the university preparatory course ( esp. subject-specific). Secondary school leaving certificate plus one to two years of academic study → You can apply for a programme of study ( esp. subject-specific). At least three years of study at an accredited university → You can apply for a (Master’s) programme of study . Example Albania School leaving certificate → You can apply for the university preparatory course ( esp. subject-specific). Diplome e Matures Shteterore from the \"Sami Frasheri\" grammar school with proof of German language diploma — second level (DSD II) → You can apply for a programme of study . At least three years of study at an accredited university with a clear scientific profile → You can apply for a (Master’s) programme of study . Example Eritrea Eritrean Secondary Education Certificate (certificates from 1993) → You can apply for the university preparatory course ( esp. subject-specific), providing you also fulfil other conditions. Eritrean Secondary Education Certificate (certificates from 1993) plus one to two years of academic study → You can apply for a programme of study ( esp. subject-specific). At least 4 years of academic study → You can apply for a (Master’s) programme of study ."
+  }
+}

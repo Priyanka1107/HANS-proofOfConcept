@@ -262,24 +262,52 @@ def merge_context_with_thread(
     """
     Merge current email context with previous thread context.
 
-    The current email context wins.
-    Missing values are filled from previous thread memory.
-
-    This helps short follow-ups such as:
-        "And what about the application deadline?"
-
-    because the programme from the previous turn can still be used.
+    Current email context normally wins and missing values are filled from
+    previous thread memory. One important exception is target_degree. In short
+    follow-ups, the current email may not mention Bachelor/Master explicitly,
+    so the programme catalogue can re-introduce a generic catalogue degree
+    such as Bachelor for a programme page that contains both Bachelor and
+    Master. In that case, keep the previous thread's explicit target degree.
     """
     merged: Dict[str, Any] = {}
+    previous_email_context: Dict[str, Any] = {}
 
     if isinstance(previous_thread_context, dict):
-        previous_email_context = previous_thread_context.get("email_context", {})
-        if isinstance(previous_email_context, dict):
+        raw_previous = previous_thread_context.get("email_context", {})
+        if isinstance(raw_previous, dict):
+            previous_email_context = raw_previous
             merged.update(previous_email_context)
 
     if isinstance(current_context, dict):
+        previous_programme = str(previous_email_context.get("target_program") or previous_email_context.get("target_programme") or "").strip().lower()
+        current_programme = str(current_context.get("target_program") or current_context.get("target_programme") or "").strip().lower()
+        same_or_missing_programme = (not current_programme) or (not previous_programme) or (current_programme == previous_programme)
+
+        previous_degree = str(previous_email_context.get("target_degree") or "").strip()
+        current_catalog_degree = str(current_context.get("catalog_degree") or "").strip()
+
         for key, value in current_context.items():
-            if value not in (None, "", [], {}):
-                merged[key] = value
+            if value in (None, "", [], {}):
+                continue
+
+            if key == "target_degree":
+                current_degree = str(value or "").strip()
+
+                # Preserve the previous explicit degree for short follow-ups when
+                # the current degree only comes from a catalogue hint.
+                # Example: first turn asks for Master's in International Business;
+                # follow-up asks only "Is a motivation letter required?". The
+                # catalogue may suggest Bachelor, but thread memory should keep Master.
+                if (
+                    previous_degree
+                    and current_degree
+                    and previous_degree != current_degree
+                    and current_catalog_degree
+                    and current_degree == current_catalog_degree
+                    and same_or_missing_programme
+                ):
+                    continue
+
+            merged[key] = value
 
     return merged

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "page_id": "87458a06dd9ed4b0",
+    "object_id": "application_route_rule-mandatory-aptitude-test",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/admission-requirements/mandatory-aptitude-test/",
+    "title": "Mandatory aptitude test",
+    "classification_confidence": "low",
+    "classification_notes": "Mandatory aptitude tests required for specific study programmes.",
+    "source_html_path": "snapshots_raw/87458a06dd9ed4b0.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.338963"
+  },
+  "rule_info": {
+    "rule_type": "mandatory-aptitude-test",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Mandatory aptitude tests required for specific study programmes."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-admission-requirements"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Admission requirements Mandatory aptitude test Mandatory aptitude test Table of contents Take the aptitude test first… … then apply Bachelor’s degree programmes with aptitude tests Master’s degree programmes with aptitude tests Take the aptitude test first… A number of design and cultural studies programmes require an aptitude test. Please apply directly to the study programme to take the aptitude test. Please note that the dates for aptitude tests are before the general application deadlines. … then apply Once you have passed the aptitude test, you can then submit your application within the standard application deadlines for your chosen programme of study. Please use the online application of the HTW Berlin within the application periods. Bachelor’s degree programmes with aptitude tests Game Design Industrial Design Kommunikationsdesign Konservierung und Restaurierung/Grabungstechnik Modedesign Master’s degree programmes with aptitude tests Konservierung und Restaurierung Modedesign System Design"
+  }
+}

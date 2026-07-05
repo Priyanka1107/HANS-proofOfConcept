@@ -166,7 +166,7 @@ def main() -> None:
             rows.append(row)
             print(
                 f"  Turn {row['turn_index']}: expected={row['expected_followup_type']} | "
-                f"actual={row['actual_followup_type']} | review={row['review_required']} | "
+                f"actual={row['actual_followup_type']} | quality_warning={row['review_required']} | "
                 f"topics={row['detected_topics']} | time={row['response_time_seconds']}s"
             )
 

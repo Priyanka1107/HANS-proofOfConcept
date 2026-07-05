@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "page_id": "70028937db58f3a7",
+    "object_id": "application_route_rule-documents-required-in-advance",
+    "object_type": "application_route_rule",
+    "url": "https://www.htw-berlin.de/en/studies/applications/application-via-the-application-portal-of-htw-berlin/bachelors-study-programmes/applications-with-documents-required-in-advance/",
+    "title": "Applications with documents required in advance",
+    "classification_confidence": "low",
+    "classification_notes": "Defines bachelor applications that require documents before submission.",
+    "source_html_path": "snapshots_raw/70028937db58f3a7.html",
+    "last_scraped": "2025-01-20",
+    "last_processed": "2026-01-25T15:20:59.310769"
+  },
+  "rule_info": {
+    "rule_type": "documents-required-in-advance",
+    "scope": "Internal requirement",
+    "applies_to": [],
+    "description": "Defines bachelor applications that require documents before submission."
+  },
+  "requirements": {},
+  "exceptions": [],
+  "documentation": [],
+  "related_pages": [
+    "overview_navigation-applications",
+    "overview_navigation-htw-application-portal",
+    "application_process-htw-portal-bachelors",
+    "special_category-no-higher-education-entry",
+    "overview_navigation-student-service-centre"
+  ],
+  "content": {
+    "full_text": "HTW Berlin - University of Applied Sciences - studies, research, further education Studies Applications Application via the application portal of HTW Berlin Bachelor’s study programmes Applications with documents required in advance Applications with documents required in advance Table of contents Required documents before admission Important: Upload your documents in full and in time Required documents before admission If you are applying for a study programme and have a vocational qualification and in individual cases you have a leaving certificate of the profession without an average grade, have previously been or are currently enrolled at a university in Germany , are applying for your second degree programme , are uploading a special application , have a foreign higher education entry qualification , application documents have to be uploaded. Important: Upload your documents in full and in time During your online application you will be informed which documents you need to upload. Based on the information you provided, the system will ask for required documents . If any requested document is unclear, please contact the Student Service Centre in plenty of time before the application deadline. The documents must be received by HTW Berlin before the application deadline. The date of receipt at HTW Berlin is decisive. If your application documents are not complete by the application deadline, your application will be excluded from the admissions procedure. Please do not upload documents that have not been requested . All required documents must be uploaded in digital format. All application documents must be uploaded in German or English . Documents in other languages require an officially attested German or English translation. A list of officially authorised translators in Germany can be obtained from the BDÜ ( Federal Association of Interpreters and Translators )."
+  }
+}
