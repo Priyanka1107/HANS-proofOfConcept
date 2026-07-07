@@ -32,7 +32,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 
-FINAL_API_URL = os.getenv("HANS_FINAL_URL", "http://127.0.0.1:8001").rstrip("/")
+FINAL_API_URL = os.getenv("HANS_FINAL_URL", "http://127.0.0.1:8008").rstrip("/")
 ORIGINAL_API_URL = os.getenv("HANS_ORIGINAL_URL", "http://127.0.0.1:8080").rstrip("/")
 OUT_DIR = Path("evaluation")
 TIMEOUT_SECONDS = int(os.getenv("HANS_TEST_TIMEOUT", "90"))
