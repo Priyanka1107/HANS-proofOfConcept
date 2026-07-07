@@ -8,6 +8,7 @@ import time
 import logging
 import re
 from datetime import datetime
+from app.intent_router import route_user_intent
 
 from app.programme_context import enrich_email_text_with_programme_context
 
@@ -369,25 +370,299 @@ def _append_staff_reference_links(
 
     return draft + "\n".join(lines)
 
+def _looks_like_german_student_text(text: str) -> bool:
+    """
+    Lightweight language signal for short student-service emails.
+
+    The Streamlit UI may pass language='en' as a default value. For short German
+    questions such as 'Wie viele Masterstudiengänge ...', langdetect and UI
+    defaults can both be unreliable. This helper lets the actual email text win.
+    """
+    lower = (text or "").lower()
+    return bool(
+        re.search(
+            r"\b("
+            r"welche|wie\s+viele|bietet|angeboten|studiengang|studiengänge|"
+            r"masterstudiengänge|bachelorstudiengänge|studienangebot|"
+            r"bewerbung|bewerben|bewerbungsfrist|bewerbungszeitraum|"
+            r"unterlagen|gebühren|semesterbeitrag|zeugnis|abschlusszeugnis|"
+            r"nachreichen|deutschkenntnisse|englischkenntnisse|"
+            r"voraussetzungen|zulassungsvoraussetzungen|"
+            r"sehr\s+geehrte|mit\s+freundlichen\s+grüßen"
+            r")\b",
+            lower,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
 def _detect_input_language(text: str, requested_language: Optional[str] = None) -> str:
     """
     Detect the input language for UI/evaluation mode.
 
-    This is used only to control the output language of staff-facing drafts.
-    It does not replace multilingual retrieval.
+    Important: the actual email text wins over a default UI language value.
+    This prevents German manual-input tests from being answered in English when
+    the UI sends language='en' by default.
     """
-    if requested_language:
+    raw = text or ""
+
+    if _looks_like_german_student_text(raw):
+        return "de"
+
+    if requested_language and str(requested_language).lower() not in {"auto", "detect", "unknown"}:
         return requested_language
 
     try:
         from langdetect import detect as lang_detect
-        return lang_detect(text or "")
+        return lang_detect(raw)
     except Exception:
         return "en"
 
 
 def _reply_language_from_input(input_language: str) -> str:
     return "de" if str(input_language or "").lower().startswith("de") else "en"
+
+
+def _normalise_programme_text(value: str) -> str:
+    value = str(value or "").lower()
+    value = re.sub(r"[^a-z0-9äöüß]+", " ", value)
+    value = re.sub(r"\s+", " ", value).strip()
+    return value
+
+
+def _has_explicit_programme_reference(
+    email_text: str,
+    matched_programme: str,
+    matched_programme_url: str = "",
+) -> bool:
+    """
+    Return True only when the student explicitly mentioned the matched programme
+    or a known short code that clearly maps to it.
+
+    This prevents generic questions such as:
+        'How do I apply for a Master's programme through uni-assist?'
+    from being forced into a random catalogue programme.
+    """
+    text_norm = _normalise_programme_text(email_text)
+    programme_norm = _normalise_programme_text(matched_programme)
+    lower = (email_text or "").lower()
+    combined_match = f"{matched_programme} {matched_programme_url}".lower()
+
+    if programme_norm and programme_norm in text_norm:
+        return True
+
+    short_codes = {
+        "mpmd": ["project management and data science", "mpmd"],
+        "proitd": ["professional it business", "professional it-business", "proitd"],
+        "conrem": ["construction and real estate", "conrem"],
+        "csb": ["cyber security and business", "cybersecurity and business", "csb"],
+    }
+
+    for code, match_terms in short_codes.items():
+        if re.search(rf"\b{re.escape(code)}\b", lower):
+            if any(term in combined_match for term in match_terms):
+                return True
+
+    return False
+
+
+def _is_programme_count_question(original_email: str, detected_topics: List[Dict[str, Any]]) -> bool:
+    topic_ids = {str(t.get("topic_id", "") or "") for t in detected_topics or []}
+    lower = (original_email or "").lower()
+    return (
+        "programme_overview" in topic_ids
+        and (
+            re.search(r"\bhow\s+many\b", lower, flags=re.IGNORECASE)
+            or re.search(r"\bwie\s+viele\b", lower, flags=re.IGNORECASE)
+        )
+    )
+
+
+def _draft_has_exact_programme_count(draft: str) -> bool:
+    """Return True only if the draft gives a clear numeric programme count."""
+    lower = (draft or "").lower()
+    return bool(
+        re.search(r"\b\d+\s+(master'?s?\s+)?program(?:me)?s\b", lower, flags=re.IGNORECASE)
+        or re.search(r"\b\d+\s+masterstudieng[aä]nge\b", lower, flags=re.IGNORECASE)
+    )
+
+
+def _draft_admits_missing_exact_count(draft: str) -> bool:
+    lower = (draft or "").lower()
+    return any(
+        phrase in lower
+        for phrase in [
+            "cannot confirm an exact",
+            "cannot confirm the exact",
+            "exact number cannot be confirmed",
+            "not contain an exact verified number",
+            "no exact verified number",
+            "keine exakte",
+            "keine genaue anzahl",
+            "genaue anzahl",
+            "nicht zuverlässig bestätigen",
+            "nicht eindeutig bestätigen",
+        ]
+    )
+
+
+def _draft_looks_english(draft: str) -> bool:
+    lower = (draft or "").lower()
+    return bool(
+        re.search(
+            r"\b(dear applicant|thank you for your enquiry|thank you for your interest|kind regards|reference links)\b",
+            lower,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _append_quality_reason(quality: Dict[str, Any], reason: str) -> None:
+    existing = str(quality.get("review_reason") or "").strip()
+    if reason and reason not in existing:
+        quality["review_reason"] = f"{existing}; {reason}" if existing else reason
+
+
+def _apply_email_quality_safety_overrides(
+    *,
+    quality: Dict[str, Any],
+    original_email: str,
+    detected_topics: List[Dict[str, Any]],
+    staff_draft_for_validation: str,
+    email_context: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    Final deterministic calibration after the weighted quality function.
+
+    This catches important UI cases even if the LLM writes a fluent, cited draft:
+    - programme-count question without a verified number
+    - German email answered in English
+    - generic programme question answered as one specific programme
+    """
+    quality = dict(quality or {})
+    lower_draft = (staff_draft_for_validation or "").lower()
+    expected_german = str(email_context.get("reply_language") or email_context.get("input_language") or "").lower().startswith("de")
+
+    if _is_programme_count_question(original_email, detected_topics) and not _draft_has_exact_programme_count(staff_draft_for_validation):
+        quality["quality_score"] = min(int(quality.get("quality_score", 100)), 78)
+        quality["quality_label"] = "mostly_good" if quality["quality_score"] >= 75 else "partial"
+        quality["review_required"] = True
+        if _draft_admits_missing_exact_count(staff_draft_for_validation):
+            _append_quality_reason(quality, "Exact programme count not available in retrieved evidence")
+        else:
+            _append_quality_reason(quality, "Programme count question not directly answered")
+
+    if expected_german and _draft_looks_english(staff_draft_for_validation):
+        quality["quality_score"] = min(int(quality.get("quality_score", 100)), 65)
+        quality["quality_label"] = "partial"
+        quality["review_required"] = True
+        _append_quality_reason(quality, "Reply language does not match German input")
+
+    # Detect accidental programme-specific greeting independently of email_context,
+    # because a weak catalogue match can itself populate target_program.
+    explicitly_named_programme = False
+    target_program_text = str(
+        email_context.get("target_program")
+        or email_context.get("matched_programme")
+        or email_context.get("target_programme")
+        or ""
+    )
+    target_program_norm = _normalise_programme_text(target_program_text)
+    email_norm = _normalise_programme_text(original_email or "")
+
+    if target_program_norm and target_program_norm in email_norm:
+        explicitly_named_programme = True
+
+    known_short_codes = {
+        "mpmd": "project management and data science",
+        "proitd": "professional it business",
+        "conrem": "construction and real estate",
+        "csb": "cyber security and business",
+    }
+
+    for code, expected_programme in known_short_codes.items():
+        if re.search(rf"\b{re.escape(code)}\b", (original_email or "").lower()):
+            if expected_programme in target_program_norm:
+                explicitly_named_programme = True
+
+    generic_programme_question = bool(
+        not explicitly_named_programme
+        and re.search(
+            r"\b(master'?s?\s+programme|master programme|master programmes|study programme|study programmes)\b",
+            (original_email or "").lower(),
+            flags=re.IGNORECASE,
+        )
+    )
+
+    random_programme_greeting = bool(
+        generic_programme_question
+        and re.search(r"thank you for your interest in\s+[^.\n]+?\s+at htw berlin", lower_draft, flags=re.IGNORECASE)
+    )
+    if random_programme_greeting:
+        quality["quality_score"] = min(int(quality.get("quality_score", 100)), 65)
+        quality["quality_label"] = "partial"
+        quality["review_required"] = True
+        _append_quality_reason(quality, "Generic question was answered as a specific programme enquiry")
+
+    return quality
+
+
+def _remove_unrequested_programme_greeting(
+    staff_draft: str,
+    original_email: str,
+    email_context: Dict[str, Any],
+) -> str:
+    """
+    Remove accidental programme-specific greeting from generic questions.
+
+    Example to remove:
+        Thank you for your interest in Applied Computer Science at HTW Berlin.
+
+    This is deterministic post-processing. It only runs when the student did not
+    explicitly name a programme or programme short code.
+    """
+    draft = staff_draft or ""
+    lower_email = (original_email or "").lower()
+
+    explicit_programme_in_context = bool(
+        email_context.get("target_program")
+        or email_context.get("matched_programme")
+        or email_context.get("target_programme")
+    )
+
+    if explicit_programme_in_context:
+        return draft
+
+    generic_programme_question = bool(
+        re.search(
+            r"\b(master'?s?\s+programme|master programme|master programmes|study programme|study programmes)\b",
+            lower_email,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    if not generic_programme_question:
+        return draft
+
+    # English accidental specific-programme greeting.
+    draft = re.sub(
+        r"(Dear applicant,\s*\n\s*)Thank you for your interest in [^\n.]+ at HTW Berlin\.\s*",
+        r"\1Thank you for your enquiry.\n\n",
+        draft,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+    # German accidental specific-programme greeting.
+    draft = re.sub(
+        r"(Sehr geehrte/r Bewerber/in,\s*\n\s*)vielen Dank für Ihr Interesse (am|an dem|an der) [^\n.]+ an der HTW Berlin\.\s*",
+        r"\1vielen Dank für Ihre Anfrage.\n\n",
+        draft,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+    return draft
 
 
 # ============================================================
@@ -673,6 +948,9 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
 
         original_email_text = req.email_text
         detected_input_language = _detect_input_language(original_email_text, req.language)
+        # The actual email text should override a default UI language value.
+        if _looks_like_german_student_text(original_email_text):
+            detected_input_language = "de"
         reply_language = _reply_language_from_input(detected_input_language)
 
         email_text_for_processing = programme_context.get(
@@ -683,6 +961,23 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
         matched_programme = programme_context.get("program_name", "") or ""
         matched_programme_url = programme_context.get("url", "") or ""
         matched_programme_application_url = programme_context.get("application_url", "") or ""
+
+        # Do not allow weak catalogue matches to control a generic question.
+        # This keeps generic application-route and programme-overview questions
+        # from being forced into a random programme such as Applied Computer Science.
+        routed_intent_for_programme = route_user_intent(original_email_text)
+
+        explicit_programme_reference = bool(matched_programme) and _has_explicit_programme_reference(
+            original_email_text,
+            matched_programme,
+            matched_programme_url,
+        )
+
+        if routed_intent_for_programme.intent == "programme_overview" or not explicit_programme_reference:
+            matched_programme = ""
+            matched_programme_url = ""
+            matched_programme_application_url = ""
+            email_text_for_processing = original_email_text
 
         timing["programme_catalogue_match"] = time.time() - start
 
@@ -765,6 +1060,49 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
         # This controls output language; retrieval remains multilingual.
         email_context["input_language"] = detected_input_language
         email_context["reply_language"] = reply_language
+        
+        # Final programme-context guard.
+        # extract_email_context() can also perform catalogue matching internally.
+        # Therefore, after context extraction, remove programme-specific fields again
+        # unless the student explicitly named that programme or used a known short code
+        # such as MPMD, PROITD, CONREM or CSB.
+        clear_programme_context = (
+            routed_intent_for_programme.intent == "programme_overview"
+            or not explicit_programme_reference
+        )
+
+        if clear_programme_context:
+            # Clear these variables too, otherwise later blocks can re-add the
+            # accidental catalogue match back into email_context and retrieval.
+            matched_programme = ""
+            matched_programme_url = ""
+            matched_programme_application_url = ""
+
+            for key in [
+                "matched_programme",
+                "target_programme",
+                "target_program",
+                "matched_programme_url",
+                "programme_url",
+                "target_program_url",
+                "matched_programme_application_url",
+                "programme_application_url",
+                "target_program_application_url",
+                "target_program_match_score",
+                "target_program_source",
+                "catalog_degree",
+                "catalog_language",
+                "catalog_study_format",
+            ]:
+                email_context[key] = None
+
+        # Safety: keep the output language tied to the original email text,
+        # not to an enriched catalogue block or UI default language.
+        if _looks_like_german_student_text(original_email_text):
+            email_context["input_language"] = "de"
+            email_context["reply_language"] = "de"
+            detected_input_language = "de"
+            reply_language = "de"
 
         # Add programme catalogue result explicitly into the context.
         # This makes it visible to draft generation and thread memory.
@@ -835,7 +1173,7 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
 
             # Prefer the student's input language for keyword retrieval.
             # The vector embedding remains multilingual.
-            language = req.language or detected_input_language or "en"
+            language = detected_input_language or req.language or "en"
 
             # Embedding + retrieval + reranking
             query_embedding = generate_embedding(enhanced_query)
@@ -913,6 +1251,14 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
             max_sources=8,
         )
 
+        # Remove accidental programme-specific greeting from generic questions.
+        # This is a deterministic safety cleanup after LLM generation.
+        staff_draft = _remove_unrequested_programme_greeting(
+            staff_draft=staff_draft,
+            original_email=original_email_text,
+            email_context=email_context,
+        )
+
         # Step 5: clean footer and append programme URL for staff verification.
         # The disclaimer may stay in English for staff review, but the draft-facing
         # footer/reference heading should follow the email reply language.
@@ -955,6 +1301,7 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
             docs=final_docs,
             draft=staff_draft_for_validation,
             validation=validation,
+            original_email=original_email_text,
         )
 
         # Extra safety:
@@ -977,6 +1324,14 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
                 quality["review_reason"] += "; Programme-specific details need staff verification"
             else:
                 quality["review_reason"] = "Programme-specific details need staff verification"
+
+        quality = _apply_email_quality_safety_overrides(
+            quality=quality,
+            original_email=original_email_text,
+            detected_topics=detected_topics,
+            staff_draft_for_validation=staff_draft_for_validation,
+            email_context=email_context,
+        )
 
         timing["quality_assessment"] = time.time() - start
 

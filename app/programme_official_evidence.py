@@ -26,6 +26,24 @@ CACHE_PATH = PROJECT_ROOT / "data" / "programme_official_pages.json"
 
 
 TOPIC_KEYWORDS = {
+    "programme_overview": [
+        "degree programmes",
+        "study programmes",
+        "master",
+        "masters",
+        "master's",
+        "master programme",
+        "master programmes",
+        "master's degree programmes",
+        "advanced master's programmes",
+        "programme list",
+        "program list",
+        "programme overview",
+        "study programme overview",
+        "studienangebot",
+        "studiengänge",
+        "masterstudiengänge",
+    ],
     "tuition_fees": [
         "tuition",
         "tuition fees",

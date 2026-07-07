@@ -21,6 +21,7 @@ import re
 
 from app.config import config
 from app.programme_catalog import match_programme_from_catalog, programme_query_terms, programme_reference_lines
+from app.intent_router import route_user_intent
 
 
 # ---------------------------------------------------------------------
@@ -35,6 +36,7 @@ ANABIN_URL = "https://anabin.kmk.org/"
 DAAD_ADMISSIONS_DATABASE_URL = "https://www.daad.de/en/studying-in-germany/requirements/admission-database/"
 HTW_APPLICATION_PORTAL_URL = "https://bewerbung.htw-berlin.de/"
 HTW_ADMISSION_REQUIREMENTS_URL = "https://www.htw-berlin.de/en/studies/applications/admission-requirements/"
+HTW_DEGREE_PROGRAMMES_URL = "https://www.htw-berlin.de/en/studies/degree-programmes/"
 
 
 # ---------------------------------------------------------------------
@@ -182,7 +184,25 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
         "catalog_degree": None,
         "catalog_language": None,
         "catalog_study_format": None,
+        "input_language": None,
+        "reply_language": None,
     }
+    
+    # Lightweight language signal for the Email Assistant.
+    # This keeps German catalogue/application questions in German without
+    # adding a special answer rule for one individual question.
+    if re.search(
+        r"\b("
+        r"welche|wie viele|bietet|angeboten|studiengang|studiengänge|"
+        r"masterstudiengänge|bewerbung|bewerben|bewerbungsfrist|"
+        r"unterlagen|gebühren|zeugnis|abschlusszeugnis|nachreichen|"
+        r"deutschkenntnisse|englischkenntnisse"
+        r")\b",
+        lower,
+        flags=re.IGNORECASE,
+    ):
+        context["input_language"] = "de"
+        context["reply_language"] = "de"
 
     # Name extraction for greeting.
     # Keep this conservative. Avoid generic "I am ..." because it can wrongly
@@ -329,6 +349,29 @@ def extract_email_context(email_text: str) -> Dict[str, Optional[str]]:
 # ---------------------------------------------------------------------
 
 TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
+    "programme_overview": {
+        "label": "Programme overview",
+        "query": "Official HTW Berlin overview of degree programmes, Master's programmes, study programmes offered, programme list, programme catalogue",
+        "patterns": [
+            r"\bhow many\s+master'?s?\s+program(?:me)?s\b",
+            r"\bhow many\s+masters?\s+program(?:me)?s\b",
+            r"\bhow many\s+master'?s?\s+degrees\b",
+            r"\bwhat\s+(all\s+)?master'?s?\s+program(?:me)?s\s+(are\s+)?(available|offered)\b",
+            r"\bwhich\s+master'?s?\s+program(?:me)?s\s+(are\s+)?(available|offered)\b",
+            r"\blist\s+(all\s+)?master'?s?\s+program(?:me)?s\b",
+            r"\bmaster'?s?\s+program(?:me)?s\s+offered\b",
+            r"\bdegree\s+program(?:me)?s\s+offered\b",
+            r"\bstudy\s+program(?:me)?s\s+offered\b",
+            r"\bprogramme\s+catalogue\b",
+            r"\bprogram\s+catalog\b",
+            r"\bstudy\s+programmes?\s+at\s+htw\b",
+            r"\bmasterstudieng[aä]nge\b",
+            r"\bwelche\s+masterstudieng[aä]nge\b",
+            r"\bwie\s+viele\s+masterstudieng[aä]nge\b",
+            r"\bstudienangebot\b",
+            r"\bstudieng[aä]nge\s+angeboten\b",
+        ],
+    },
     "application_before_graduation": {
         "label": "Application before graduation",
                 "patterns": [
@@ -350,6 +393,26 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
             r"\bresults.*mid[- ]july\b",
         ],
         "query": "Can an applicant apply before receiving the final transcript or final degree certificate?",
+    },
+    "final_certificate_submission": {
+        "label": "Final certificate submission",
+        "query": "HTW Berlin final degree certificate submission after admission, final transcript later, proof of completed studies deadline",
+        "patterns": [
+            r"\bfinal\s+(degree\s+)?certificate\s+later\b",
+            r"\bsubmit\s+(my\s+)?final\s+(degree\s+)?certificate\s+later\b",
+            r"\bsubmit\s+(my\s+)?final\s+transcript\s+later\b",
+            r"\breceive\s+(my\s+)?final\s+(degree\s+)?certificate\s+after\b",
+            r"\breceive\s+(my\s+)?final\s+transcript\s+after\b",
+            r"\bcertificate\s+after\s+the\s+application\s+deadline\b",
+            r"\bfinal\s+certificate\s+after\s+the\s+application\s+deadline\b",
+            r"\bproof\s+of\s+completed\s+studies\b",
+            r"\bafter\s+being\s+admitted\b.*\bcertificate\b",
+            r"\bendg[uü]ltiges\s+zeugnis\s+sp[aä]ter\b",
+            r"\babschlusszeugnis\s+sp[aä]ter\b",
+            r"\babschlusszeugnis\s+nach\s+der\s+bewerbungsfrist\b",
+            r"\bendg[uü]ltiges\s+zeugnis\s+nachreichen\b",
+            r"\babschlusszeugnis\s+nachreichen\b",
+        ],
     },
     "english_language_requirements": {
         "label": "English language requirements",
@@ -680,11 +743,13 @@ TOPIC_DEFINITIONS: Dict[str, Dict[str, Any]] = {
 
 # Priority order controls the final order in the draft.
 TOPIC_ORDER = [
+    "programme_overview",
     "application_route",
     "application_process",
     "qualification_recognition",
     "admission_requirements",
     "application_before_graduation",
+    "final_certificate_submission",
     "conditional_enrolment",
     "application_deadline",
     "required_documents",
@@ -711,12 +776,29 @@ TOPIC_ORDER = [
 # They only help the email assistant split German emails into the same topics
 # as equivalent English emails before retrieval.
 GERMAN_EXTRA_TOPIC_PATTERNS: Dict[str, List[str]] = {
+    "programme_overview": [
+        r"masterstudieng[aä]nge",
+        r"welche\s+masterstudieng[aä]nge",
+        r"wie\s+viele\s+masterstudieng[aä]nge",
+        r"studienangebot",
+        r"studieng[aä]nge\s+angeboten",
+        r"angebotene\s+studieng[aä]nge",
+        r"liste\s+der\s+masterstudieng[aä]nge",
+    ],
     "application_before_graduation": [
         r"\bbevor ich (mein|das) (endgültiges|finales)?\s*(zeugnis|abschlusszeugnis|transkript) (erhalte|bekomme)\b",
         r"\bvor dem abschluss bewerben\b",
         r"\bvor meinem abschluss bewerben\b",
         r"\bendgültiges zeugnis erst\b",
         r"\babschlusszeugnis erst\b",
+    ],
+    "final_certificate_submission": [
+        r"abschlusszeugnis\s+sp[aä]ter",
+        r"endg[uü]ltiges\s+zeugnis\s+sp[aä]ter",
+        r"abschlusszeugnis\s+nachreichen",
+        r"endg[uü]ltiges\s+zeugnis\s+nachreichen",
+        r"zeugnis\s+nach\s+der\s+bewerbungsfrist",
+        r"abschlusszeugnis\s+nach\s+der\s+bewerbungsfrist",
     ],
     "english_language_requirements": [
         r"\benglischkenntnisse\b",
@@ -839,12 +921,21 @@ def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics
     text = (email_text or "").lower()
     found: List[str] = []
 
+    # High-level routing separates broad catalogue/list/count questions
+    # from admissions/application-process questions before retrieval.
+    routed_intent = route_user_intent(email_text)
+
     for topic_id, spec in TOPIC_DEFINITIONS.items():
         for pattern in spec["patterns"]:
             if re.search(pattern, text, flags=re.IGNORECASE):
                 found.append(topic_id)
                 break
             
+    # If the high-level router detects a broad programme overview question,
+    # keep that intent even when no specific application topic was detected.
+    if routed_intent.intent == "programme_overview" and "programme_overview" not in found:
+        found.insert(0, "programme_overview")
+
     # Extra safety for common student wording.
     # Example: "what language proof is required?"
     # This should not be missed just because the student did not write "English proof".
@@ -913,6 +1004,21 @@ def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics
     # Merge rules to avoid duplicated topics.
     found_set = set(found)
 
+    # Programme overview is a high-level catalogue intent.
+    # It should be controlled by the intent router, not accidentally triggered
+    # by programme-catalogue background/context text appended before retrieval.
+    routed_intent = route_user_intent(email_text)
+
+    if routed_intent.intent == "programme_overview":
+        found_set.add("programme_overview")
+        found_set.discard("application_process")
+        found_set.discard("application_route")
+        found_set.discard("application_fee")
+        found_set.discard("tuition_fees")
+        found_set.discard("semester_contribution")
+    else:
+        found_set.discard("programme_overview")
+
     # If explicit upload/hard copy/translation topics exist, avoid generic required_documents
     # unless "what documents/documents needed/required documents" was explicitly asked.
     if "required_documents" in found_set:
@@ -956,11 +1062,12 @@ def detect_topics(email_text: str, context: Dict[str, Optional[str]], max_topics
     topics: List[Dict[str, str]] = []
     for tid in ordered:
         spec = TOPIC_DEFINITIONS[tid]
+        base_query = spec.get("query") or spec.get("base_query") or spec["label"]
         topics.append({
             "topic_id": tid,
             "label": spec["label"],
-            "base_query": spec["query"],
-            "query": build_evidence_query(tid, spec["query"], context),
+            "base_query": base_query,
+            "query": build_evidence_query(tid, base_query, context),
         })
 
     return topics
@@ -1002,6 +1109,11 @@ def build_evidence_query(topic_id: str, base_query: str, context: Dict[str, Opti
 
     # Topic-specific retrieval hints. These are not additional facts; they guide
     # retrieval toward the right HTW/application pages.
+    if topic_id == "programme_overview":
+        parts.append(
+            "Official HTW Berlin degree programme overview, Master's programmes, "
+            "study programmes offered, programme list, programme catalogue, Studienangebot, Masterstudiengänge"
+        )
     if topic_id == "application_route":
         if context.get("citizenship_group") == "EU/EEA":
             parts.append(
@@ -1030,6 +1142,11 @@ def build_evidence_query(topic_id: str, base_query: str, context: Dict[str, Opti
             "Focus on applying before graduation, pending final transcript, provisional transcript, final certificate, "
             "final semester results, conditional admission or enrolment, and the deadline for submitting the final certificate. "
             "Prefer programme-specific application pages when a programme is detected."
+        )
+    elif topic_id == "final_certificate_submission":
+        parts.append(
+            "final degree certificate final transcript proof of completed studies "
+            "submit after admission enrolment deadline HTW Berlin Master's application"
         )
 
     return ". ".join(parts)
@@ -1275,7 +1392,12 @@ def generate_staff_email_draft(
         "Do not answer only with a generic deadline paragraph if the student asks about pending final documents.\n"
         "16a) Do not add applicant-profile comments unless the student explicitly asked about admission requirements, eligibility, APS, required documents, qualification recognition, or work experience. "
         "If the student only asks about deadline, language of instruction, study format, or application fees, do not mention APS certificate, document requirements, work experience, or whether the applicant fulfils admission requirements.\n"
-        "17) End with the closing in the reply language. "
+        "17) If the topic is Programme overview, answer only the programme-list, programme-count, or programme-overview question. "
+        "Do not explain uni-assist, application route, application fees, tuition fees, or application process unless the student explicitly asked about applying. "
+        "If the student asks how many programmes are offered and the retrieved evidence does not contain an exact verified number, do not guess a number. "
+        "State clearly that the exact number cannot be confirmed from the current retrieved sources, then provide examples or categories only if they are supported by the retrieved evidence. "
+        "Refer staff to the official HTW degree programme overview link in the reference section for the complete current list.\n"
+        "18) End with the closing in the reply language. "
         "For German replies, end with:\nMit freundlichen Grüßen\nHTW Berlin Student Services\n"
         "For English replies, end with:\nKind regards,\nHTW Berlin Student Services\n"
     )
@@ -2352,6 +2474,18 @@ def add_reference_links_to_draft(
                 f"- Official uni-assist handling fees: {UNI_ASSIST_HANDLING_FEES_URL}"
             )
 
+    # Programme-overview questions often need the official catalogue page even
+    # when the retrieved evidence does not contain a complete verified count/list.
+    if "programme_overview" in topic_ids:
+        if german_reply:
+            reference_lines.append(
+                f"- Offizielle HTW-Übersicht der Studiengänge: {HTW_DEGREE_PROGRAMMES_URL}"
+            )
+        else:
+            reference_lines.append(
+                f"- Official HTW degree programme overview: {HTW_DEGREE_PROGRAMMES_URL}"
+            )
+
     if not reference_lines:
         return text
 
@@ -2434,16 +2568,37 @@ def assess_email_quality(
     docs: List[Dict[str, Any]],
     draft: str,
     validation: Dict[str, Any],
+    original_email: str = "",
 ) -> Dict[str, Any]:
     """
-    Technical quality-warning signal for staff review.
+    Weighted staff-review usability score.
 
-    Important: this score is a staff-review usability score, not a guarantee
-    that the answer is legally/administratively correct.
+    This score is not a legal/administrative correctness guarantee.
+    It is a practical quality signal for staff review based on:
+    - topic coverage
+    - citation support
+    - evidence relevance
+    - answer completeness
+    - uncertainty handling
+    - language/tone
+    - risk/review logic
     """
     reasons: List[str] = []
     citations = extract_doc_citations(draft)
     topic_ids = {t.get("topic_id", "") for t in topics}
+
+    body_only = strip_disclaimer_for_metrics(draft)
+    lower_draft = (body_only or "").lower()
+    lower_email = (original_email or "").lower()
+    bad_phrase = has_bad_draft_phrase(draft)
+
+    is_grounded = bool(validation.get("is_grounded", False)) if validation else False
+    citations_valid = bool(validation.get("citations_valid", False)) if validation else False
+
+    try:
+        confidence = float(validation.get("confidence", 0.0)) if validation else 0.0
+    except Exception:
+        confidence = 0.0
 
     if not topics:
         reasons.append("No topics detected")
@@ -2454,37 +2609,164 @@ def assess_email_quality(
     if not citations:
         reasons.append("No citations in draft")
 
-    is_grounded = bool(validation.get("is_grounded", False)) if validation else False
-    confidence = float(validation.get("confidence", 0.0)) if validation else 0.0
-
     if validation and not is_grounded:
         reasons.append("Draft not grounded according to validator")
 
     if confidence < 0.65:
         reasons.append("Low grounding confidence")
 
-    body_only = strip_disclaimer_for_metrics(draft)
-    lower_draft = (body_only or "").lower()
-    bad_phrase = has_bad_draft_phrase(draft)
+    if bad_phrase:
+        reasons.append("Draft contains uncertain or unsuitable wording")
 
     unresolved_markers = [
         "evidence documents provided do not contain specific information",
         "evidence documents do not contain specific information",
         "available information does not specify",
+        "available sources do not specify",
         "not available in our current documentation",
         "could not confirm",
         "cannot confirm",
         "not confirm",
         "not specified in the available",
+        "does not contain a complete verified",
+        "does not contain an exact verified",
+        "not explicitly stated",
+        "nicht zuverlässig bestätigen",
+        "nicht eindeutig bestätigen",
+        "nicht aus den verfügbaren quellen",
     ]
     unresolved_topic = any(marker in lower_draft for marker in unresolved_markers)
 
     if unresolved_topic:
         reasons.append("One or more requested topics remain unresolved")
 
-    # Application-fee answer can be usable, but if it relies on checking the
-    # official uni-assist fee page, it should not receive a perfect score.
-    # This is not a hard quality warning; it is a score adjustment.
+    # Programme overview/count handling.
+    programme_count_question = (
+        "programme_overview" in topic_ids
+        and (
+            re.search(r"\bhow many\b", lower_email)
+            or re.search(r"\bwie\s+viele\b", lower_email)
+        )
+    )
+
+    has_count_like_answer = bool(
+        re.search(
+            r"\b\d+\s+(master'?s?\s+)?program(?:me)?s\b",
+            lower_draft,
+            flags=re.IGNORECASE,
+        )
+        or re.search(
+            r"\b\d+\s+masterstudieng[aä]nge\b",
+            lower_draft,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    admits_no_verified_count = any(
+        phrase in lower_draft
+        for phrase in [
+            "cannot confirm an exact",
+            "cannot confirm the exact",
+            "exact number cannot be confirmed",
+            "not contain an exact verified number",
+            "keine exakte",
+            "genaue anzahl",
+            "nicht zuverlässig bestätigen",
+            "nicht eindeutig bestätigen",
+        ]
+    )
+
+    if programme_count_question and not has_count_like_answer:
+        if admits_no_verified_count:
+            reasons.append("Exact programme count not available in retrieved evidence")
+        else:
+            reasons.append("Programme count question not directly answered")
+
+    # Language mismatch.
+    expected_german = str(context.get("reply_language") or context.get("input_language") or "").lower().startswith("de")
+
+    german_draft_signal = bool(
+        re.search(
+            r"\b(sehr geehrte|guten tag|vielen dank|mit freundlichen grüßen|referenzlinks)\b",
+            lower_draft,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    english_draft_signal = bool(
+        re.search(
+            r"\b(dear applicant|thank you for your enquiry|kind regards|reference links)\b",
+            lower_draft,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    language_mismatch = expected_german and english_draft_signal and not german_draft_signal
+
+    if language_mismatch:
+        reasons.append("Reply language does not match German input")
+
+    # Generic question wrongly answered as a specific programme.
+    # Do not rely only on context["target_program"], because an accidental
+    # catalogue match can itself create that field.
+    target_program_text = str(
+        context.get("target_program")
+        or context.get("matched_programme")
+        or context.get("target_programme")
+        or ""
+    )
+
+    target_program_norm = re.sub(
+        r"\s+",
+        " ",
+        re.sub(r"[^a-z0-9äöüß]+", " ", target_program_text.lower()),
+    ).strip()
+
+    email_norm_for_programme_check = re.sub(
+        r"\s+",
+        " ",
+        re.sub(r"[^a-z0-9äöüß]+", " ", lower_email),
+    ).strip()
+
+    explicitly_named_programme = bool(
+        target_program_norm
+        and target_program_norm in email_norm_for_programme_check
+    )
+
+    explicit_short_codes = {
+        "mpmd": "project management and data science",
+        "proitd": "professional it business",
+        "conrem": "construction and real estate",
+        "csb": "cybersecurity and business",
+    }
+
+    for code, expected_programme in explicit_short_codes.items():
+        if re.search(rf"\b{re.escape(code)}\b", lower_email):
+            if expected_programme in target_program_norm:
+                explicitly_named_programme = True
+
+    generic_programme_question = bool(
+        not explicitly_named_programme
+        and re.search(
+            r"\b(master'?s?\s+programme|master programme|master programmes|study programme|study programmes)\b",
+            lower_email,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    random_programme_greeting = bool(
+        generic_programme_question
+        and re.search(
+            r"thank you for your interest in\s+[^.\n]+?\s+at htw berlin",
+            lower_draft,
+            flags=re.IGNORECASE,
+        )
+    )
+
+    if random_programme_greeting:
+        reasons.append("Generic question was answered as a specific programme enquiry")
+
+    # Existing safety checks.
     fee_answer_needs_external_verification = (
         "application_fee" in topic_ids
         and "uni-assist" in lower_draft
@@ -2510,9 +2792,6 @@ def assess_email_quality(
     if unsupported_english_exemption:
         reasons.append("Possible unsupported English-proof exemption claim")
 
-    # Degree mismatch: target Master but draft appears to call the target programme
-    # a Bachelor programme. Do not flag harmless phrases such as "completed a
-    # Bachelor's degree".
     if context.get("target_degree") == "Master":
         unsafe_bachelor_target = re.search(
             r"(interest(ed)? in|apply(ing)? for|admission to|the)\s+(a\s+)?bachelor('?s)?\s+programme",
@@ -2535,6 +2814,7 @@ def assess_email_quality(
         "work_experience",
         "motivation_letter",
         "application_before_graduation",
+        "final_certificate_submission",
     }
 
     match_score = context.get("target_program_match_score")
@@ -2548,58 +2828,155 @@ def assess_email_quality(
     elif topic_ids & programme_specific_topics and match_score_float and match_score_float < 0.70:
         reasons.append("Weak programme match")
 
-    # Check whether programme-specific docs are likely from the detected programme.
+    no_strong_programme_source = False
     if context.get("target_program") and topic_ids & programme_specific_topics and docs:
         programme_scores = [_doc_programme_score(doc, context) for doc in docs]
         if max(programme_scores or [0]) < 3:
+            no_strong_programme_source = True
             reasons.append("No strong programme-specific source found")
 
-    score = 100
-
+    # Weighted score.
+    # 1. Topic coverage: 25
     if not topics:
-        score -= 20
+        topic_coverage_score = 0
+    elif unresolved_topic:
+        topic_coverage_score = 16
+    elif len(topics) > 4:
+        topic_coverage_score = 18
+    else:
+        topic_coverage_score = 25
+
+    # 2. Citation support: 20
+    if citations and citations_valid:
+        citation_score = 20
+    elif citations:
+        citation_score = 12
+    else:
+        citation_score = 0
+
+    # 3. Evidence relevance: 20
     if not docs:
-        score -= 30
-    if not citations:
-        score -= 25
-    if validation and not is_grounded:
-        score -= 25
-    if confidence < 0.65:
-        score -= 15
-    if bad_phrase:
-        score -= 10
-    if unresolved_topic:
-        score -= 20
-    if "Application-fee answer needs external fee verification" in reasons:
-        score -= 10
-    if "Possible unsupported English-proof exemption claim" in reasons:
-        score -= 20
-    if "Possible degree mismatch" in reasons:
-        score -= 25
-    if "Programme not confidently matched" in reasons:
-        score -= 15
-    if "Weak programme match" in reasons:
-        score -= 10
-    if "No strong programme-specific source found" in reasons:
-        score -= 10
-    if len(topics) > 4:
-        score -= 10
+        evidence_score = 0
+    elif "programme_overview" in topic_ids:
+        overview_source_found = any(
+            any(
+                marker in (
+                    str(doc.get("title", "")) + " "
+                    + str(doc.get("source_url", "")) + " "
+                    + str(doc.get("url", "")) + " "
+                    + str(doc.get("content", ""))[:800]
+                ).lower()
+                for marker in [
+                    "degree programmes",
+                    "master",
+                    "master's",
+                    "studies/applications/master",
+                    "studies/degree-programmes",
+                    "prospective-students",
+                    "studienangebot",
+                    "masterstudiengänge",
+                ]
+            )
+            for doc in docs
+        )
+        evidence_score = 18 if overview_source_found else 12
+    elif topic_ids & programme_specific_topics:
+        if context.get("target_program") and not no_strong_programme_source:
+            evidence_score = 20
+        elif context.get("target_program"):
+            evidence_score = 14
+        else:
+            evidence_score = 10
+    else:
+        evidence_score = 18
 
-    # Score caps make the UI more honest.
+    # 4. Answer completeness: 15
+    answer_completeness_score = 15
     if unresolved_topic:
-        score = min(score, 75)
-    if "No citations in draft" in reasons or "No sources retrieved" in reasons:
+        answer_completeness_score -= 6
+    if programme_count_question and not has_count_like_answer:
+        answer_completeness_score -= 7
+    if random_programme_greeting:
+        answer_completeness_score -= 8
+    answer_completeness_score = max(0, answer_completeness_score)
+
+    # 5. Uncertainty handling: 10
+    if unresolved_topic:
+        uncertainty_score = 8
+    elif programme_count_question and not has_count_like_answer and admits_no_verified_count:
+        uncertainty_score = 8
+    elif programme_count_question and not has_count_like_answer and not admits_no_verified_count:
+        uncertainty_score = 4
+    elif unsupported_english_exemption or random_programme_greeting:
+        uncertainty_score = 3
+    else:
+        uncertainty_score = 10
+
+    # 6. Language/tone: 5
+    if language_mismatch:
+        language_score = 1
+    elif "kind regards" in lower_draft or "mit freundlichen grüßen" in lower_draft:
+        language_score = 5
+    else:
+        language_score = 3
+
+    # 7. Risk/review logic: 5
+    risk_score = 5
+    if (
+        random_programme_greeting
+        or unsupported_english_exemption
+        or language_mismatch
+        or not is_grounded
+        or not citations
+    ):
+        risk_score = 0
+    elif programme_count_question and not has_count_like_answer:
+        risk_score = 2
+    elif unresolved_topic or fee_answer_needs_external_verification:
+        risk_score = 3
+
+    score = (
+        topic_coverage_score
+        + citation_score
+        + evidence_score
+        + answer_completeness_score
+        + uncertainty_score
+        + language_score
+        + risk_score
+    )
+
+    score = int(max(0, min(100, round(score))))
+
+    # Score caps for important risks.
+    if not citations or not docs:
         score = min(score, 60)
-    if "Draft not grounded according to validator" in reasons:
+
+    if validation and not is_grounded:
         score = min(score, 65)
-    if "Possible degree mismatch" in reasons:
-        score = min(score, 65)
-    if "Possible unsupported English-proof exemption claim" in reasons:
+
+    if confidence < 0.65:
         score = min(score, 70)
+
+    if random_programme_greeting:
+        score = min(score, 65)
+
+    if language_mismatch:
+        score = min(score, 75)
+
+    if unsupported_english_exemption:
+        score = min(score, 70)
+
+    if programme_count_question and not has_count_like_answer and not admits_no_verified_count:
+        score = min(score, 78)
+
+    if unresolved_topic:
+        score = min(score, 80)
+
     if "Programme not confidently matched" in reasons:
         score = min(score, 75)
 
-    score = max(0, min(100, score))
+    if "Possible degree mismatch" in reasons:
+        score = min(score, 60)
 
     hard_review_reasons = {
         "No topics detected",
@@ -2610,19 +2987,18 @@ def assess_email_quality(
         "Possible degree mismatch",
         "Possible unsupported English-proof exemption claim",
         "Programme not confidently matched",
-        "One or more requested topics remain unresolved",
+        "Generic question was answered as a specific programme enquiry",
+        "Reply language does not match German input",
+        "Programme count question not directly answered",
     }
 
-    review_required = any(reason in hard_review_reasons for reason in reasons)
+    review_required = score < 75 or any(reason in hard_review_reasons for reason in reasons)
 
-    # Programme source weakness should normally be partial, not always hard review,
-    # because general HTW application pages can still be useful.
-    if "No strong programme-specific source found" in reasons and score < 80:
-        review_required = True
-
-    if score >= 85 and not review_required:
+    if score >= 90 and not review_required:
         label = "good"
-    elif score >= 65:
+    elif score >= 75:
+        label = "mostly_good"
+    elif score >= 60:
         label = "partial"
     else:
         label = "review"

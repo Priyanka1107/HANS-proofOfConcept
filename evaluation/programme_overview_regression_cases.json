@@ -1,0 +1,79 @@
+[
+  {
+    "case_id": "overview_en_count_master",
+    "input": "How many Master programmes are offered by HTW Berlin?",
+    "expected_topics": ["programme_overview"],
+    "must_not_contain": [
+      "you should apply through uni-assist",
+      "mandatory for Master's study programmes",
+      "apply via uni-assist"
+    ],
+    "should_contain_any": [
+      "Master",
+      "programme",
+      "complete list",
+      "official",
+      "overview"
+    ]
+  },
+  {
+    "case_id": "overview_en_list_master",
+    "input": "What Master programmes are available at HTW Berlin?",
+    "expected_topics": ["programme_overview"],
+    "must_not_contain": [
+      "you should apply through uni-assist",
+      "mandatory for Master's study programmes",
+      "apply via uni-assist"
+    ],
+    "should_contain_any": [
+      "Master",
+      "programme",
+      "overview",
+      "list"
+    ]
+  },
+  {
+    "case_id": "overview_de_list_master",
+    "input": "Welche Masterstudiengänge werden an der HTW Berlin angeboten?",
+    "expected_topics": ["programme_overview"],
+    "must_not_contain": [
+      "uni-assist ist verpflichtend",
+      "Bewerbung über uni-assist"
+    ],
+    "should_contain_any": [
+      "Masterstudiengänge",
+      "Studienangebot",
+      "Übersicht"
+    ]
+  },
+  {
+    "case_id": "overview_de_count_master",
+    "input": "Wie viele Masterstudiengänge bietet die HTW Berlin an?",
+    "expected_topics": ["programme_overview"],
+    "must_not_contain": [
+      "uni-assist ist verpflichtend",
+      "Bewerbung über uni-assist"
+    ],
+    "should_contain_any": [
+      "Masterstudiengänge",
+      "Anzahl",
+      "Übersicht"
+    ]
+  },
+  {
+    "case_id": "mpmd_final_certificate_topic",
+    "input": "I am in the final semester of my Bachelor's degree and would like to apply for MPMD. I will receive my final certificate after the application deadline. Can I still apply, and do I need to submit the final certificate later?",
+    "expected_topics": [
+      "application_before_graduation",
+      "final_certificate_submission"
+    ]
+  },
+  {
+    "case_id": "application_process_control",
+    "input": "How do I apply for a Master's programme at HTW Berlin through uni-assist?",
+    "expected_topics": [
+      "application_process",
+      "application_route"
+    ]
+  }
+]
