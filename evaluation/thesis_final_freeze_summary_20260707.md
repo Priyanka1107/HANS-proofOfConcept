@@ -54,10 +54,10 @@ The PoC therefore achieved a clear response-time improvement over the original H
 ## Mode-level interpretation
 
 Email Assistant — Claude:
-Best overall mode for staff-facing email support. It was slower than Mistral, but generally more cautious and safer in sensitive admissions cases. This is the preferred mode for thesis discussion when quality, reviewability, and staff use are prioritised.
+Best overall mode for staff-facing email support. It was slower than Mistral, but generally more cautious and safer in sensitive admissions cases. This is the preferred mode for thesis discussion when quality, reviewability, and staff use are prioritised. It is also consistent across different runs.
 
 Email Assistant — Mistral:
-Fastest email-draft mode and often produced good drafts. However, it sometimes answered more confidently than the evidence justified. It is useful for speed comparison, but staff review remains important.
+Fastest email-draft mode and often produced good drafts. However, it sometimes answered more confidently than the evidence justified. It is useful for speed comparison, but staff review remains important as the quality drops a little.
 
 Baseline QA:
 Fastest overall mode. Suitable for direct question answering, but not ideal for staff email workflows because it does not provide the same structured draft, follow-up handling, and review metadata as the Email Assistant.
@@ -66,7 +66,7 @@ Conversational QA:
 Useful for memory/follow-up testing and faster than original HANS. Some follow-up cases still showed that grounded answers can miss the exact follow-up intent, so this mode should not be treated as fully reliable without review.
 
 Original HANS:
-Operationally stable in this run, but much slower and less aligned with the staff-facing email workflow. It does not provide the same quality score, review flag, detected topic list, staff draft structure, or follow-up metadata.
+Operationally stable in this run, but much slower and less aligned with the staff-facing email workflow. It does not provide the same quality score, review flag, detected topic list, staff draft structure, or follow-up metadata. It is also observed to be not consistent in different runs.
 
 ## Overall best mode
 
@@ -94,7 +94,7 @@ The evaluation was guided by common criteria used in RAG and applied LLM evaluat
 
 In the analysis, these criteria were operationalised through automated logs and manual interpretation: HTTP success, response time, detected topics, grounding status, citation validity, quality score, review flags, source count, and qualitative draft assessment.
 
-## Realistic conclusion
+## Conclusion
 
 The final PoC run is suitable as thesis evaluation evidence. The system completed all requests successfully and showed substantial response-time improvements compared with original HANS. The Email Assistant modes also provided a more useful staff-facing workflow than the original baseline.
 
