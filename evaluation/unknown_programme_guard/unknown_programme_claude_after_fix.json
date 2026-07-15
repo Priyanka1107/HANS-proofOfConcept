@@ -1,0 +1,125 @@
+﻿{
+    "is_followup":  false,
+    "flagged_for_human":  true,
+    "followup_type":  "new_enquiry",
+    "thread_id":  "unknown-programme-fix-claude-001",
+    "thread_context":  {
+                           "thread_key":  "unknown-programme-fix-claude-001",
+                           "student_email":  "maya@example.com",
+                           "subject":  "Question about an unknown programme",
+                           "turn_count":  1,
+                           "last_updated":  "2026-07-14T16:05:54",
+                           "email_context":  {
+                                                 "student_name":  null,
+                                                 "previous_degree":  null,
+                                                 "target_degree":  "Master",
+                                                 "target_program":  null,
+                                                 "country":  null,
+                                                 "citizenship_group":  null,
+                                                 "residence_country":  null,
+                                                 "application_route_rule":  null,
+                                                 "target_program_url":  null,
+                                                 "target_program_application_url":  null,
+                                                 "target_program_match_score":  null,
+                                                 "target_program_source":  null,
+                                                 "catalog_degree":  null,
+                                                 "catalog_language":  null,
+                                                 "catalog_study_format":  null,
+                                                 "input_language":  "en",
+                                                 "reply_language":  "en",
+                                                 "matched_programme":  null,
+                                                 "target_programme":  null,
+                                                 "matched_programme_url":  null,
+                                                 "programme_url":  null,
+                                                 "matched_programme_application_url":  null,
+                                                 "programme_application_url":  null
+                                             },
+                           "detected_topics":  [
+                                                   "application_deadline",
+                                                   "required_documents"
+                                               ],
+                           "last_quality_label":  "mostly_good",
+                           "last_review_required":  true,
+                           "last_review_reason":  "Programme not confidently matched",
+                           "last_draft_preview":  "Dear applicant,\n\nThank you for your interest in the Master of Quantum Business Analytics at HTW Berlin.\n\nRegarding the application deadline, the deadline depends on which application route applies to you. If you obtained your first academic degree in Germany or are a national of an EU or EEA country, you should apply via the HTW application portal with a deadline of 15 June for the winter semester or 15 December for the summer semester. [Doc 1] If you obtained your first academic degree outside Germany and are not a national of an EU or EEA country, you should apply via uni-assist with a deadline of 15 June for the winter semester or 15 December for the summer semester. [Doc 1]\n\nRegarding required documents, the system will automatically request the documents you need to upload based on your application details. [Doc 2] Generally, you will need to upload documents that relate to additional studies completed outside your Bachelor\u0027s programme, as well as any documents specified in the El"
+                       },
+    "email_context":  {
+                          "student_name":  null,
+                          "previous_degree":  null,
+                          "target_degree":  "Master",
+                          "target_program":  null,
+                          "country":  null,
+                          "citizenship_group":  null,
+                          "residence_country":  null,
+                          "application_route_rule":  null,
+                          "target_program_url":  null,
+                          "target_program_application_url":  null,
+                          "target_program_match_score":  null,
+                          "target_program_source":  null,
+                          "catalog_degree":  null,
+                          "catalog_language":  null,
+                          "catalog_study_format":  null,
+                          "input_language":  "en",
+                          "reply_language":  "en",
+                          "matched_programme":  null,
+                          "target_programme":  null,
+                          "matched_programme_url":  null,
+                          "programme_url":  null,
+                          "matched_programme_application_url":  null,
+                          "programme_application_url":  null,
+                          "programme_status":  "unknown",
+                          "programme_mentioned":  "Quantum Business Analytics"
+                      },
+    "detected_topics":  [
+                            {
+                                "topic_id":  "application_deadline",
+                                "label":  "Application deadline",
+                                "query":  "What is the application deadline or application period?. Target degree: Master. Prefer programme-specific applying page or programme deadline page when a programme is detected. Use general HTW deadline rules only as backup.",
+                                "intent":  null,
+                                "source_count":  0
+                            },
+                            {
+                                "topic_id":  "required_documents",
+                                "label":  "Required documents",
+                                "query":  "Which documents are required for the application?. Target degree: Master",
+                                "intent":  null,
+                                "source_count":  0
+                            }
+                        ],
+    "staff_draft":  "Dear applicant,\n\nThank you for your enquiry.\n\nI could not confirm a programme named \"Quantum Business Analytics\" in the current HTW Berlin programme catalogue. Please check the programme name or send us the official programme link.\n\nApplication deadlines and required documents vary by programme, so these details should be confirmed only after the programme has been identified.\n\nKind regards,\nHTW Berlin Student Services\n\nReference link for staff verification:\n- HTW Berlin degree programmes: https://www.htw-berlin.de/en/studies/degree-programmes/\n\n\\---\n\nThis draft response was generated by HTW AI Navigation System and has been prepared for staff review. It must be checked and approved by a member of staff before sending. HANS-generated content is based on official HTW Berlin sources at the time of the last knowledge base update. It does not constitute binding advice and may require verification against the current programme pages before sending.",
+    "citations":  [
+
+                  ],
+    "sources":  [
+
+                ],
+    "validation":  {
+                       "is_grounded":  false,
+                       "citations_valid":  false,
+                       "has_hallucinations":  false,
+                       "confidence":  0.0,
+                       "failure_type":  "programme_not_confirmed"
+                   },
+    "quality":  {
+                    "quality_score":  75,
+                    "quality_label":  "review",
+                    "review_required":  true,
+                    "review_reason":  "Programme named by the student was not confirmed in the HTW programme catalogue",
+                    "citation_count":  0,
+                    "citations":  [
+
+                                  ],
+                    "bad_draft_phrase":  false
+                },
+    "timing":  {
+                   "programme_catalogue_match":  0.002001523971557617,
+                   "followup_detection":  0.0020020008087158203,
+                   "email_understanding":  0.2791721820831299,
+                   "total":  0.32450199127197266
+               },
+    "session_id":  null,
+    "mode":  "email_claude",
+    "test_id":  "UNKNOWN-PROGRAMME-CLAUDE-AFTER-FIX",
+    "generation_provider":  "anthropic",
+    "generation_model":  "claude-haiku-4-5"
+}

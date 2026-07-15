@@ -487,6 +487,102 @@ def _draft_has_exact_programme_count(draft: str) -> bool:
     )
 
 
+def _extract_unmatched_programme_name(email_text: str) -> str:
+    """
+    Extract a programme-like name written by the student when the catalogue
+    did not return a confirmed programme match.
+
+    This is deliberately narrow. It only handles explicit forms such as:
+    - Master of Quantum Business Analytics
+    - Master's programme in Project Management and Data Science
+    - Masterstudiengang Project Management and Data Science
+
+    General questions such as "Which Master's programmes are offered?" do not
+    produce a candidate and continue through the existing general workflow.
+    """
+    raw = str(email_text or "")
+
+    patterns = [
+        (
+            r"\b(?:master(?:'s|’s)?(?:\s+(?:programme|program|degree))?|master)"
+            r"\s+(?:in|of)\s+"
+            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
+            r"(?=\s*(?:[?.!\n]|,\s*(?:what|which|when|how|is|are|do|does)\b))"
+        ),
+        (
+            r"\b(?:bachelor(?:'s|’s)?(?:\s+(?:programme|program|degree))?|bachelor)"
+            r"\s+(?:in|of)\s+"
+            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
+            r"(?=\s*(?:[?.!\n]|,\s*(?:what|which|when|how|is|are|do|does)\b))"
+        ),
+        (
+            r"\b(?:masterstudiengang|bachelorstudiengang)\s+(?:in\s+)?"
+            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
+            r"(?=\s*(?:[?.!\n]|,\s*(?:welche|wann|wie|ist|sind|muss|müssen)\b))"
+        ),
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, raw, flags=re.IGNORECASE)
+        if not match:
+            continue
+
+        candidate = re.sub(r"\s+", " ", match.group(1)).strip(" ,.-")
+        candidate = re.sub(
+            r"\s+(?:at|an der)\s+HTW(?: Berlin)?$",
+            "",
+            candidate,
+            flags=re.IGNORECASE,
+        ).strip()
+
+        if len(candidate.split()) >= 2:
+            return candidate
+
+    return ""
+
+
+def _build_unconfirmed_programme_draft(
+    programme_name: str,
+    reply_language: str,
+) -> str:
+    """Create a deterministic safe draft without calling Claude or Mistral."""
+    programme_name = str(programme_name or "the programme mentioned").strip()
+
+    if str(reply_language or "").lower().startswith("de"):
+        return (
+            "Sehr geehrte/r Bewerber/in,\n\n"
+            "vielen Dank für Ihre Anfrage.\n\n"
+            f"Der Studiengang „{programme_name}“ konnte im aktuellen "
+            "Studiengangskatalog der HTW Berlin nicht bestätigt werden. "
+            "Bitte prüfen Sie die genaue Bezeichnung oder senden Sie uns den "
+            "offiziellen Link zum gemeinten Studiengang.\n\n"
+            "Da Bewerbungsfristen und erforderliche Unterlagen vom jeweiligen "
+            "Studiengang abhängen, sollten diese Angaben erst nach der eindeutigen "
+            "Zuordnung des Studiengangs bestätigt werden.\n\n"
+            "Mit freundlichen Grüßen\n"
+            "HTW Berlin Student Services\n\n"
+            "Referenzlink zur Prüfung durch Mitarbeitende:\n"
+            "- Studiengänge der HTW Berlin: "
+            "https://www.htw-berlin.de/studium/studiengaenge/"
+        )
+
+    return (
+        "Dear applicant,\n\n"
+        "Thank you for your enquiry.\n\n"
+        f'I could not confirm a programme named "{programme_name}" in the '
+        "current HTW Berlin programme catalogue. Please check the programme "
+        "name or send us the official programme link.\n\n"
+        "Application deadlines and required documents vary by programme, so "
+        "these details should be confirmed only after the programme has been "
+        "identified.\n\n"
+        "Kind regards,\n"
+        "HTW Berlin Student Services\n\n"
+        "Reference link for staff verification:\n"
+        "- HTW Berlin degree programmes: "
+        "https://www.htw-berlin.de/en/studies/degree-programmes/"
+    )
+
+
 def _draft_admits_missing_exact_count(draft: str) -> bool:
     lower = (draft or "").lower()
     return any(
@@ -1054,7 +1150,7 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
         # This allows detect_topics() and extract_email_context() to see
         # the programme catalogue context.
         start = time.time()
-        email_context = extract_email_context(email_text_for_processing)
+        email_context = extract_email_context(original_email_text)
 
         # Preserve the input language for staff-draft generation.
         # This controls output language; retrieval remains multilingual.
@@ -1121,11 +1217,107 @@ async def email_assistant_endpoint(req: EmailAssistantRequest):
             email_context["programme_application_url"] = matched_programme_application_url
             email_context["target_program_application_url"] = matched_programme_application_url
 
-        if followup_type == "followup_new_topic":
-            email_context = merge_context_with_thread(email_context, previous_thread_context)
+        # Minimal unknown-programme guard. Preserve a programme-like name written
+        # by the student even when it is not present in the HTW catalogue.
+        programme_candidate = ""
+        if not matched_programme:
+            programme_candidate = _extract_unmatched_programme_name(original_email_text)
 
-        detected_topics = detect_topics(email_text_for_processing, email_context, max_topics=4)
+        if matched_programme:
+            email_context["programme_status"] = "confirmed"
+            email_context["programme_mentioned"] = matched_programme
+        elif programme_candidate:
+            email_context["programme_status"] = "unknown"
+            email_context["programme_mentioned"] = programme_candidate
+        else:
+            email_context["programme_status"] = "not_provided"
+            email_context["programme_mentioned"] = None
+
+        # Only inherit a previous programme when the current email did not
+        # explicitly mention an unknown programme.
+        if followup_type == "followup_new_topic" and not programme_candidate:
+            email_context = merge_context_with_thread(email_context, previous_thread_context)
+            if email_context.get("target_program") or email_context.get("matched_programme"):
+                email_context["programme_status"] = "confirmed"
+
+        # Topic detection must inspect only the real student email. The programme
+        # catalogue remains available through email_context for query enrichment.
+        detected_topics = detect_topics(original_email_text, email_context, max_topics=4)
         timing["email_understanding"] = time.time() - start
+
+        # Hard stop before retrieval and generation. Claude and Mistral must not
+        # receive generic Master's evidence for a programme that was not confirmed.
+        if email_context.get("programme_status") == "unknown":
+            safe_draft = _build_unconfirmed_programme_draft(
+                programme_name=programme_candidate,
+                reply_language=reply_language,
+            )
+            safe_draft_for_validation = safe_draft
+            safe_draft = append_disclaimer_to_draft(
+                safe_draft,
+                reply_language=reply_language,
+            )
+
+            topic_models = [
+                EmailTopic(
+                    topic_id=topic["topic_id"],
+                    label=topic["label"],
+                    query=topic["query"],
+                    intent=None,
+                    source_count=0,
+                )
+                for topic in detected_topics
+            ]
+
+            validation = {
+                "is_grounded": False,
+                "citations_valid": False,
+                "has_hallucinations": False,
+                "confidence": 0.0,
+                "failure_type": "programme_not_confirmed",
+            }
+            quality = {
+                "quality_score": 75,
+                "quality_label": "review",
+                "review_required": True,
+                "review_reason": "Programme named by the student was not confirmed in the HTW programme catalogue",
+                "citation_count": 0,
+                "citations": [],
+                "bad_draft_phrase": False,
+            }
+
+            save_thread_context(
+                thread_key,
+                student_email=req.student_email,
+                subject=req.subject,
+                email_context=email_context,
+                detected_topics=detected_topics,
+                staff_draft=safe_draft,
+                quality=quality,
+            )
+
+            timing["total"] = time.time() - overall_start
+
+            return EmailAssistantResponse(
+                is_followup=followup,
+                flagged_for_human=True,
+                followup_type=followup_type,
+                thread_id=thread_key,
+                thread_context=previous_thread_context,
+                email_context=email_context,
+                detected_topics=topic_models,
+                staff_draft=safe_draft,
+                citations=[],
+                sources=[],
+                validation=Validation(**validation),
+                quality=EmailQuality(**quality),
+                timing=timing,
+                session_id=session_id,
+                mode=selected_mode,
+                test_id=req.test_id,
+                generation_provider=generation_provider,
+                generation_model=generation_model,
+            )
 
         logger.info("Email context: %s", email_context)
         logger.info("Detected topics: %s", [t["topic_id"] for t in detected_topics])
