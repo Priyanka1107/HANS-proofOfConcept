@@ -489,57 +489,195 @@ def _draft_has_exact_programme_count(draft: str) -> bool:
 
 def _extract_unmatched_programme_name(email_text: str) -> str:
     """
-    Extract a programme-like name written by the student when the catalogue
-    did not return a confirmed programme match.
+    Extract an explicitly named programme when the official HTW catalogue did
+    not return a confirmed match.
 
-    This is deliberately narrow. It only handles explicit forms such as:
-    - Master of Quantum Business Analytics
-    - Master's programme in Project Management and Data Science
-    - Masterstudiengang Project Management and Data Science
+    Supported natural forms include:
+    - What is the deadline for Quantum Business Analytics?
+    - I want to apply for Quantum Business Analytics.
+    - Does HTW offer Quantum Business Analytics?
+    - Which documents do I need for Quantum Business Analytics?
+    - Wie lautet die Bewerbungsfrist für Quantum Business Analytics?
 
-    General questions such as "Which Master's programmes are offered?" do not
-    produce a candidate and continue through the existing general workflow.
+    Broad questions such as "Which Master's programmes are offered?" must not
+    produce a programme candidate.
     """
-    raw = str(email_text or "")
+    raw = re.sub(r"\s+", " ", str(email_text or "")).strip()
+
+    if not raw:
+        return ""
+
+    candidate = (
+        r"([A-Za-zÄÖÜäöüß0-9&+\-/]+"
+        r"(?:\s+[A-Za-zÄÖÜäöüß0-9&+\-/]+){1,11}?)"
+    )
+    end = r"(?=\s*(?:[?.!]|$))"
 
     patterns = [
         (
             r"\b(?:master(?:'s|’s)?(?:\s+(?:programme|program|degree))?|master)"
             r"\s+(?:in|of)\s+"
-            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
-            r"(?=\s*(?:[?.!\n]|,\s*(?:what|which|when|how|is|are|do|does)\b))"
+            + candidate
+            + end
         ),
         (
             r"\b(?:bachelor(?:'s|’s)?(?:\s+(?:programme|program|degree))?|bachelor)"
             r"\s+(?:in|of)\s+"
-            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
-            r"(?=\s*(?:[?.!\n]|,\s*(?:what|which|when|how|is|are|do|does)\b))"
+            + candidate
+            + end
         ),
         (
             r"\b(?:masterstudiengang|bachelorstudiengang)\s+(?:in\s+)?"
-            r"([A-ZÄÖÜ][A-Za-zÄÖÜäöüß0-9&+\-/ ]{2,100}?)"
-            r"(?=\s*(?:[?.!\n]|,\s*(?:welche|wann|wie|ist|sind|muss|müssen)\b))"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:what|which)\s+(?:is|are)\s+the\s+"
+            r"(?:application\s+)?(?:deadline|application\s+period|requirements?)"
+            r"\s+(?:for|of)\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:which|what)\s+(?:application\s+)?documents?"
+            r"\s+do\s+(?:i|we)\s+need\s+for\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:i\s+(?:want|would\s+like|plan)\s+to\s+apply|"
+            r"can\s+i\s+apply|how\s+do\s+i\s+apply)"
+            r"\s+for\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:does|do)\s+HTW(?:\s+Berlin)?\s+offer\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:wie\s+lautet|was\s+ist)\s+die\s+"
+            r"(?:bewerbungsfrist|bewerbungsphase|zulassungsvoraussetzung)"
+            r"\s+für\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:welche|was\s+für)\s+unterlagen"
+            r"(?:\s+benötige\s+ich|\s+brauche\s+ich)?"
+            r"\s+für\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:ich\s+möchte\s+mich\s+bewerben|"
+            r"kann\s+ich\s+mich\s+bewerben|"
+            r"wie\s+bewerbe\s+ich\s+mich)"
+            r"\s+für\s+"
+            + candidate
+            + end
+        ),
+        (
+            r"\b(?:bietet)\s+die\s+HTW(?:\s+Berlin)?\s+"
+            + candidate
+            + end
         ),
     ]
 
+    generic_exact = {
+        "master programme",
+        "master program",
+        "master programmes",
+        "master programs",
+        "master s programme",
+        "master s program",
+        "master s programmes",
+        "master s programs",
+        "bachelor programme",
+        "bachelor program",
+        "bachelor programmes",
+        "bachelor programs",
+        "bachelor s programme",
+        "bachelor s program",
+        "bachelor s programmes",
+        "bachelor s programs",
+        "degree programme",
+        "degree program",
+        "degree programmes",
+        "degree programs",
+        "study programme",
+        "study program",
+        "study programmes",
+        "study programs",
+        "a programme",
+        "a program",
+        "the programme",
+        "the program",
+        "any programme",
+        "any program",
+        "another programme",
+        "another program",
+        "one programme",
+        "one program",
+        "more than one programme",
+        "more than one program",
+        "programmes",
+        "programs",
+        "programme",
+        "program",
+    }
+
     for pattern in patterns:
         match = re.search(pattern, raw, flags=re.IGNORECASE)
+
         if not match:
             continue
 
-        candidate = re.sub(r"\s+", " ", match.group(1)).strip(" ,.-")
-        candidate = re.sub(
+        value = re.sub(
+            r"\s+",
+            " ",
+            match.group(1),
+        ).strip(" ,.-")
+
+        value = re.sub(
             r"\s+(?:at|an der)\s+HTW(?: Berlin)?$",
             "",
-            candidate,
+            value,
             flags=re.IGNORECASE,
         ).strip()
 
-        if len(candidate.split()) >= 2:
-            return candidate
+        value = re.sub(
+            r"\s+(?:for|in)\s+(?:the\s+)?(?:winter|summer)\s+semester.*$",
+            "",
+            value,
+            flags=re.IGNORECASE,
+        ).strip()
+
+        value = re.sub(
+            r"\s+(?:für|im)\s+(?:das\s+)?(?:winter|sommer)semester.*$",
+            "",
+            value,
+            flags=re.IGNORECASE,
+        ).strip()
+
+        normalised = re.sub(
+            r"[^a-z0-9äöüß]+",
+            " ",
+            value.lower(),
+        ).strip()
+
+        if normalised in generic_exact:
+            continue
+
+        word_count = len(value.split())
+
+        if word_count < 2 or word_count > 12:
+            continue
+
+        return value
 
     return ""
-
 
 def _build_unconfirmed_programme_draft(
     programme_name: str,
